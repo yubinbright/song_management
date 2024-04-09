@@ -2,7 +2,7 @@
 
 #define STRING_SIZE 256
 
-struct Song {
+struct Song { //구조체
     char title[STRING_SIZE];
     char singer[STRING_SIZE];
     char composer[STRING_SIZE];
