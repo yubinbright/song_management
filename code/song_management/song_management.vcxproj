@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="playlist.c" />
     <ClCompile Include="song.c" />
+    <ClCompile Include="song_list.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h" />
