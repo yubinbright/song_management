@@ -1,5 +1,6 @@
 #include "header.h"
 
+
 #define STRING_SIZE 256
 
 struct Song { //구조체
@@ -15,6 +16,7 @@ struct Song { //구조체
 };
 
 int main(){
+    SetConsoleOutputCP(CP_UTF8);
     int mode;
     int err = 0;
     while (1)
@@ -37,7 +39,7 @@ int main(){
 
         switch (mode) {
         case 1: //노래 리스트 관리
-
+            song_list_menu();
             break;
 
         case 2: //검색 기능

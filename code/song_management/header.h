@@ -4,20 +4,22 @@
 #include <string.h>
 #include <wchar.h>
 #include <time.h>
+#include <Windows.h>
 
-void playlistMenu();//ÇÃ·¹ÀÌ¸®½ºÆ® È­¸é¿¡ Ã³À½ µé¾î°¬À» ¶§
-
-void printPlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ®ÀÌ ¸®½ºÆ®¸¦ Ãâ·Â
-
-void addPlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ® Ãß°¡
-
-void deletePlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ® »èÁ¦
-
-void openPlaylist(char* playlistName);//ÇÃ·¹ÀÌ¸®½ºÆ® ¿­±â
-
-void addSong();//ÇÃ·¹ÀÌ¸®½ºÆ®¿¡ ³ë·¡ Ãß°¡
-
-void deleteSong();//ÇÃ·¹ÀÌ¸®½ºÆ®ÀÇ ³ë·¡ »èÁ¦
+void song_list_menu();//ë…¸ë˜ ë¦¬ìŠ¤íŠ¸ ì£¼ ë©”ë‰´
 
 
 
+void playlistMenu();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ í™”ë©´ì— ì²˜ìŒ ë“¤ì–´ê°”ì„ ë•Œ
+
+void printPlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ì´ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥
+
+void addPlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì¶”ê°€
+
+void deletePlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì‚­ì œ
+
+void openPlaylist(char* playlistName);//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì—´ê¸°
+
+void addSong();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ì— ë…¸ë˜ ì¶”ê°€
+
+void deleteSong();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ì˜ ë…¸ë˜ ì‚­ì œ

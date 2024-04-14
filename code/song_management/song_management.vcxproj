@@ -127,7 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="playlist.c" />
+    <ClCompile Include="playlist.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="song.c" />
     <ClCompile Include="song_list.c" />
   </ItemGroup>
@@ -136,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Playlist_list.txt" />
+    <Text Include="song_list.txt" />
     <Text Include="퇴근길 플레이리스트.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
