@@ -68,7 +68,42 @@ void song_add()//노래 추가
 
 }
 
-void song_dlt()//노래 삭제
+void song_dlt(char* filename, char* dlt_text)//노래 삭제
 {
+	FILE* input_file = fopen(filename, "r");    //기존 txt파일
+	if (input_file == NULL) {
+    		printf("Error opening input file.\n");
+    		return;
+	}
 
+	FILE* output_file = fopen("temp.txt", "w"); //새로 덮어씌울 txt파일
+	if (output_file == NULL) {
+    		printf("Error opening temporary file.\n");
+    		fclose(input_file);
+    		return;
+	}
+
+	char line[MAX_STRING_LENGTH];   //기존 문자열을 담아둘 배열
+	int found = 0;  // 문자열 발견 여부 확인 변수
+	while (fgets(line, MAX_STRING_LENGTH, input_file)) {    // 찾으려는 문자열이 포함된 행이 아닌 경우 새 파일에 쓰기
+    		if (!strstr(line, text)) {
+        		fputs(line, output_file);   // 제거하고자 하는 문자열과 일치하지 않으면 새로운 txt파일에 쓰기, 일치할 경우 해당 문자열은 쓰지 않음
+    		}
+    		else {
+        		found = 1; // 문자열 발견
+    		}
+	}
+
+	fclose(input_file);
+	fclose(output_file);
+
+	remove(filename);   // 기존 파일 삭제
+	rename("temp.txt", filename);   // 새로 쓴 파일의 이름 변경
+
+	if (found) {
+    		printf("성공적으로 노래를 삭제했습니다.\n");
+	}
+	else {
+    		printf("삭제하고자 하는 문자열을 발견하지 못했습니다.\n");
+	}
 }
