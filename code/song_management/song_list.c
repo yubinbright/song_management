@@ -68,7 +68,7 @@ void song_add()//노래 추가
 
 }
 
-void song_dlt(char* filename)//노래 삭제
+void song_dlt(char* filename, char* dlt_text)//노래 삭제
 {
 	FILE* input_file = fopen(filename, "r");    //기존 txt파일
 	if (input_file == NULL) {
@@ -83,7 +83,6 @@ void song_dlt(char* filename)//노래 삭제
     		return;
 	}
 
-	char del_text[256];	//삭제할 문자열
 	char line[256];   //기존 문자열을 담아둘 배열
 
 	printf("노래를 삭제합니다.");
@@ -92,7 +91,7 @@ void song_dlt(char* filename)//노래 삭제
 	fgets(input, 256, stdin);
 	int found = 0;  // 문자열 발견 여부 확인 변수
 	while (fgets(line, 256, input_file)) {    // 찾으려는 문자열이 포함된 행이 아닌 경우 새 파일에 쓰기
-    		if (!strstr(line, text)) {
+    		if (!strstr(line, dlt_text)) {
         		fputs(line, output_file);   // 제거하고자 하는 문자열과 일치하지 않으면 새로운 txt파일에 쓰기, 일치할 경우 해당 문자열은 쓰지 않음
     		}
     		else {
