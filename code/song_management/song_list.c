@@ -24,19 +24,19 @@ void song_list_menu() //노래 리스트 주 메뉴
 
 		switch (mode) {
 		case 1: //노래 리스트 출력
-			song_list_menu();
+			song_list_print();
 			break;
 
 		case 2: //노래 추가
-
+			song_add();
 			break;
 
 		case 3: //노래 삭제
-
+			song_dlt();
 			break;
 
 		case 0: //뒤로 가기
-
+			return 0;
 			break;
 		default: //error
 			while (getchar() != '\n'); //입력 버터 비우기
@@ -44,6 +44,31 @@ void song_list_menu() //노래 리스트 주 메뉴
 			break;
 		}
 	}
-	
+}
+
+void song_list_print()//노래 리스트 출력
+{
+	printf("\n노래 리스트를 출력합니다.");
+	printf("\n\n제목 / 가수 / 작곡가 / 작사가 / 장르 / 재생시간 / 앨범명 / 앨범 출시 날짜\n");
+
+}
+
+void song_add()//노래 추가
+{
+	char name[100000];
+	char singer[200];
+	char song_writer[200];
+	char lyric_writer[200];
+	char genre[20];
+	int play_time_hour = 0, play_time_min = 0, play_time_sec = 0;
+	char album_name[200];
+	int album_year = 0, album_month = 0, album_day = 0;
+	printf("?");
+
+
+}
+
+void song_dlt()//노래 삭제
+{
 
 }

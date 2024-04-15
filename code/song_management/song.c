@@ -56,6 +56,7 @@ int main(){
 
         default: //error
             err = 1;
+            while (getchar() != '\n'); //입력 버터 비우기
             break;
         }
     }

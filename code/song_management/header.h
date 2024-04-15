@@ -8,6 +8,11 @@
 
 void song_list_menu();//노래 리스트 주 메뉴
 
+void song_list_print();//노래 리스트 출력
+
+void song_add();//노래 추가
+
+void song_dlt();//노래 삭제
 
 
 void playlistMenu();//플레이리스트 화면에 처음 들어갔을 때
