@@ -32,7 +32,7 @@ void song_list_menu() //노래 리스트 주 메뉴
 			break;
 
 		case 3: //노래 삭제
-			song_dlt();
+			song_dlt("song_list.txt");
 			break;
 
 		case 0: //뒤로 가기
@@ -68,7 +68,7 @@ void song_add()//노래 추가
 
 }
 
-void song_dlt(char* filename, char* dlt_text)//노래 삭제
+void song_dlt(char* filename)//노래 삭제
 {
 	FILE* input_file = fopen(filename, "r");    //기존 txt파일
 	if (input_file == NULL) {
