@@ -23,7 +23,7 @@ void addPlaylist();//플레이리스트 추가
 
 void deletePlaylist();//플레이리스트 삭제
 
-void openPlaylist(char* playlistName);//플레이리스트 열기
+void openPlaylist(char* playlistName, char* dlt_text);//플레이리스트 열기
 
 void addSong();//플레이리스트에 노래 추가
 
