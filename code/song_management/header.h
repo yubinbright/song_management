@@ -12,7 +12,7 @@ void song_list_print();//노래 리스트 출력
 
 void song_add();//노래 추가
 
-void song_dlt(char* filename, char* dlt_text);//노래 삭제
+void song_dlt(char* filename);//노래 삭제
 
 
 void playlistMenu();//플레이리스트 화면에 처음 들어갔을 때
