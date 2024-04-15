@@ -32,7 +32,7 @@ void song_list_menu() //노래 리스트 주 메뉴
 			break;
 
 		case 3: //노래 삭제
-			song_dlt("song_list.txt");
+			song_dlt("song_list.txt", "delete_text");
 			break;
 
 		case 0: //뒤로 가기
