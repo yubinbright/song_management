@@ -83,7 +83,13 @@ void song_dlt(char* filename)//노래 삭제
     		return;
 	}
 
+	char del_text[MAX_STRING_LENGTH];	//삭제할 문자열
 	char line[MAX_STRING_LENGTH];   //기존 문자열을 담아둘 배열
+
+	printf("노래를 삭제합니다.");
+	printf("삭제할 노래의 제목을 입력하세요 : ");
+	printf("삭제할 노래의 제목을 입력하세요 : ");
+	fgets(input, MAX_STRING_LENGTH, stdin);
 	int found = 0;  // 문자열 발견 여부 확인 변수
 	while (fgets(line, MAX_STRING_LENGTH, input_file)) {    // 찾으려는 문자열이 포함된 행이 아닌 경우 새 파일에 쓰기
     		if (!strstr(line, text)) {
@@ -101,9 +107,9 @@ void song_dlt(char* filename)//노래 삭제
 	rename("temp.txt", filename);   // 새로 쓴 파일의 이름 변경
 
 	if (found) {
-    		printf("성공적으로 노래를 삭제했습니다.\n");
+    		printf("삭제할 대상이 하나로 특정되었습니다.\n");
 	}
 	else {
-    		printf("삭제하고자 하는 문자열을 발견하지 못했습니다.\n");
+    		printf("..! 삭제 대상이 존재하지 않습니다\n");
 	}
 }
