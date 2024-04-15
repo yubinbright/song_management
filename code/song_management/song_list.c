@@ -32,7 +32,7 @@ void song_list_menu() //노래 리스트 주 메뉴
 			break;
 
 		case 3: //노래 삭제
-			song_dlt("song_list.txt", "delete_text");
+			song_dlt("song_list.txt");
 			break;
 
 		case 0: //뒤로 가기
@@ -68,35 +68,36 @@ void song_add()//노래 추가
 
 }
 
-void song_dlt(char* filename, char* dlt_text)//노래 삭제
+void song_dlt(char* filename)//노래 삭제
 {
 	FILE* input_file = fopen(filename, "r");    //기존 txt파일
 	if (input_file == NULL) {
-    		printf("Error opening input file.\n");
-    		return;
+		printf("Error opening input file.\n");
+		return;
 	}
 
 	FILE* output_file = fopen("temp.txt", "w"); //새로 덮어씌울 txt파일
 	if (output_file == NULL) {
-    		printf("Error opening temporary file.\n");
-    		fclose(input_file);
-    		return;
+		printf("Error opening temporary file.\n");
+		fclose(input_file);
+		return;
 	}
 
 	char line[256];   //기존 문자열을 담아둘 배열
+	char delete_text[256]; // 삭제할 문자열을 저장할 변수
 
 	printf("노래를 삭제합니다.");
 	printf("삭제할 노래의 제목을 입력하세요 : ");
-	printf("삭제할 노래의 제목을 입력하세요 : ");
-	fgets(input, 256, stdin);
+	fgets(delete_text, 256, stdin);
+
 	int found = 0;  // 문자열 발견 여부 확인 변수
 	while (fgets(line, 256, input_file)) {    // 찾으려는 문자열이 포함된 행이 아닌 경우 새 파일에 쓰기
-    		if (!strstr(line, dlt_text)) {
-        		fputs(line, output_file);   // 제거하고자 하는 문자열과 일치하지 않으면 새로운 txt파일에 쓰기, 일치할 경우 해당 문자열은 쓰지 않음
-    		}
-    		else {
-        		found = 1; // 문자열 발견
-    		}
+		if (!strstr(line, delete_text)) {
+			fputs(line, output_file);   // 제거하고자 하는 문자열과 일치하지 않으면 새로운 txt파일에 쓰기, 일치할 경우 해당 문자열은 쓰지 않음
+		}
+		else {
+			found = 1; // 문자열 발견
+		}
 	}
 
 	fclose(input_file);
@@ -106,9 +107,9 @@ void song_dlt(char* filename, char* dlt_text)//노래 삭제
 	rename("temp.txt", filename);   // 새로 쓴 파일의 이름 변경
 
 	if (found) {
-    		printf("삭제할 대상이 하나로 특정되었습니다.\n");
+		printf("삭제할 대상이 하나로 특정되었습니다.\n");
 	}
 	else {
-    		printf("..! 삭제 대상이 존재하지 않습니다\n");
+		printf("..! 삭제 대상이 존재하지 않습니다\n");
 	}
 }
