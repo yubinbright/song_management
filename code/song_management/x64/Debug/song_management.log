@@ -3,11 +3,12 @@ C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(1,1
 C:\Users\wii07\source\repos\song_management\code\song_management\header.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   (소스 파일 'song_list.c'을(를) 컴파일하는 중)
   
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(39,12): warning C4098: 'song_list_menu': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(58,7): warning C4101: 'name' :참조되지 않은 지역 변수입니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(62,7): warning C4101: 'genre' :참조되지 않은 지역 변수입니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(64,7): warning C4101: 'album_name' :참조되지 않은 지역 변수입니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(59,7): warning C4101: 'singer' :참조되지 않은 지역 변수입니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(61,7): warning C4101: 'lyric_writer' :참조되지 않은 지역 변수입니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(60,7): warning C4101: 'song_writer' :참조되지 않은 지역 변수입니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(40,12): warning C4098: 'song_list_menu': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(78,3): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(88,12): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(64,7): warning C4101: 'genre' :참조되지 않은 지역 변수입니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(66,7): warning C4101: 'album_name' :참조되지 않은 지역 변수입니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(61,7): warning C4101: 'singer' :참조되지 않은 지역 변수입니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(63,7): warning C4101: 'lyric_writer' :참조되지 않은 지역 변수입니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(62,7): warning C4101: 'song_writer' :참조되지 않은 지역 변수입니다.
   song_management.vcxproj -> C:\Users\wii07\Source\Repos\song_management\code\x64\Debug\song_management.exe
