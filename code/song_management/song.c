@@ -1,7 +1,7 @@
 #include "header.h"
 #include "playlist.c"
 #include "song_list.c"
-//#include "search.c"
+#include "search.c"
 #include "check.c"
 
 #define STRING_SIZE 256
@@ -35,7 +35,7 @@ int main(){
             break;
 
         case 2: //검색 기능
-            search();
+            searchMenu();
             break;
 
         case 3: //플레이리스트

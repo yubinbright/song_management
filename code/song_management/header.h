@@ -1,6 +1,7 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS	
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <wchar.h>
 #include <time.h>
@@ -13,6 +14,16 @@ void song_list_print();//노래 리스트 출력
 void song_add();//노래 추가
 
 void song_dlt(char* filename);//노래 삭제
+
+void search();// 노래 검색 함수 선언
+
+void searchSong(char* filename, char* searchWord, int found);
+
+void searchTag(); //태그 검색
+
+void searchZero();//태그 검색에서 0 입력시
+
+void searchWordOfTag(const char *filename, const char *tag, const char *word); //검색어 검색
 
 void playlistMenu();//플레이리스트 화면에 처음 들어갔을 때
 
