@@ -14,7 +14,6 @@ void song_add();//노래 추가
 
 void song_dlt(char* filename);//노래 삭제
 
-
 void playlistMenu();//플레이리스트 화면에 처음 들어갔을 때
 
 void printPlaylist();//플레이리스트이 리스트를 출력
