@@ -1,5 +1,4 @@
 #include "header.h"
-#include "playlist.c"
 #include "song_list.c"
 #include "search.c"
 #include "check.c"
