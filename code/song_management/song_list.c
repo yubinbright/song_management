@@ -958,7 +958,7 @@ void song_dlt(const char* filename, const char* dlt_song) {	// dlt_song 문자�
 		}
 	}
 
-	char dlt_ans[STRING_SIZE];
+	char dlt_ans[STRING_SIZE];	// 삭제 여부 답변 입력 배열
 	if (found) {
 		printf("정말 삭제하시겠습니까? (Delete/...)\n");
 		scanf("%s", &dlt_ans);	// 삭제 여부
