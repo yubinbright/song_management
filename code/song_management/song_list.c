@@ -945,7 +945,7 @@ void song_dlt(const char* filename, const char* dlt_song) {	// dlt_song 문자�
 		return;
 	}
 
-	char line[256];   // 기존 문자열을 담아둘 배열
+	char line[STRING_SIZE];   // 기존 문자열을 담아둘 배열
 	int found = 0;  // 문자열 발견 여부 확인 변수
 
 	while (fgets(line, sizeof(line), input_file)) {
