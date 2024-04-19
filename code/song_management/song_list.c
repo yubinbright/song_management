@@ -82,7 +82,7 @@ void song_list_menu() //노래 리스트 주 메뉴
 			break;
 
 		case 3: //노래 삭제
-			song_dlt("song_list.txt");
+			get_dlt_song(input_text); //삭제 문자열 입력 및 생성 후 삭제
 			break;
 
 		case 0: //뒤로 가기
@@ -802,36 +802,172 @@ void add_song() {
 	fclose(fp);
 }
 
-void song_dlt(char* filename)//노래 삭제
-{
-	FILE* input_file = fopen(filename, "r");    //기존 txt파일
-	if (input_file == NULL) {
-		printf("Error opening input file.\n");
+void get_dlt_song(char* dlt_song) { // 삭제 문자열 입력 및 생성 함수 -> 해당 문자열 삭제 함수로 넘어감
+	char dlt_songname[STRING_SIZE];	// 삭제할 노래 제목
+	char dlt_singer[STRING_SIZE];	// 삭제할 노래 가수
+	int line_number_check[MAX_SIZE] = { 0 };	// 노래 중복시 삭제할 노래 선택 때 사용할 배열
+	int line_num = 0;	// 중복 노래 개수 담을 변수
+
+	printf("노래를 삭제합니다.\n");
+	printf("삭제할 노래의 제목을 입력하세요: ");
+	fgets(dlt_songname, STRING_SIZE, stdin);
+	dlt_songname[strcspn(dlt_songname, "\n")] = '\0'; // 개행 문자 제거
+
+	printf("삭제할 노래의 가수를 입력하세요: ");
+	fgets(dlt_singer, STRING_SIZE, stdin);
+	dlt_singer[strcspn(dlt_singer, "\n")] = '\0'; // 개행 문자 제거
+
+	FILE* file = fopen("song_list.txt", "r");
+	if (file == NULL) {
+		printf("Error opening file for reading.\n");
 		return;
 	}
 
-	FILE* output_file = fopen("temp.txt", "w"); //새로 덮어씌울 txt파일
+	char buffer[STRING_SIZE];	// txt파일에서 읽어올 문자열 원본
+	char dlt_print[STRING_SIZE];	// 노래 정보의 구분자를 '\t' 에서 ' / ' 로 바꿔 출력할 배열
+	int line_number = 1; // 중복 노래 각 줄 번호를 저장할 변수
+	int selected_line = 0; // 노래가 중복되지 않으면 삭제할 특정 노래의 줄을 담고, 중복되면 사용자가 선택한 번호 저장할 변수
+	while (fgets(buffer, STRING_SIZE, file) != NULL) {
+		char* token = strtok(buffer, "\t"); // 탭을 구분자로 사용하여 문자열을 분할
+		char* song = strtok(NULL, "\t");
+
+		// 입력한 제목과 가수를 txt파일에서 비교하며, 중복 노래 개수 카운트
+		if (strcmp(dlt_songname, token) == 0 && strcmp(dlt_singer, song) == 0) {
+			line_number_check[line_num] = line_number;
+			line_num++;
+		}
+		line_number++;
+	}
+
+	fclose(file);
+
+	if (line_num > 1) { // 삭제 노래 제목과 가수가 중복인 경우
+		line_number = 1; // 줄 번호 초기화
+		file = fopen("song_list.txt", "r"); // 파일을 다시 열어서 출력
+		while (fgets(buffer, STRING_SIZE, file) != NULL) {
+			strcpy(dlt_print, buffer);
+			char* token = strtok(buffer, "\t"); // 탭을 구분자로 사용하여 문자열을 분할
+			char* song = strtok(NULL, "\t");
+
+			// 제목과 가수 일치시 해당 노래 정보 출력
+			if (strcmp(dlt_songname, token) == 0 && strcmp(dlt_singer, song) == 0) {
+				printf("%d.  ", line_number);
+				for (int k = 0; k < strlen(dlt_print); k++) {
+					if (dlt_print[k] == '\t')
+						printf(" / ");
+					else
+						printf("%c", dlt_print[k]);
+				}
+			}
+			line_number++;
+		}
+		fclose(file);
+
+		printf("삭제할 노래의 번호를 선택하세요: ");
+		scanf("%d", &selected_line);
+		getchar();
+
+		// 선택한 번호가 잘못된 경우 오류 메시지 출력 후 종료
+		int valid_selection = 0;	
+		for (int i = 0; i < line_num; i++) {
+			if (selected_line == line_number_check[i]) {
+				valid_selection = 1;
+				break;
+			}
+		}
+		if (!valid_selection) {
+			printf("잘못된 노래의 번호입니다.\n");
+			return;
+		}
+	}
+	else if (line_num == 1) { // 삭제 노래가 중복되지 않은 경우
+		line_number = 1; // 줄 번호 초기화
+		file = fopen("song_list.txt", "r"); // 파일을 다시 열어서 출력
+		while (fgets(buffer, STRING_SIZE, file) != NULL) {
+			strcpy(dlt_print, buffer);
+			char* token = strtok(buffer, "\t"); // 탭을 구분자로 사용하여 문자열을 분할
+			char* song = strtok(NULL, "\t");
+
+			// 제목과 가수 일치시 해당 노래 정보 출력
+			if (strcmp(dlt_songname, token) == 0 && strcmp(dlt_singer, song) == 0) {
+				for (int k = 0; k < strlen(dlt_print); k++) {
+					if (dlt_print[k] == '\t')
+						printf(" / ");
+					else
+						printf("%c", dlt_print[k]);
+				}
+				selected_line = line_number;
+			}
+			line_number++;
+		}
+		fclose(file);
+	}
+	else {
+		printf(".!! 삭제 대상이 존재하지 않습니다\n");
+		return;
+	}
+
+	// 선택한 번호에 해당하는 줄을 다시 읽기 위해 fopen
+	file = fopen("song_list.txt", "r");
+	if (file == NULL) {
+		printf("Error opening file for reading.\n");
+		return;
+	}
+
+	// 선택한 번호에 해당하는 줄을 다시 읽어서 dlt_song에 저장
+	line_number = 1;
+	while (fgets(buffer, STRING_SIZE, file) != NULL) {
+		if (line_number == selected_line) {
+			strcpy(dlt_song, buffer);
+			break;
+		}
+		line_number++;
+	}
+
+	fclose(file);
+
+	// dlt_song 문자열을 song_list에서 삭제하는 함수
+	song_dlt("song_list.txt", dlt_song);
+}
+
+void song_dlt(const char* filename, const char* dlt_song) {	// dlt_song 문자열을 song_list에서 삭제하는 함수
+	FILE* input_file = fopen(filename, "r");    // 기존 txt 파일
+	if (input_file == NULL) {
+		printf("%s파일을 찾지 못했습니다.\n", filename);
+		return;
+	}
+
+	FILE* output_file = fopen("temp.txt", "w"); // 새로 덮어씌울 txt 파일
 	if (output_file == NULL) {
-		printf("Error opening temporary file.\n");
+		printf("파일 생성 에러\n");
 		fclose(input_file);
 		return;
 	}
 
-	char line[256];   //기존 문자열을 담아둘 배열
-	char delete_text[256]; // 삭제할 문자열을 저장할 변수
-
-	printf("노래를 삭제합니다.");
-	printf("삭제할 노래의 제목을 입력하세요 : ");
-	fgets(delete_text, 256, stdin);
-
+	char line[256];   // 기존 문자열을 담아둘 배열
 	int found = 0;  // 문자열 발견 여부 확인 변수
-	while (fgets(line, 256, input_file)) {    // 찾으려는 문자열이 포함된 행이 아닌 경우 새 파일에 쓰기
-		if (!strstr(line, delete_text)) {
-			fputs(line, output_file);   // 제거하고자 하는 문자열과 일치하지 않으면 새로운 txt파일에 쓰기, 일치할 경우 해당 문자열은 쓰지 않음
+
+	while (fgets(line, sizeof(line), input_file)) {
+		// 찾으려는 문자열이 포함된 행이 아닌 경우 새 파일에 쓰기
+		if (strstr(line, dlt_song) == NULL) {
+			fputs(line, output_file);
 		}
 		else {
 			found = 1; // 문자열 발견
 		}
+	}
+
+	char dlt_ans[STRING_SIZE];
+	if (found) {
+		printf("정말 삭제하시겠습니까? (Delete/...)\n");
+		scanf("%s", &dlt_ans);	// 삭제 여부
+		if (strcmp(dlt_ans, "Delete") == 0)	// "Delete"와 일치시 삭제 진행
+			printf("성공적으로 노래를 삭제했습니다.\n");
+		else
+			return;	// 일치하지 않으면 리턴
+	}
+	else {
+		printf("..! 삭제 대상이 존재하지 않습니다\n");
 	}
 
 	fclose(input_file);
@@ -839,11 +975,4 @@ void song_dlt(char* filename)//노래 삭제
 
 	remove(filename);   // 기존 파일 삭제
 	rename("temp.txt", filename);   // 새로 쓴 파일의 이름 변경
-
-	if (found) {
-		printf("삭제할 대상이 하나로 특정되었습니다.\n");
-	}
-	else {
-		printf("..! 삭제 대상이 존재하지 않습니다\n");
-	}
 }
