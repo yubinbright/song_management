@@ -102,6 +102,117 @@ void song_list_print()//노래 리스트 출력
 	printf("\n\n제목 / 가수 / 작곡가 / 작사가 / 장르 / 재생시간 / 앨범명 / 앨범 출시 날짜\n");
 	FILE* fp;
 	fp = fopen("song_list.txt", "r");
+	if (fp == NULL)
+	{
+		printf("오류");
+	}
+	char name[STRING_SIZE];
+	char singer[STRING_SIZE];
+	char song_writer[STRING_SIZE];
+	char lylic_writer[STRING_SIZE];
+	char genre[STRING_SIZE];
+	char playtime[STRING_SIZE];
+	char album_name[STRING_SIZE];
+	char album_time[STRING_SIZE];
+	char song[STRING_SIZE * 8];
+	while (fgets(song, sizeof(song), fp) != NULL)
+	{
+		sscanf(song, "%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t\n]", name, singer, song_writer, lylic_writer, genre, playtime, album_name, album_time);
+		printf("%s / ", name); //제목 출력
+		int size = 0;
+
+		//가수 출력
+		while (1)
+		{
+			if (singer[size] == '|') //인물 구분자를 만났을 때
+			{
+				while (1) //띄어쓰기를 만날 때 또는 끝날 때 까지 건너뛰기
+				{
+					size++;
+					if (singer[size] == NULL) //문자열이 끝났을 때
+					{
+						break;
+					}
+					else if (singer[size] == ' ') //띄어쓰기를 만났을 때
+					{
+						size = size + 1;
+						break;
+					}
+				}
+			}
+			if (singer[size] == NULL) //문자열이 끝났을 때
+			{
+				printf(" / ");
+				break;
+			}
+			printf("%c", singer[size]);
+			size++;
+		}
+		size = 0;
+
+		//작곡가 출력
+		while (1)
+		{
+			if (song_writer[size] == '|') //인물 구분자를 만났을 때
+			{
+				while (1) //띄어쓰기를 만날 때 또는 끝날 때 까지 건너뛰기
+				{
+					size++;
+					if (song_writer[size] == NULL) //문자열이 끝났을 때
+					{
+						break;
+					}
+					else if (song_writer[size] == ' ') //띄어쓰기를 만났을 때
+					{
+						size = size + 1;
+						break;
+					}
+				}
+			}
+			if (song_writer[size] == NULL) //문자열이 끝났을 때
+			{
+				printf(" / ");
+				break;
+			}
+			printf("%c", song_writer[size]);
+			size++;
+		}
+		size = 0;
+
+		//작사가 출력
+		while (1)
+		{
+			if (lylic_writer[size] == '|') //인물 구분자를 만났을 때
+			{
+				while (1) //띄어쓰기를 만날 때 또는 끝날 때 까지 건너뛰기
+				{
+					size++;
+					if (lylic_writer[size] == NULL) //문자열이 끝났을 때
+					{
+						break;
+					}
+					else if (lylic_writer[size] == ' ') //띄어쓰기를 만났을 때
+					{
+						size = size + 1;
+						break;
+					}
+				}
+			}
+			if (lylic_writer[size] == NULL) //문자열이 끝났을 때
+			{
+				printf(" / ");
+				break;
+			}
+			printf("%c", lylic_writer[size]);
+			size++;
+		}
+
+		printf("%s / ", genre); //장르 출력
+		printf("%s / ", playtime); //재생시간 출력
+		printf("%s / ", album_name); //앨범명 출력
+		printf("%s\n", album_time); //앨범 출시 날짜 출력
+	}
+	fclose(fp);
 }
 /*
 void song_add()//노래 추가

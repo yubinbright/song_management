@@ -3,192 +3,8 @@ C:\Users\wii07\source\repos\song_management\code\song_management\song.c(1,1): wa
 C:\Users\wii07\source\repos\song_management\code\song_management\header.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   (소스 파일 'song.c'을(를) 컴파일하는 중)
   
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(40,12): warning C4098: 'song_list_menu': 'void' 함수에서 값을 반환하고 있습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(79,3): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(89,12): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(115,14): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(141,19): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(167,20): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(193,20): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(210,59): error C2065: 'ъ쫰': 선언되지 않은 식별자입니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(210,59): error C2143: 구문 오류: ':'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(210,86): error C2059: 구문 오류: '?'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(210,87): error C2059: 구문 오류: ')'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(210,258): error C2001: 상수에 줄 바꿈 문자가 있습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(214,3): error C2059: 구문 오류: 'else'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(218,13): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(220,2): error C2059: 구문 오류: '}'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(224,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(224,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(224,9): error C2059: 구문 오류: '문자열'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(224,48): error C2059: 구문 오류: ')'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(225,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(225,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(225,9): error C2059: 구문 오류: '문자열'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(225,27): error C2059: 구문 오류: ')'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(240,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(240,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(240,9): error C2059: 구문 오류: '문자열'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(240,50): error C2059: 구문 오류: ')'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(241,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(241,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(241,9): error C2059: 구문 오류: '문자열'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(241,24): error C2059: 구문 오류: ')'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(243,2): warning C4273: 'getchar': dll 연결이 일치하지 않습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\stdio.h(311,26):
-  'getchar'의 이전 정의를 참조하십시오.
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(244,2): error C2059: 구문 오류: 'do'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(262,4): error C2059: 구문 오류: 'while'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(266,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(266,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(266,9): error C2059: 구문 오류: '문자열'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(266,62): error C2059: 구문 오류: ')'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(267,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(267,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(267,9): error C2059: 구문 오류: '문자열'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(267,39): error C2059: 구문 오류: ')'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(280,1): error C2059: 구문 오류: '}'
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(58,13): warning C4013: 'main'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,49): warning C4047: '함수': 'const char *'의 간접 참조 수준이 'char (*)[256]'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,49): warning C4024: 'strcmp': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,79): warning C4047: '함수': 'const char *'의 간접 참조 수준이 'char (*)[256]'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,79): warning C4024: 'strcmp': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,112): warning C4047: '함수': 'const char *'의 간접 참조 수준이 'char (*)[256]'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,112): warning C4024: 'strcmp': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,145): warning C4047: '함수': 'const char *'의 간접 참조 수준이 'char (*)[256]'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,145): warning C4024: 'strcmp': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,175): warning C4047: '함수': 'const char *'의 간접 참조 수준이 'char (*)[256]'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,175): warning C4024: 'strcmp': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,211): warning C4047: '함수': 'const char *'의 간접 참조 수준이 'char (*)[256]'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,211): warning C4024: 'strcmp': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,244): warning C4047: '함수': 'const char *'의 간접 참조 수준이 'char (*)[256]'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(155,244): warning C4024: 'strcmp': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(168,24): warning C4047: '함수': 'const char *'의 간접 참조 수준이 'char (*)[256]'과(와) 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\search.c(168,24): warning C4024: 'strcmp': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-  (소스 파일 'song.c'을(를) 컴파일하는 중)
-  
-C:\Users\wii07\source\repos\song_management\code\song_management\check.c(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\yvals_core.h(27): STL1003: Unexpected compiler, expected C++ compiler.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\yvals_core.h(28,1): error C1189: #error:  Error in C++ Standard Library usage
   (소스 파일 'song.c'을(를) 컴파일하는 중)
   
   song_list.c
@@ -196,50 +12,62 @@ C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(1,1
 C:\Users\wii07\source\repos\song_management\code\song_management\header.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   (소스 파일 'song_list.c'을(를) 컴파일하는 중)
   
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(40,12): warning C4098: 'song_list_menu': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(79,3): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(89,12): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(115,14): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(141,19): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(167,20): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(193,20): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(210,59): error C2065: 'ъ쫰': 선언되지 않은 식별자입니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(210,59): error C2143: 구문 오류: ':'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(210,86): error C2059: 구문 오류: '?'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(210,87): error C2059: 구문 오류: ')'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(210,258): error C2001: 상수에 줄 바꿈 문자가 있습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(214,3): error C2059: 구문 오류: 'else'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(218,13): warning C4047: '=': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(220,2): error C2059: 구문 오류: '}'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(224,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(224,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(224,9): error C2059: 구문 오류: '문자열'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(224,48): error C2059: 구문 오류: ')'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(225,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(225,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(225,9): error C2059: 구문 오류: '문자열'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(225,27): error C2059: 구문 오류: ')'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(240,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(240,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(240,9): error C2059: 구문 오류: '문자열'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(240,50): error C2059: 구문 오류: ')'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(241,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(241,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(241,9): error C2059: 구문 오류: '문자열'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(241,24): error C2059: 구문 오류: ')'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(243,2): warning C4273: 'getchar': dll 연결이 일치하지 않습니다.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\stdio.h(311,26):
-  'getchar'의 이전 정의를 참조하십시오.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(80,4): warning C4013: 'add_song'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(89,12): warning C4098: 'song_list_menu': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(120,2): warning C4013: 'fcloss'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(348,6): error C2371: 'add_song': 재정의. 기본 형식이 다릅니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(364,3): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(481,56): error C2065: 'ъ쫰': 선언되지 않은 식별자입니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(481,56): error C2143: 구문 오류: ':'이(가) '문자열' 앞에 없습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(481,77): error C2059: 구문 오류: '?'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(481,78): error C2059: 구문 오류: ')'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(481,219): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(484,3): error C2181: if와 짝을 이루지 않는 잘못된 else문입니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(486,4): error C2044: continue가 잘못되었습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(488,3): error C2043: break가 잘못되었습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(491,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(491,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(491,9): error C2059: 구문 오류: '문자열'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(491,40): error C2059: 구문 오류: ')'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(492,2): error C2059: 구문 오류: 'while'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(505,34): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(508,30): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(511,34): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(514,30): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(521,40): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(522,30): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(523,36): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(524,21): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(527,25): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(531,41): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(532,22): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(535,3): error C2059: 구문 오류: 'else'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(536,25): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(539,4): error C2059: 구문 오류: 'else'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(540,41): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(541,22): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(543,3): error C2059: 구문 오류: '}'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(546,3): error C2059: 구문 오류: 'if'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(552,3): error C2059: 구문 오류: 'if'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(563,18): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(567,3): error C2059: 구문 오류: 'if'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(578,18): error C2001: 상수에 줄 바꿈 문자가 있습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(582,3): error C2059: 구문 오류: 'if'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(587,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(587,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(587,9): error C2059: 구문 오류: '문자열'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(587,18): error C2059: 구문 오류: ')'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(588,3): error C2059: 구문 오류: 'break'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(589,2): error C2059: 구문 오류: '}'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(592,2): error C2059: 구문 오류: 'while'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(609,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(609,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(609,9): error C2059: 구문 오류: '문자열'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(609,60): error C2059: 구문 오류: ')'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(610,2): error C2059: 구문 오류: 'while'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(707,2): warning C4273: 'fclose': dll 연결이 일치하지 않습니다.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\stdio.h(152,26):
+  'fclose'의 이전 정의를 참조하십시오.
   
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(244,2): error C2059: 구문 오류: 'do'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(262,4): error C2059: 구문 오류: 'while'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(266,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(266,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(266,9): error C2059: 구문 오류: '문자열'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(266,62): error C2059: 구문 오류: ')'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(267,9): error C2143: 구문 오류: ')'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(267,9): error C2143: 구문 오류: '{'이(가) '문자열' 앞에 없습니다.
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(267,9): error C2059: 구문 오류: '문자열'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(267,39): error C2059: 구문 오류: ')'
-C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(280,1): error C2059: 구문 오류: '}'
+C:\Users\wii07\source\repos\song_management\code\song_management\song_list.c(708,1): error C2059: 구문 오류: '}'
   코드를 생성하고 있습니다...
