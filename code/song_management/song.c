@@ -1,4 +1,5 @@
 #include "header.h"
+#include "playlist.h" //헤더파일을 포함하는 것으로 수정했습니다.
 #include "song_list.c"
 #include "search.c"
 #include "check.c"
