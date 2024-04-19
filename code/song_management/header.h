@@ -1,30 +1,42 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS	
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <wchar.h>
 #include <time.h>
 #include <Windows.h>
 
-void song_list_menu();//ë…¸ë˜ ë¦¬ìŠ¤íŠ¸ ì£¼ ë©”ë‰´
+void song_list_menu();//³ë·¡ ¸®½ºÆ® ÁÖ ¸Ş´º
 
-void song_list_print();//ë…¸ë˜ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
+void song_list_print();//³ë·¡ ¸®½ºÆ® Ãâ·Â
 
-void song_add();//ë…¸ë˜ ì¶”ê°€
+void song_add();//³ë·¡ Ãß°¡
 
-void song_dlt();//ë…¸ë˜ ì‚­ì œ
+void song_dlt(char* filename);//³ë·¡ »èÁ¦
 
+void searchMenu();//°Ë»ö ¸Ş´º È­¸é
 
-void playlistMenu();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ í™”ë©´ì— ì²˜ìŒ ë“¤ì–´ê°”ì„ ë•Œ
+void search();// ³ë·¡ °Ë»ö ÇÔ¼ö ¼±¾ğ
 
-void printPlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ì´ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥
+void searchSong(char* filename, char* searchWord, int found);
 
-void addPlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì¶”ê°€
+void searchTag(); //ÅÂ±× °Ë»ö
 
-void deletePlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì‚­ì œ
+void searchZero();//ÅÂ±× °Ë»ö¿¡¼­ 0 ÀÔ·Â½Ã
 
-void openPlaylist(char* playlistName);//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì—´ê¸°
+void searchWordOfTag(const char* filename, const char* tag, const char* word); //°Ë»ö¾î °Ë»ö
 
-void addSong();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ì— ë…¸ë˜ ì¶”ê°€
+void playlistMenu();//ÇÃ·¹ÀÌ¸®½ºÆ® È­¸é¿¡ Ã³À½ µé¾î°¬À» ¶§
 
-void deleteSong();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ì˜ ë…¸ë˜ ì‚­ì œ
+void printPlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ®ÀÌ ¸®½ºÆ®¸¦ Ãâ·Â
+
+void addPlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ® Ãß°¡
+
+void deletePlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ® »èÁ¦
+
+void openPlaylist(char* playlistName);//ÇÃ·¹ÀÌ¸®½ºÆ® ¿­±â
+
+void addSong();//ÇÃ·¹ÀÌ¸®½ºÆ®¿¡ ³ë·¡ Ãß°¡
+
+void deleteSong();//ÇÃ·¹ÀÌ¸®½ºÆ®ÀÇ ³ë·¡ »èÁ¦
