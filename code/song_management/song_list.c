@@ -51,6 +51,7 @@ char* trim(char* s)	//앞뒤 공백 제거
 
 void song_list_menu() //노래 리스트 주 메뉴
 {
+	char input_text[STRING_SIZE];	//삭제할 문자열(노래)이 들어갈 배열
 	int mode, err=0;
 	while (1)
 	{
