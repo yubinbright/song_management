@@ -8,6 +8,9 @@
 #include <time.h>
 #include <Windows.h>
 
+#define MAX_SIZE 100000
+#define STRING_SIZE 256
+
 void song_list_menu();//노래 리스트 주 메뉴
 
 void song_list_print();//노래 리스트 출력

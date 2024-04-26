@@ -1,7 +1,5 @@
 #include "header.h"
 
-#define STRING_SIZE 256
-
 struct Song {
     char title[STRING_SIZE];
     char singer[STRING_SIZE];
@@ -28,11 +26,10 @@ void searchMenu() {
     while (1)
     {
         if (err == 0) {
-            printf("\n노래 관리 프로그램입니다.\n");
             printf("원하는 메뉴를 선택하세요.\n\n");
         }
         else if (err == 1) {
-            printf("\n해당 메뉴는 존재하지 않습니다.");
+            printf("\n해당 메뉴는 존재하지 않습니다. ");
             printf("다시 선택하세요.\n\n");
             err = 0;
         }
@@ -54,11 +51,11 @@ void searchMenu() {
             break;
 
         case 0: //뒤로 가기
-            system("cls");
             return 0;
             break;
 
         default: //error
+            while (getchar() != '\n'); //입력 버터 비우기
             err = 1;
             break;
         }

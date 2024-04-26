@@ -41,6 +41,7 @@ int main() {
             break;
 
         default: //error
+            //while (getchar() != '\n'); //입력 버터 비우기
             err = 1;
             break;
         }

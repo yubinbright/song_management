@@ -1,11 +1,9 @@
 #include "header.h"
-#define MAX_SIZE 100000
-#define STRING_SIZE 256
 
-int IsSpace(char ch);
-char* strrtrim(char* s);
-char* strltrim(char* s);
-char* trim(char* s);
+int IsSpace(char ch); //공백 확인
+char* strrtrim(char* s); //앞 공백 제거
+char* strltrim(char* s); //뒷 공백 제거
+char* trim(char* s); //앞뒤 공백 제거
 
 int IsSpace(char ch)
 {
@@ -86,6 +84,7 @@ void song_list_menu() //노래 리스트 주 메뉴
             break;
 
         case 0: //뒤로 가기
+            while (getchar() != '\n'); //입력 버터 비우기
             return 0;
             break;
         default: //error
@@ -99,25 +98,26 @@ void song_list_menu() //노래 리스트 주 메뉴
 void song_list_print()//노래 리스트 출력
 {
     printf("\n노래 리스트를 출력합니다.");
-    printf("\n\n제목 / 가수 / 작곡가 / 작사가 / 장르 / 재생시간 / 앨범명 / 앨범 출시 날짜\n");
+    printf("\n\n제목 / 가수 / 작곡가 / 작사가 / 장르 / 재생시간 / 앨범명 / 앨범 출시 날짜\n\n");
     FILE* fp;
-    fp = fopen("song_list.txt", "r");
-    if (fp == NULL)
+    fp = fopen("song_list.txt", "r"); //텍스트 파일 불러오기
+    //if (fp == NULL) //파일 내용 체크
+    //{
+    //    printf("오류");
+    //}
+    char name[STRING_SIZE]; //제목
+    char singer[STRING_SIZE]; //가수
+    char song_writer[STRING_SIZE]; //작곡가
+    char lylic_writer[STRING_SIZE]; //작사가
+    char genre[STRING_SIZE]; //장르
+    char playtime[STRING_SIZE]; //재생시간
+    char album_name[STRING_SIZE]; //앨범명
+    char album_time[STRING_SIZE]; //앨범 출시 날짜
+
+    char song[STRING_SIZE * 8]; //불러올 한 줄
+    while (fgets(song, sizeof(song), fp) != NULL) //한 줄 씩 불러오기
     {
-        printf("오류");
-    }
-    char name[STRING_SIZE];
-    char singer[STRING_SIZE];
-    char song_writer[STRING_SIZE];
-    char lylic_writer[STRING_SIZE];
-    char genre[STRING_SIZE];
-    char playtime[STRING_SIZE];
-    char album_name[STRING_SIZE];
-    char album_time[STRING_SIZE];
-    char song[STRING_SIZE * 8];
-    while (fgets(song, sizeof(song), fp) != NULL)
-    {
-        sscanf(song, "%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t\n]", name, singer, song_writer, lylic_writer, genre, playtime, album_name, album_time);
+        sscanf(song, "%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t\n]", name, singer, song_writer, lylic_writer, genre, playtime, album_name, album_time); //탭키를 구분자로 하나씩 불러오기
         printf("%s / ", name); //제목 출력
         int size = 0;
 
@@ -135,8 +135,8 @@ void song_list_print()//노래 리스트 출력
                     }
                     else if (singer[size] == ' ') //띄어쓰기를 만났을 때
                     {
-                        size = size + 1;
-                        break;
+                        size = size + 1; //다음 인물의 이름으로 이동
+                        break; 
                     }
                 }
             }
