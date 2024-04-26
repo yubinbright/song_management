@@ -1,48 +1,42 @@
 #include "header.h"
-#include "playlist.h" //í—¤ë”íŒŒì¼ì„ í¬í•¨í•˜ëŠ” ê²ƒìœ¼ë¡œ ìˆ˜ì •í–ˆìŠµë‹ˆë‹¤.
-#include "song_list.c"
-#include "search.c"
-#include "check.c"
 
 #define STRING_SIZE 256
 
-int main(){
-    SetConsoleOutputCP(CP_UTF8);
+int main() {
     int mode;
     int err = 0;
-    check();
     while (1)
     {
         if (err == 0) {
-            printf("\në…¸ë˜ ê´€ë¦¬ í”„ë¡œê·¸ë¨ì…ë‹ˆë‹¤.\n");
-            printf("ì›í•˜ëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”.\n\n");
+            printf("\n³ë·¡ °ü¸® ÇÁ·Î±×·¥ÀÔ´Ï´Ù.\n");
+            printf("¿øÇÏ´Â ¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä.\n\n");
         }
         else if (err == 1) {
-            printf("\ní•´ë‹¹ ë©”ë‰´ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
-            printf("ë°‘ì˜ ë©”ë‰´ ì¤‘ ì„ íƒí•˜ì„¸ìš”(ì˜ˆì‹œ:1)\n\n");
+            printf("\nÇØ´ç ¸Ş´º´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
+            printf("¹ØÀÇ ¸Ş´º Áß ¼±ÅÃÇÏ¼¼¿ä(¿¹½Ã:1)\n\n");
             err = 0;
         }
-        printf("1. ë…¸ë˜ ë¦¬ìŠ¤íŠ¸ ê´€ë¦¬\n");
-        printf("2. ê²€ìƒ‰ ê¸°ëŠ¥\n");
-        printf("3. í”Œë ˆì´ë¦¬ìŠ¤íŠ¸\n");
-        printf("4. ì¢…ë£Œ\n\n");
-        printf("ë©”ë‰´ ì„ íƒ : ");
+        printf("1. ³ë·¡ ¸®½ºÆ® °ü¸®\n");
+        printf("2. °Ë»ö ±â´É\n");
+        printf("3. ÇÃ·¹ÀÌ¸®½ºÆ®\n");
+        printf("4. Á¾·á\n\n");
+        printf("¸Ş´º ¼±ÅÃ : ");
         scanf(" %d", &mode);
 
         switch (mode) {
-        case 1: //ë…¸ë˜ ë¦¬ìŠ¤íŠ¸ ê´€ë¦¬
+        case 1: //³ë·¡ ¸®½ºÆ® °ü¸®
             song_list_menu();
             break;
 
-        case 2: //ê²€ìƒ‰ ê¸°ëŠ¥
+        case 2: //°Ë»ö ±â´É
             searchMenu();
             break;
 
-        case 3: //í”Œë ˆì´ë¦¬ìŠ¤íŠ¸
-            playlistMenu();
+        case 3: //ÇÃ·¹ÀÌ¸®½ºÆ®
+            //playlistMenu();
             break;
 
-        case 4: //ì¢…ë£Œ
+        case 4: //Á¾·á
 
             break;
 
@@ -51,6 +45,6 @@ int main(){
             break;
         }
     }
-    
+
     return 0;
 }

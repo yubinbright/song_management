@@ -19,10 +19,10 @@ void search();
 void searchSong(char* filename, char* searchWord, int found);
 
 void searchTag(); //태그 검색
-void searchZero();//태그 검색에서 0 입력시
-void searchWordOfTag(const char *filename, const char *tag, const char *word); //검색어 검색
+void searchZero(const char* filename, const char* tag, const char* word);//태그 검색에서 0 입력시
+void searchWordOfTag(const char* filename, const char* tag, const char* word); //검색어 검색
 
-void searchMenu(){
+void searchMenu() {
     int mode;
     int err = 0;
     while (1)
@@ -55,7 +55,7 @@ void searchMenu(){
 
         case 0: //뒤로 가기
             system("cls");
-            main();
+            return 0;
             break;
 
         default: //error
@@ -144,7 +144,8 @@ void searchTag() {
         system("cls");
         if (err == 0) {
             printf("태그 검색을 선택하셨습니다.\n");
-        } else {
+        }
+        else {
             printf("해당 검색어는 존재하지 않습니다.\n");
             err = 0;
         }
@@ -152,36 +153,38 @@ void searchTag() {
         printf("검색할 태그를 입력하세요 (0 입력 시 뒤로가기) : ");
         scanf("%s", tag);
 
-        if (strcmp(tag,"제목") == 0 || strcmp(&tag,"가수") == 0 || strcmp(&tag,"작곡가") == 0 || strcmp(&tag,"작사가") == 0 || strcmp(&tag,"장르") == 0 || strcmp(&tag,"재생시간") == 0 || strcmp(&tag,"앨범명") == 0 || strcmp(&tag,"앨범출시날짜") == 0) {
+        if (strcmp(tag, "제목") == 0 || strcmp(&tag, "가수") == 0 || strcmp(&tag, "작곡가") == 0 || strcmp(&tag, "작사가") == 0 || strcmp(&tag, "장르") == 0 || strcmp(&tag, "재생시간") == 0 || strcmp(&tag, "앨범명") == 0 || strcmp(&tag, "앨범출시날짜") == 0) {
             printf("검색어를 입력하세요 (0 입력 시 뒤로가기) : ");
             scanf("%s", word);
             printf("\n");
             if (word[0] == '0') {
                 searchZero("song_list.txt", tag, word);
                 break;
-            } else {
+            }
+            else {
                 // 검색 결과 출력
                 searchWordOfTag("song_list.txt", tag, word);
             }
             break;
         }
-        else if(strcmp(&tag,"0") == 0){ // 뒤로가기
+        else if (strcmp(&tag, "0") == 0) { // 뒤로가기
             searchMenu();
             break;
         }
-        else{ // 잘못입력
+        else { // 잘못입력
             err = 1;
         }
     }
 }
 
-void searchZero(const char *filename, const char *tag, const char *word) {
+void searchZero(const char* filename, const char* tag, const char* word) {
     int err = 0;
     int goback = 0;
     while (1) {
         if (err == 0) {
             printf("'0'을 입력 하셨습니다. 정말 뒤로 가시겠습니까?\n\n");
-        } else {
+        }
+        else {
             printf("잘못 입력 하셨습니다. 다시 선택해주세요.\n\n");
             err = 0;
         }
@@ -193,56 +196,58 @@ void searchZero(const char *filename, const char *tag, const char *word) {
         if (goback == 1) {
             searchTag();
             break;
-        } else if (goback == 2) { // '0' 검색
+        }
+        else if (goback == 2) { // '0' 검색
             searchWordOfTag("song_list.txt", tag, word);
             break;
-        } else {
+        }
+        else {
             err = 1;
             break;
         }
     }
 }
 
-void searchWordOfTag(const char *filename, const char *tag, const char *word) {
-    FILE *file = fopen(filename, "r");
+void searchWordOfTag(const char* filename, const char* tag, const char* word) {
+    FILE* file = fopen(filename, "r");
 
     struct Song song;
     char line[STRING_SIZE * 8]; // 가장 긴 라인의 길이를 기준으로 버퍼를 할당
     printf("제목 / 가수 / 작곡가 / 작사가 / 장르 / 재생시간 / 앨범명 / 앨범출시날짜\n");
     while (fgets(line, sizeof(line), file) != NULL) {
         sscanf(line, "%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|\n]", song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
-        
+
         if (strcmp(tag, "제목") == 0 && strstr(song.title, word) != NULL) {
-            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
-                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
+                song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
         else if (strcmp(tag, "가수") == 0 && strstr(song.singer, word) != NULL) {
-            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
-                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
+                song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
         else if (strcmp(tag, "작곡가") == 0 && strstr(song.composer, word) != NULL) {
-            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
-                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
+                song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
         else if (strcmp(tag, "작사가") == 0 && strstr(song.lyricist, word) != NULL) {
-            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
-                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
+                song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
         else if (strcmp(tag, "장르") == 0 && strstr(song.genre, word) != NULL) {
-            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
-                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
+                song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
         else if (strcmp(tag, "재생시간") == 0 && strstr(song.playtime, word) != NULL) {
-            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
-                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
+                song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
         else if (strcmp(tag, "앨범명") == 0 && strstr(song.album, word) != NULL) {
-            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
-                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
+                song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
         else if (strcmp(tag, "앨범출시날짜") == 0 && strstr(song.release, word) != NULL) {
-            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
-                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
+                song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
     }
 
