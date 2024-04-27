@@ -14,7 +14,7 @@ struct Song {
 //검색 함수 선언
 void search();
 // 노래 검색 함수 선언
-void searchSong(char* filename, char* searchWord, int found);
+int searchSong(char* filename, char* searchWord, int found);
 
 void searchTag(); //태그 검색
 void searchZero(const char* filename, const char* tag, const char* word);//태그 검색에서 0 입력시
