@@ -11,14 +11,254 @@ struct Song {
     char release[STRING_SIZE];
 };
 
-//°Ë»ö ÇÔ¼ö ¼±¾ğ
+//ê²€ìƒ‰ í•¨ìˆ˜ ì„ ì–¸
+void search();#include "header.h"
+
+struct Song {
+    char title[STRING_SIZE];
+    char singer[STRING_SIZE];
+    char composer[STRING_SIZE];
+    char lyricist[STRING_SIZE];
+    char genre[STRING_SIZE];
+    char playtime[STRING_SIZE];
+    char album[STRING_SIZE];
+    char release[STRING_SIZE];
+};
+
+//ê²€ìƒ‰ í•¨ìˆ˜ ì„ ì–¸
 void search();
-// ³ë·¡ °Ë»ö ÇÔ¼ö ¼±¾ğ
+// ë…¸ë˜ ê²€ìƒ‰ í•¨ìˆ˜ ì„ ì–¸
+int searchSong(char* filename, char* searchWord, int found);
+
+void searchMenu();//ë…¸ë˜ ê²€ìƒ‰ ë©”ë‰´
+void searchTag(); //íƒœê·¸ ê²€ìƒ‰
+void searchZero(const char* tag, const char* word);//íƒœê·¸ ê²€ìƒ‰ì—ì„œ 0 ì…ë ¥ì‹œ
+void searchWordOfTag(const char *tag, const char *word); //ê²€ìƒ‰ì–´ ê²€ìƒ‰
+
+void searchMenu(){
+    int mode;
+    int err = 0;
+    while (1)
+    {
+        if (err == 0) {
+            printf("\në…¸ë˜ ê´€ë¦¬ í”„ë¡œê·¸ë¨ì…ë‹ˆë‹¤.\n");
+            printf("ì›í•˜ëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”.\n\n");
+        }
+        else if (err == 1) {
+            printf("\ní•´ë‹¹ ë©”ë‰´ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+            printf("ë‹¤ì‹œ ì„ íƒí•˜ì„¸ìš”.\n\n");
+            err = 0;
+        }
+        printf("1. í†µí•© ê²€ìƒ‰\n");
+        printf("2. íƒœê·¸ ê²€ìƒ‰\n");
+        printf("0. ë’¤ë¡œ ê°€ê¸°\n\n");
+        printf("ë©”ë‰´ ì„ íƒ : ");
+        scanf(" %d", &mode);
+        while (getchar() != '\n');
+
+        switch (mode) {
+        case 1: //í†µí•© ê²€ìƒ‰
+            // system("cls");
+            search();
+            break;
+
+        case 2: //íƒœê·¸ ê²€ìƒ‰
+            // system("cls");
+            searchTag();
+            break;
+
+        case 0: //ë’¤ë¡œ ê°€ê¸°
+            // system("cls");
+            return;
+            // main();
+            // break;
+
+        default: //error
+            while (getchar() != '\n'); //ì…ë ¥ ë²„í„° ë¹„ìš°ê¸°
+            err = 1;
+            break;
+        }
+    }
+}
+// ê²€ìƒ‰ í•¨ìˆ˜ ì •ì˜
+void search() {
+    // ê²€ìƒ‰í•  íŒŒì¼ëª… ì§€ì •
+    char filename[] = "song_list.txt";
+    // ê²€ìƒ‰ì–´ ì €ì¥ ë³€ìˆ˜ ì„ ì–¸
+    char searchWord[STRING_SIZE];
+    // ê²€ìƒ‰ ê²°ê³¼ ì—¬ë¶€ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ë³€ìˆ˜ ì´ˆê¸°í™”
+    int found = 0;
+    // ì‚¬ìš©ìì—ê²Œ ê²€ìƒ‰ì–´ ì…ë ¥ ìš”ì²­
+    printf("í†µí•© ê²€ìƒ‰ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\nê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš” (0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°): ");
+    // ì‚¬ìš©ìê°€ ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•  ë•Œê¹Œì§€ ë°˜ë³µ
+    do {
+        // ì‚¬ìš©ìë¡œë¶€í„° ê²€ìƒ‰ì–´ ì…ë ¥ ë°›ìŒ
+        scanf("%s", searchWord);
+        printf("\n");
+        if (searchWord[0] == '0') {
+            searchMenu();
+            break;
+        }
+        else {
+            // ê²€ìƒ‰ ê²°ê³¼ ì¶œë ¥
+            found = searchSong(filename, searchWord, found);
+        }
+        // ë§Œì•½ ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ë‹¤ë©´ ë‹¤ì‹œ ê²€ìƒ‰ì–´ ì…ë ¥ ìš”ì²­
+        if (found == 0)
+            printf("í•´ë‹¹ ê²€ìƒ‰ì–´ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\nê²€ìƒ‰ì–´ë¥¼ ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”: ");
+    } while (found == 0);
+}
+
+// ë…¸ë˜ ê²€ìƒ‰ í•¨ìˆ˜ ì •ì˜
+int searchSong(char* filename, char* searchWord, int found) {
+    FILE* file = fopen(filename, "r");
+    found = 0;
+    struct Song song;
+    char line[STRING_SIZE * 8]; // ê°€ì¥ ê¸´ ë¼ì¸ì˜ ê¸¸ì´ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë²„í¼ë¥¼ í• ë‹¹
+    while (fgets(line, sizeof(line), file) != NULL) {
+        sscanf(line, "%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|\n]", song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+
+        if (strstr(song.title, searchWord) != NULL || strstr(song.singer, searchWord) != NULL ||
+            strstr(song.composer, searchWord) != NULL || strstr(song.lyricist, searchWord) != NULL ||
+            strstr(song.genre, searchWord) != NULL || strstr(song.playtime, searchWord) != NULL ||
+            strstr(song.album, searchWord) != NULL || strstr(song.release, searchWord) != NULL) {
+            printf("ì œëª© / ê°€ìˆ˜ / ì‘ê³¡ê°€ / ì‘ì‚¬ê°€ / ì¥ë¥´ / ì¬ìƒì‹œê°„ / ì•¨ë²”ëª… / ì•¨ë²”ì¶œì‹œë‚ ì§œ\n");
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
+                song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+            found = 1;
+        }
+    }
+    fclose(file);
+    return found;
+}
+
+void searchTag() {
+    char tag[STRING_SIZE], word[STRING_SIZE];
+    int err = 0;
+    int goback;
+    while (1) {
+        // system("cls");
+        if (err == 0) {
+            printf("íƒœê·¸ ê²€ìƒ‰ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
+        } else {
+            printf("í•´ë‹¹ ê²€ìƒ‰ì–´ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
+            err = 0;
+        }
+        printf("(íƒœê·¸ = ì œëª©/ê°€ìˆ˜/ì‘ê³¡ê°€/ì‘ì‚¬ê°€/ì¥ë¥´/ì¬ìƒì‹œê°„/ì•¨ë²”ëª…/ì•¨ë²”ì¶œì‹œë‚ ì§œ)\n");
+        printf("ê²€ìƒ‰í•  íƒœê·¸ë¥¼ ì…ë ¥í•˜ì„¸ìš” (0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°) : ");
+        scanf("%s", tag);
+        while (getchar() != '\n');
+
+        if (strcmp(tag,"ì œëª©") == 0 || strcmp(tag,"ê°€ìˆ˜") == 0 || strcmp(tag,"ì‘ê³¡ê°€") == 0 || strcmp(tag,"ì‘ì‚¬ê°€") == 0 || strcmp(tag,"ì¥ë¥´") == 0 || strcmp(tag,"ì¬ìƒì‹œê°„") == 0 || strcmp(tag,"ì•¨ë²”ëª…") == 0 || strcmp(tag,"ì•¨ë²”ì¶œì‹œë‚ ì§œ") == 0) {
+            printf("ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš” (0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°) : ");
+            scanf("%s", word);
+            while (getchar() != '\n');
+            printf("\n");
+            if (word[0] == '0') {
+                searchZero(tag, word);
+                break;
+            } else {
+                // ê²€ìƒ‰ ê²°ê³¼ ì¶œë ¥
+                searchWordOfTag(tag, word);
+            }
+            break;
+        }
+        else if(strcmp(tag,"0") == 0){ // ë’¤ë¡œê°€ê¸°
+            searchMenu();
+            break;
+        }
+        else{ // ì˜ëª»ì…ë ¥
+            err = 1;
+        }
+    }
+}
+
+void searchZero(const char *tag, const char *word) {
+    int err = 0;
+    int goback = 0;
+    while (1) {
+        if (err == 0) {
+            printf("'0'ì„ ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ì •ë§ ë’¤ë¡œ ê°€ì‹œê² ìŠµë‹ˆê¹Œ?\n\n");
+        } else {
+            printf("ì˜ëª» ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
+            err = 0;
+        }
+        printf("1. ë’¤ë¡œê°€ê¸°\n");
+        printf("2. '0' ê²€ìƒ‰í•˜ê¸°\n\n");
+        printf("ë©”ë‰´ì„ íƒ : ");
+        scanf("%d", &goback);
+        while (getchar() != '\n');
+        printf("\n");
+        if (goback == 1) {
+            searchTag();
+            break;
+        } else if (goback == 2) { // '0' ê²€ìƒ‰
+            searchWordOfTag(tag, word);
+            break;
+        } else {
+            err = 1;
+            break;
+        }
+    }
+}
+
+void searchWordOfTag(const char *tag, const char *word) {
+    FILE *file = fopen("song_list.txt", "r");
+
+    struct Song song;
+    char line[STRING_SIZE * 8]; // ê°€ì¥ ê¸´ ë¼ì¸ì˜ ê¸¸ì´ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë²„í¼ë¥¼ í• ë‹¹
+    printf("ì œëª© / ê°€ìˆ˜ / ì‘ê³¡ê°€ / ì‘ì‚¬ê°€ / ì¥ë¥´ / ì¬ìƒì‹œê°„ / ì•¨ë²”ëª… / ì•¨ë²”ì¶œì‹œë‚ ì§œ\n");
+    while (fgets(line, sizeof(line), file) != NULL) {
+        sscanf(line, "%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t\n]", song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+        
+        if (strcmp(tag, "ì œëª©") == 0 && strstr(song.title, word) != NULL) {
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
+                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+        }
+        else if (strcmp(tag, "ê°€ìˆ˜") == 0 && strstr(song.singer, word) != NULL) {
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
+                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+        }
+        else if (strcmp(tag, "ì‘ê³¡ê°€") == 0 && strstr(song.composer, word) != NULL) {
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
+                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+        }
+        else if (strcmp(tag, "ì‘ì‚¬ê°€") == 0 && strstr(song.lyricist, word) != NULL) {
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
+                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+        }
+        else if (strcmp(tag, "ì¥ë¥´") == 0 && strstr(song.genre, word) != NULL) {
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
+                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+        }
+        else if (strcmp(tag, "ì¬ìƒì‹œê°„") == 0 && strstr(song.playtime, word) != NULL) {
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
+                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+        }
+        else if (strcmp(tag, "ì•¨ë²”ëª…") == 0 && strstr(song.album, word) != NULL) {
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
+                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+        }
+        else if (strcmp(tag, "ì•¨ë²”ì¶œì‹œë‚ ì§œ") == 0 && strstr(song.release, word) != NULL) {
+            printf("%s / %s / %s / %s / %s / %s / %s / %s\n", 
+                   song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
+        }
+    }
+
+    fclose(file);
+
+    printf("\në©”ì¸í™”ë©´ìœ¼ë¡œ ëŒì•„ê°€ë ¤ë©´ ì•„ë¬´í‚¤ë‚˜ ëˆ„ë¥´ì„¸ìš”.");
+    _getwch(); // í•œê¸€ì€ ì—”í„°ë¥¼ ì³ì•¼í•¨.
+    // system("cls");
+    // return;
+    main();
+}
+// ë…¸ë˜ ê²€ìƒ‰ í•¨ìˆ˜ ì„ ì–¸
 void searchSong(char* filename, char* searchWord, int found);
 
-void searchTag(); //ÅÂ±× °Ë»ö
-void searchZero(const char* filename, const char* tag, const char* word);//ÅÂ±× °Ë»ö¿¡¼­ 0 ÀÔ·Â½Ã
-void searchWordOfTag(const char* filename, const char* tag, const char* word); //°Ë»ö¾î °Ë»ö
+void searchTag(); //íƒœê·¸ ê²€ìƒ‰
+void searchZero(const char* filename, const char* tag, const char* word);//íƒœê·¸ ê²€ìƒ‰ì—ì„œ 0 ì…ë ¥ì‹œ
+void searchWordOfTag(const char* filename, const char* tag, const char* word); //ê²€ìƒ‰ì–´ ê²€ìƒ‰
 
 void searchMenu() {
     int mode;
@@ -26,86 +266,86 @@ void searchMenu() {
     while (1)
     {
         if (err == 0) {
-            printf("¿øÇÏ´Â ¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä.\n\n");
+            printf("ì›í•˜ëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”.\n\n");
         }
         else if (err == 1) {
-            printf("\nÇØ´ç ¸Ş´º´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. ");
-            printf("´Ù½Ã ¼±ÅÃÇÏ¼¼¿ä.\n\n");
+            printf("\ní•´ë‹¹ ë©”ë‰´ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ");
+            printf("ë‹¤ì‹œ ì„ íƒí•˜ì„¸ìš”.\n\n");
             err = 0;
         }
-        printf("1. ÅëÇÕ °Ë»ö\n");
-        printf("2. ÅÂ±× °Ë»ö\n");
-        printf("0. µÚ·Î °¡±â\n\n");
-        printf("¸Ş´º ¼±ÅÃ : ");
+        printf("1. í†µí•© ê²€ìƒ‰\n");
+        printf("2. íƒœê·¸ ê²€ìƒ‰\n");
+        printf("0. ë’¤ë¡œ ê°€ê¸°\n\n");
+        printf("ë©”ë‰´ ì„ íƒ : ");
         scanf(" %d", &mode);
 
         switch (mode) {
-        case 1: //ÅëÇÕ °Ë»ö
+        case 1: //í†µí•© ê²€ìƒ‰
             system("cls");
             search();
             break;
 
-        case 2: //ÅÂ±× °Ë»ö
+        case 2: //íƒœê·¸ ê²€ìƒ‰
             system("cls");
             searchTag();
             break;
 
-        case 0: //µÚ·Î °¡±â
+        case 0: //ë’¤ë¡œ ê°€ê¸°
             return 0;
             break;
 
         default: //error
-            while (getchar() != '\n'); //ÀÔ·Â ¹öÅÍ ºñ¿ì±â
+            while (getchar() != '\n'); //ì…ë ¥ ë²„í„° ë¹„ìš°ê¸°
             err = 1;
             break;
         }
     }
 }
 
-// °Ë»ö ÇÔ¼ö Á¤ÀÇ
+// ê²€ìƒ‰ í•¨ìˆ˜ ì •ì˜
 void search() {
-    // °Ë»öÇÒ ÆÄÀÏ¸í ÁöÁ¤
+    // ê²€ìƒ‰í•  íŒŒì¼ëª… ì§€ì •
     char filename[] = "song_list.txt";
-    // °Ë»ö¾î ÀúÀå º¯¼ö ¼±¾ğ
+    // ê²€ìƒ‰ì–´ ì €ì¥ ë³€ìˆ˜ ì„ ì–¸
     char searchWord[STRING_SIZE];
-    // °Ë»ö °á°ú ¿©ºÎ¸¦ ³ªÅ¸³»´Â º¯¼ö ÃÊ±âÈ­
+    // ê²€ìƒ‰ ê²°ê³¼ ì—¬ë¶€ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ë³€ìˆ˜ ì´ˆê¸°í™”
     int found = 0;
-    // »ç¿ëÀÚ¿¡°Ô °Ë»ö¾î ÀÔ·Â ¿äÃ»
-    printf("ÅëÇÕ °Ë»öÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
-    // »ç¿ëÀÚ°¡ °Ë»ö¾î¸¦ ÀÔ·ÂÇÒ ¶§±îÁö ¹İº¹
+    // ì‚¬ìš©ìì—ê²Œ ê²€ìƒ‰ì–´ ì…ë ¥ ìš”ì²­
+    printf("í†µí•© ê²€ìƒ‰ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\nê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+    // ì‚¬ìš©ìê°€ ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•  ë•Œê¹Œì§€ ë°˜ë³µ
     do {
-        // »ç¿ëÀÚ·ÎºÎÅÍ °Ë»ö¾î ÀÔ·Â ¹ŞÀ½
+        // ì‚¬ìš©ìë¡œë¶€í„° ê²€ìƒ‰ì–´ ì…ë ¥ ë°›ìŒ
         fgets(searchWord, sizeof(searchWord), stdin);
-        // °³Çà ¹®ÀÚ Á¦°Å
+        // ê°œí–‰ ë¬¸ì ì œê±°
         searchWord[strcspn(searchWord, "\n")] = '\0';
-        // °Ë»ö ÇÔ¼ö È£Ãâ
+        // ê²€ìƒ‰ í•¨ìˆ˜ í˜¸ì¶œ
         searchSong(filename, searchWord, found);
-        // ¸¸¾à °Ë»ö °á°ú°¡ ¾ø´Ù¸é ´Ù½Ã °Ë»ö¾î ÀÔ·Â ¿äÃ»
+        // ë§Œì•½ ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ë‹¤ë©´ ë‹¤ì‹œ ê²€ìƒ‰ì–´ ì…ë ¥ ìš”ì²­
         if (!found) {
-            printf("ÇØ´ç °Ë»ö¾î´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n°Ë»ö¾î¸¦ ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä: ");
+            printf("í•´ë‹¹ ê²€ìƒ‰ì–´ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\nê²€ìƒ‰ì–´ë¥¼ ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”: ");
         }
     } while (!found);
     // return 0;
 }
 
-// ³ë·¡ °Ë»ö ÇÔ¼ö Á¤ÀÇ
+// ë…¸ë˜ ê²€ìƒ‰ í•¨ìˆ˜ ì •ì˜
 void searchSong(char* filename, char* searchWord, int found) {
-    // ÆÄÀÏ Æ÷ÀÎÅÍ ¼±¾ğ ¹× ÆÄÀÏ ¿­±â ½Ãµµ
+    // íŒŒì¼ í¬ì¸í„° ì„ ì–¸ ë° íŒŒì¼ ì—´ê¸° ì‹œë„
     FILE* file = fopen("song_list.txt", "r");
-    // ÆÄÀÏ ¿­±â ½ÇÆĞ ½Ã ¸Ş½ÃÁö Ãâ·Â ÈÄ Á¾·á
+    // íŒŒì¼ ì—´ê¸° ì‹¤íŒ¨ ì‹œ ë©”ì‹œì§€ ì¶œë ¥ í›„ ì¢…ë£Œ
     if (file == NULL) {
-        printf("ÆÄÀÏÀ» ¿­ ¼ö ¾ø½À´Ï´Ù.\n");
+        printf("íŒŒì¼ì„ ì—´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n");
         return;
     }
 
-    // ³ë·¡ Á¤º¸¸¦ ÀúÀåÇÒ ±¸Á¶Ã¼ ¹è¿­ ¼±¾ğ
+    // ë…¸ë˜ ì •ë³´ë¥¼ ì €ì¥í•  êµ¬ì¡°ì²´ ë°°ì—´ ì„ ì–¸
     struct Song song[STRING_SIZE];
 
-    // ÆÄÀÏ·ÎºÎÅÍ µ¥ÀÌÅÍ ÀĞ¾î¿Í ±¸Á¶Ã¼¿¡ ÀúÀå
+    // íŒŒì¼ë¡œë¶€í„° ë°ì´í„° ì½ì–´ì™€ êµ¬ì¡°ì²´ì— ì €ì¥
     for (int i = 0; i < STRING_SIZE; i++)
         fscanf(file, "%s %s %s %s %s %s %s %s", &song[i].title, &song[i].singer, &song[i].composer, &song[i].lyricist, &song[i].genre, &song[i].playtime, &song[i].album, &song[i].release);
 
-    // °Ë»ö¾î¿Í ÀÏÄ¡ÇÏ´Â ³ë·¡ Á¤º¸ Ãâ·Â
+    // ê²€ìƒ‰ì–´ì™€ ì¼ì¹˜í•˜ëŠ” ë…¸ë˜ ì •ë³´ ì¶œë ¥
     for (int i = 0; i < STRING_SIZE; i++) {
         if (strstr(song[i].title, searchWord) != NULL ||
             strstr(song[i].singer, searchWord) != NULL ||
@@ -116,16 +356,16 @@ void searchSong(char* filename, char* searchWord, int found) {
             strstr(song[i].album, searchWord) != NULL ||
             strstr(song[i].release, searchWord) != NULL) {
 
-            printf("Á¦¸ñ: %s/", song[i].title);
-            printf("°¡¼ö: %s/", song[i].singer);
-            printf("ÀÛ°î°¡: %s/", song[i].composer);
-            printf("ÀÛ»ç°¡: %s/", song[i].lyricist);
-            printf("Àå¸£: %s/", song[i].genre);
-            printf("Àç»ı½Ã°£: %s/", song[i].playtime);
-            printf("¾Ù¹ü¸í: %s/", song[i].album);
-            printf("¾Ù¹üÃâ½Ã³¯Â¥: %s/", song[i].release);
+            printf("ì œëª©: %s/", song[i].title);
+            printf("ê°€ìˆ˜: %s/", song[i].singer);
+            printf("ì‘ê³¡ê°€: %s/", song[i].composer);
+            printf("ì‘ì‚¬ê°€: %s/", song[i].lyricist);
+            printf("ì¥ë¥´: %s/", song[i].genre);
+            printf("ì¬ìƒì‹œê°„: %s/", song[i].playtime);
+            printf("ì•¨ë²”ëª…: %s/", song[i].album);
+            printf("ì•¨ë²”ì¶œì‹œë‚ ì§œ: %s/", song[i].release);
             printf("\n");
-            // °Ë»ö °á°ú¸¦ Ã£¾ÒÀ¸¹Ç·Î found º¯¼ö¸¦ 1·Î ¼³Á¤
+            // ê²€ìƒ‰ ê²°ê³¼ë¥¼ ì°¾ì•˜ìœ¼ë¯€ë¡œ found ë³€ìˆ˜ë¥¼ 1ë¡œ ì„¤ì •
             found = 1;
         }
     }
@@ -140,18 +380,18 @@ void searchTag() {
     while (1) {
         system("cls");
         if (err == 0) {
-            printf("ÅÂ±× °Ë»öÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+            printf("íƒœê·¸ ê²€ìƒ‰ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
         }
         else {
-            printf("ÇØ´ç °Ë»ö¾î´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
+            printf("í•´ë‹¹ ê²€ìƒ‰ì–´ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
             err = 0;
         }
-        printf("(ÅÂ±× = Á¦¸ñ/°¡¼ö/ÀÛ°î°¡/ÀÛ»ç°¡/Àå¸£/Àç»ı½Ã°£/¾Ù¹ü¸í/¾Ù¹üÃâ½Ã³¯Â¥)\n");
-        printf("°Ë»öÇÒ ÅÂ±×¸¦ ÀÔ·ÂÇÏ¼¼¿ä (0 ÀÔ·Â ½Ã µÚ·Î°¡±â) : ");
+        printf("(íƒœê·¸ = ì œëª©/ê°€ìˆ˜/ì‘ê³¡ê°€/ì‘ì‚¬ê°€/ì¥ë¥´/ì¬ìƒì‹œê°„/ì•¨ë²”ëª…/ì•¨ë²”ì¶œì‹œë‚ ì§œ)\n");
+        printf("ê²€ìƒ‰í•  íƒœê·¸ë¥¼ ì…ë ¥í•˜ì„¸ìš” (0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°) : ");
         scanf("%s", tag);
 
-        if (strcmp(tag, "Á¦¸ñ") == 0 || strcmp(&tag, "°¡¼ö") == 0 || strcmp(&tag, "ÀÛ°î°¡") == 0 || strcmp(&tag, "ÀÛ»ç°¡") == 0 || strcmp(&tag, "Àå¸£") == 0 || strcmp(&tag, "Àç»ı½Ã°£") == 0 || strcmp(&tag, "¾Ù¹ü¸í") == 0 || strcmp(&tag, "¾Ù¹üÃâ½Ã³¯Â¥") == 0) {
-            printf("°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä (0 ÀÔ·Â ½Ã µÚ·Î°¡±â) : ");
+        if (strcmp(tag, "ì œëª©") == 0 || strcmp(&tag, "ê°€ìˆ˜") == 0 || strcmp(&tag, "ì‘ê³¡ê°€") == 0 || strcmp(&tag, "ì‘ì‚¬ê°€") == 0 || strcmp(&tag, "ì¥ë¥´") == 0 || strcmp(&tag, "ì¬ìƒì‹œê°„") == 0 || strcmp(&tag, "ì•¨ë²”ëª…") == 0 || strcmp(&tag, "ì•¨ë²”ì¶œì‹œë‚ ì§œ") == 0) {
+            printf("ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš” (0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°) : ");
             scanf("%s", word);
             printf("\n");
             if (word[0] == '0') {
@@ -159,16 +399,16 @@ void searchTag() {
                 break;
             }
             else {
-                // °Ë»ö °á°ú Ãâ·Â
+                // ê²€ìƒ‰ ê²°ê³¼ ì¶œë ¥
                 searchWordOfTag("song_list.txt", tag, word);
             }
             break;
         }
-        else if (strcmp(&tag, "0") == 0) { // µÚ·Î°¡±â
+        else if (strcmp(&tag, "0") == 0) { // ë’¤ë¡œê°€ê¸°
             searchMenu();
             break;
         }
-        else { // Àß¸øÀÔ·Â
+        else { // ì˜ëª»ì…ë ¥
             err = 1;
         }
     }
@@ -179,22 +419,22 @@ void searchZero(const char* filename, const char* tag, const char* word) {
     int goback = 0;
     while (1) {
         if (err == 0) {
-            printf("'0'À» ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. Á¤¸» µÚ·Î °¡½Ã°Ú½À´Ï±î?\n\n");
+            printf("'0'ì„ ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ì •ë§ ë’¤ë¡œ ê°€ì‹œê² ìŠµë‹ˆê¹Œ?\n\n");
         }
         else {
-            printf("Àß¸ø ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ¼±ÅÃÇØÁÖ¼¼¿ä.\n\n");
+            printf("ì˜ëª» ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
             err = 0;
         }
-        printf("1. µÚ·Î°¡±â\n");
-        printf("2. '0' °Ë»öÇÏ±â\n\n");
-        printf("¸Ş´º¼±ÅÃ : ");
+        printf("1. ë’¤ë¡œê°€ê¸°\n");
+        printf("2. '0' ê²€ìƒ‰í•˜ê¸°\n\n");
+        printf("ë©”ë‰´ì„ íƒ : ");
         scanf("%d", &goback);
         printf("\n");
         if (goback == 1) {
             searchTag();
             break;
         }
-        else if (goback == 2) { // '0' °Ë»ö
+        else if (goback == 2) { // '0' ê²€ìƒ‰
             searchWordOfTag("song_list.txt", tag, word);
             break;
         }
@@ -209,40 +449,40 @@ void searchWordOfTag(const char* filename, const char* tag, const char* word) {
     FILE* file = fopen(filename, "r");
 
     struct Song song;
-    char line[STRING_SIZE * 8]; // °¡Àå ±ä ¶óÀÎÀÇ ±æÀÌ¸¦ ±âÁØÀ¸·Î ¹öÆÛ¸¦ ÇÒ´ç
-    printf("Á¦¸ñ / °¡¼ö / ÀÛ°î°¡ / ÀÛ»ç°¡ / Àå¸£ / Àç»ı½Ã°£ / ¾Ù¹ü¸í / ¾Ù¹üÃâ½Ã³¯Â¥\n");
+    char line[STRING_SIZE * 8]; // ê°€ì¥ ê¸´ ë¼ì¸ì˜ ê¸¸ì´ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë²„í¼ë¥¼ í• ë‹¹
+    printf("ì œëª© / ê°€ìˆ˜ / ì‘ê³¡ê°€ / ì‘ì‚¬ê°€ / ì¥ë¥´ / ì¬ìƒì‹œê°„ / ì•¨ë²”ëª… / ì•¨ë²”ì¶œì‹œë‚ ì§œ\n");
     while (fgets(line, sizeof(line), file) != NULL) {
         sscanf(line, "%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|\n]", song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
 
-        if (strcmp(tag, "Á¦¸ñ") == 0 && strstr(song.title, word) != NULL) {
+        if (strcmp(tag, "ì œëª©") == 0 && strstr(song.title, word) != NULL) {
             printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
                 song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
-        else if (strcmp(tag, "°¡¼ö") == 0 && strstr(song.singer, word) != NULL) {
+        else if (strcmp(tag, "ê°€ìˆ˜") == 0 && strstr(song.singer, word) != NULL) {
             printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
                 song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
-        else if (strcmp(tag, "ÀÛ°î°¡") == 0 && strstr(song.composer, word) != NULL) {
+        else if (strcmp(tag, "ì‘ê³¡ê°€") == 0 && strstr(song.composer, word) != NULL) {
             printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
                 song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
-        else if (strcmp(tag, "ÀÛ»ç°¡") == 0 && strstr(song.lyricist, word) != NULL) {
+        else if (strcmp(tag, "ì‘ì‚¬ê°€") == 0 && strstr(song.lyricist, word) != NULL) {
             printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
                 song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
-        else if (strcmp(tag, "Àå¸£") == 0 && strstr(song.genre, word) != NULL) {
+        else if (strcmp(tag, "ì¥ë¥´") == 0 && strstr(song.genre, word) != NULL) {
             printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
                 song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
-        else if (strcmp(tag, "Àç»ı½Ã°£") == 0 && strstr(song.playtime, word) != NULL) {
+        else if (strcmp(tag, "ì¬ìƒì‹œê°„") == 0 && strstr(song.playtime, word) != NULL) {
             printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
                 song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
-        else if (strcmp(tag, "¾Ù¹ü¸í") == 0 && strstr(song.album, word) != NULL) {
+        else if (strcmp(tag, "ì•¨ë²”ëª…") == 0 && strstr(song.album, word) != NULL) {
             printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
                 song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
-        else if (strcmp(tag, "¾Ù¹üÃâ½Ã³¯Â¥") == 0 && strstr(song.release, word) != NULL) {
+        else if (strcmp(tag, "ì•¨ë²”ì¶œì‹œë‚ ì§œ") == 0 && strstr(song.release, word) != NULL) {
             printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
                 song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         }
@@ -250,8 +490,8 @@ void searchWordOfTag(const char* filename, const char* tag, const char* word) {
 
     fclose(file);
 
-    printf("\n¸ŞÀÎÈ­¸éÀ¸·Î µ¹¾Æ°¡·Á¸é ¾Æ¹«Å°³ª ´©¸£¼¼¿ä.");
-    _getwch(); // ÇÑ±ÛÀº ¿£ÅÍ¸¦ ÃÄ¾ßÇÔ.
+    printf("\në©”ì¸í™”ë©´ìœ¼ë¡œ ëŒì•„ê°€ë ¤ë©´ ì•„ë¬´í‚¤ë‚˜ ëˆ„ë¥´ì„¸ìš”.");
+    _getwch(); // í•œê¸€ì€ ì—”í„°ë¥¼ ì³ì•¼í•¨.
     system("cls");
     main();
 }
