@@ -19,7 +19,7 @@ void searchMenu();//검색 메뉴 화면
 
 void search();// 노래 검색 함수 선언
 
-void searchSong(char* filename, char* searchWord, int found);
+int searchSong(char* filename, char* searchWord, int found);
 
 void searchTag(); //태그 검색
 

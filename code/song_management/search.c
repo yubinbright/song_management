@@ -21,7 +21,7 @@ int main() {
 //검색 함수 선언
 void search();
 // 노래 검색 함수 선언
-void searchSong(char* filename, char* searchWord, int found);
+int searchSong(char* filename, char* searchWord, int found);
 
 void searchTag(); //태그 검색
 void searchZero();//태그 검색에서 0 입력시
@@ -79,48 +79,47 @@ void search() {
     // 검색 결과 여부를 나타내는 변수 초기화
     int found = 0;
     // 사용자에게 검색어 입력 요청
-    printf("통합 검색을 선택하셨습니다.\n검색어를 입력하세요: ");
+    printf("통합 검색을 선택하셨습니다.\n검색어를 입력하세요 (0 입력 시 뒤로가기): ");
     // 사용자가 검색어를 입력할 때까지 반복
     do {
         // 사용자로부터 검색어 입력 받음
         scanf("%s", searchWord);
         printf("\n");
-        // 검색 함수 호출
-        searchSong(filename, searchWord, found);
+        if (searchWord[0] == '0') {
+            searchMenu();
+            break;
+        }
+        else {
+            // 검색 결과 출력
+            found = searchSong(filename, searchWord, found);
+        }
         // 만약 검색 결과가 없다면 다시 검색어 입력 요청
-        if (!found) 
+        if (found==0)
             printf("해당 검색어는 존재하지 않습니다.\n검색어를 다시 입력하세요: ");
-    } while (!found);
-    // return 0;
+    } while (found==0);
 }
 
 // 노래 검색 함수 정의
-void searchSong(char* filename, char* searchWord, int found) {
+int searchSong(char* filename, char* searchWord, int found) {
     FILE* file = fopen(filename, "r");
     found = 0;
     struct Song song;
     char line[STRING_SIZE * 8]; // 가장 긴 라인의 길이를 기준으로 버퍼를 할당
-    printf("제목 / 가수 / 작곡가 / 작사가 / 장르 / 재생시간 / 앨범명 / 앨범출시날짜\n");
     while (fgets(line, sizeof(line), file) != NULL) {
         sscanf(line, "%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|\n]", song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
 
-        // 검색어와 일치하는 노래 정보 출력
-        if (strstr(song.title, searchWord) != NULL ||
-            strstr(song.singer, searchWord) != NULL ||
-            strstr(song.composer, searchWord) != NULL ||
-            strstr(song.lyricist, searchWord) != NULL ||
-            strstr(song.genre, searchWord) != NULL ||
-            strstr(song.playtime, searchWord) != NULL ||
-            strstr(song.album, searchWord) != NULL ||
-            strstr(song.release, searchWord) != NULL) {
+        if (strstr(song.title, searchWord) != NULL || strstr(song.singer, searchWord) != NULL ||
+            strstr(song.composer, searchWord) != NULL || strstr(song.lyricist, searchWord) != NULL ||
+            strstr(song.genre, searchWord) != NULL || strstr(song.playtime, searchWord) != NULL ||
+            strstr(song.album, searchWord) != NULL || strstr(song.release, searchWord) != NULL) {
+            printf("제목 / 가수 / 작곡가 / 작사가 / 장르 / 재생시간 / 앨범명 / 앨범출시날짜\n");
             printf("%s / %s / %s / %s / %s / %s / %s / %s\n",
                 song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
-            // 검색 결과를 찾았으므로 found 변수를 1로 설정
             found = 1;
         }
     }
-
     fclose(file);
+    return found;
 }
 
 void searchTag() {
