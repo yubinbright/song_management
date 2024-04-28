@@ -36,6 +36,9 @@ void searchMenu() {
         printf("1. 통합 검색\n");
         printf("2. 태그 검색\n");
         printf("0. 뒤로 가기\n\n");
+
+
+
         printf("메뉴 선택 : ");
         scanf(" %d", &mode);
 
