@@ -62,43 +62,56 @@ void duplicate_people(const char* filename, const char* people) {
     int is_duplicate; // 중복 여부 확인
 
     while (fgets(d_line, sizeof(d_line), file)) { // txt파일의 각 줄 d_line에 저장
-        char* dupli_word = strtok(d_line, "\t"); // \t를 구분자로 끊어 dupli_word에 저장
+        char* tab_pos_q = strchr(d_line, '\t');	//앞 탭키
+        char* tab_pos_p = strchr(tab_pos_q + 1, '\t');	//뒤 탭키
+        char dupli_words[STRING_SIZE] = "";
+        strncpy(dupli_words, tab_pos_q + 1, tab_pos_p - tab_pos_q - 1);	//가수 담겨진 상태
+        //		printf("%s\n", dupli_words);	//(검사)
 
-        while (dupli_word != NULL) {
-            char* pipe_pos = strchr(dupli_word, '|'); // '|' 위치 찾기
+        for (int i = 0; i < 3; i++) {	//가수, 작곡가, 작사가 차례로 확인
+            char* dupli_word = strtok(dupli_words, ",");	// ,를 구분자로 끊어 dupli_word에 저장
+            while (dupli_word != NULL) {
+                dupli_word = trim(dupli_word);	//앞뒤 공백 제거
+                char* pipe_pos = strchr(dupli_word, '|'); // '|' 위치 찾기
 
-            if (pipe_pos != NULL) {
-                *pipe_pos = '\0'; // '|' 이전의 문자열 추출
-                char extra[256] = ""; // '|' 이후의 문자열 저장
+                if (pipe_pos != NULL) {
+                    *pipe_pos = '\0'; // '|' 이전의 문자열 추출
+                    char extra[256] = ""; // '|' 이후의 문자열 저장
 
-                char* after_pipe = pipe_pos + 1; // '|' 이후의 시작 위치
-                char* next_tab_pos = strchr(after_pipe, '\t'); // 다음 '\t' 위치 찾기
-                if (next_tab_pos != NULL) {
-                    *next_tab_pos = '\0'; // '\t' 이후 제거
-                }
-                strcpy(extra, after_pipe); // '|' 이후의 문자열 저장
+                    char* after_pipe = pipe_pos + 1; // '|' 이후의 시작 위치
+                    char* next_comma_pos = strchr(after_pipe, ',');	//다음 ',' 위치 찾기
+                    if (next_comma_pos != NULL) {
+                        *next_comma_pos = '\0'; // ',' 이후 제거		
+                    }
+                    after_pipe = trim(after_pipe);	//앞뒤 공백 제거
+                    strcpy(extra, after_pipe); // '|' 이후의 문자열 저장
 
-                if (strcmp(dupli_word, people) == 0) { // '|'이전의 문자열이 입력한 가수와 일치하면
-                    strcat(dupli_word, "|");
-                    strcat(dupli_word, extra);  //dupli_word에 '|' 이후 문자열 추가
+                    if (strcmp(dupli_word, people) == 0) { // '|'이전의 문자열이 입력한 가수와 일치하면
+                        strcat(dupli_word, "|");
+                        strcat(dupli_word, extra);  //dupli_word에 '|' 이후 문자열 추가
 
-                    // 중복 여부 확인
-                    is_duplicate = 0;
-                    for (int i = 0; i < people_count; i++) {
-                        if (strcmp(dupli_peoples[i], dupli_word) == 0) { // 중복 확인
-                            is_duplicate = 1;   //중복이라면
-                            break;
+                        // 중복 여부 확인
+                        is_duplicate = 0;
+                        for (int i = 0; i < people_count; i++) {
+                            if (strcmp(dupli_peoples[i], dupli_word) == 0) { // 중복 확인
+                                is_duplicate = 1;   //중복이라면
+                                break;
+                            }
+                        }
+
+                        if (is_duplicate == 0) { // 중복이 아니면 저장
+                            strcpy(dupli_peoples[people_count], dupli_word);
+                            people_count++;
                         }
                     }
-
-                    if (is_duplicate == 0) { // 중복이 아니면 저장
-                        strcpy(dupli_peoples[people_count], dupli_word);
-                        people_count++;
-                    }
                 }
+                dupli_word = strtok(NULL, ",");
             }
 
-            dupli_word = strtok(NULL, "\t"); // 다음 dupli_word로 이동
+            tab_pos_q = tab_pos_p;	//앞 탭키
+            tab_pos_p = strchr(tab_pos_q + 1, '\t');	//뒤 탭키
+            strcpy(dupli_words, tab_pos_q + 1, tab_pos_p - tab_pos_q - 1);	//작곡가 담겨진 상태 > 작사가 담겨진 상태
+            dupli_words[tab_pos_p - tab_pos_q - 1] = '\0';	//유효한 문자열까지만 자르기
         }
     }
 
@@ -390,6 +403,8 @@ void add_song() {
                 char* first_singer = trim(first_singer_buffer);	//앞뒤 공백 제거
                 duplicate_people("song_list.txt", first_singer);	//중복확인
                 strcat(singers_result, first_singer);	//첫 가수 저장
+                ptr_comma_q = ptr_comma_p;
+                ptr_comma_p = strchr(ptr_comma_p + 1, ',');
                 while (ptr_comma_p != NULL) {	//가수가 더 있는지 확인
                     char singer_buffer[STRING_SIZE] = "";
                     strncpy(singer_buffer, ptr_comma_q + 1, ptr_comma_p - ptr_comma_q - 1);	//가수 추출
@@ -439,6 +454,8 @@ void add_song() {
                 char* first_composer = trim(first_composer_buffer);	//앞뒤 공백 제거
                 duplicate_people("song_list.txt", first_composer);	//중복확인
                 strcat(composers_result, first_composer);	//첫 작곡가 저장
+                ptr_comma_q = ptr_comma_p;
+                ptr_comma_p = strchr(ptr_comma_p + 1, ',');
                 while (ptr_comma_p != NULL) {	//작곡가가 더 있는지 확인
                     char composer_buffer[STRING_SIZE] = "";
                     strncpy(composer_buffer, ptr_comma_q + 1, ptr_comma_p - ptr_comma_q - 1);	//작곡가 추출
@@ -486,6 +503,8 @@ void add_song() {
                 char* first_lyricist = trim(first_lyricist_buffer);	//앞뒤 공백 제거
                 duplicate_people("song_list.txt", first_lyricist);	//중복확인
                 strcat(lyricists_result, first_lyricist);	//첫 작사가 저장
+                ptr_comma_q = ptr_comma_p;
+                ptr_comma_p = strchr(ptr_comma_p + 1, ',');
                 while (ptr_comma_p != NULL) {	//작사가가 더 있는지 확인
                     char lyricist_buffer[STRING_SIZE] = "";
                     strncpy(lyricist_buffer, ptr_comma_q + 1, ptr_comma_p - ptr_comma_q - 1);	//작사가 추출
