@@ -169,27 +169,22 @@ void song_list_menu() //노래 리스트 주 메뉴
         printf("0. 뒤로 가기\n");
         printf("\n메뉴 선택 : ");
         scanf(" %d", &mode);
-        getchar();
-
+        while (getchar() != '\n'); //입력 버터 비우기
+        
         switch (mode) {
         case 1: //노래 리스트 출력
             song_list_print();
             break;
-
         case 2: //노래 추가
             add_song();
             break;
-
         case 3: //노래 삭제
             get_dlt_song(input_text); //삭제 문자열 입력 및 생성 후 삭제
             break;
-
         case 0: //뒤로 가기
-            while (getchar() != '\n'); //입력 버터 비우기
             return 0;
             break;
         default: //error
-            while (getchar() != '\n'); //입력 버터 비우기
             err = 1;
             break;
         }
