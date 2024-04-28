@@ -11,36 +11,34 @@
 #define MAX_SIZE 100000
 #define STRING_SIZE 256
 
-void song_list_menu();//ë…¸ë˜ ë¦¬ìŠ¤íŠ¸ ì£¼ ë©”ë‰´
+void song_list_menu();//³ë·¡ ¸®½ºÆ® ÁÖ ¸Ş´º
 
-void song_list_print();//ë…¸ë˜ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
+void song_list_print();//³ë·¡ ¸®½ºÆ® Ãâ·Â
 
-void get_dlt_song(char* dlt_song);//ì‚­ì œí•  ë¬¸ìì—´ ì…ë ¥ ë° ìƒì„±
+void get_dlt_song(char* dlt_song);//»èÁ¦ÇÒ ¹®ÀÚ¿­ ÀÔ·Â ¹× »ı¼º
 
-void song_dlt(char* filename, char* dlt_song);//ë…¸ë˜ ì‚­ì œ
+void song_dlt(char* filename, char* dlt_song);//³ë·¡ »èÁ¦
 
-void search();// ë…¸ë˜ ê²€ìƒ‰ í•¨ìˆ˜ ì„ ì–¸
+void search();// ³ë·¡ °Ë»ö ÇÔ¼ö ¼±¾ğ
 
 int searchSong(char* filename, char* searchWord, int found);
 
-void searchTag(); //íƒœê·¸ ê²€ìƒ‰
+void searchTag(); //ÅÂ±× °Ë»ö
 
-void searchZero(const char* filename, const char* tag, const char* word);//íƒœê·¸ ê²€ìƒ‰ì—ì„œ 0 ì…ë ¥ì‹œ
+void searchZero(const char* filename, const char* tag, const char* word);//ÅÂ±× °Ë»ö¿¡¼­ 0 ÀÔ·Â½Ã
 
-void searchWordOfTag(const char* filename, const char* tag, const char* word); //ê²€ìƒ‰ì–´ ê²€ìƒ‰
+void searchWordOfTag(const char* filename, const char* tag, const char* word); //°Ë»ö¾î °Ë»ö
 
-void searchMenu(); //ë…¸ë˜ ê²€ìƒ‰ ë©”ë‰´
+//void playlistMenu();//ÇÃ·¹ÀÌ¸®½ºÆ® È­¸é¿¡ Ã³À½ µé¾î°¬À» ¶§
 
-//void playlistMenu();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ í™”ë©´ì— ì²˜ìŒ ë“¤ì–´ê°”ì„ ë•Œ
+//void printPlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ®ÀÌ ¸®½ºÆ®¸¦ Ãâ·Â
 
-//void printPlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ì´ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥
+//void addPlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ® Ãß°¡
 
-//void addPlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì¶”ê°€
+//void deletePlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ® »èÁ¦
 
-//void deletePlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì‚­ì œ
+//void openPlaylist(char* playlistName);//ÇÃ·¹ÀÌ¸®½ºÆ® ¿­±â
 
-//void openPlaylist(char* playlistName);//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì—´ê¸°
-
-void add_song();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ì— ë…¸ë˜ ì¶”ê°€
+void add_song();//ÇÃ·¹ÀÌ¸®½ºÆ®¿¡ ³ë·¡ Ãß°¡
 
 void song_dlt(const char* filename, const char* dlt_song);
