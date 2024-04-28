@@ -1,1 +1,16 @@
-﻿  song_management.vcxproj -> C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\x64\Debug\song_management.exe
+﻿  song_list.c
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\header.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\header.h(46,58): warning C4028: 정식 매개 변수 1이(가) 선언과 다릅니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\header.h(46,58): warning C4028: 정식 매개 변수 2이(가) 선언과 다릅니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\song_list.c(113,70): warning C4020: 'strcpy': 실제 매개 변수가 너무 많습니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\song_list.c(143,18): warning C4090: '함수': 'const' 한정자가 서로 다릅니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\song_list.c(203,21): warning C4098: 'song_list_menu': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\song_list.c(247,38): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\song_list.c(258,30): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\song_list.c(276,43): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\song_list.c(287,35): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\song_list.c(305,44): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\song_list.c(316,36): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\song_list.c(324,88): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\song_management\song_list.c(369,9): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  song_management.vcxproj -> C:\Users\wii07\OneDrive\바탕 화면\새 폴더\code\x64\Debug\song_management.exe
