@@ -333,7 +333,11 @@ void song_list_print()//노래 리스트 출력
         //printf("%s / ", album_name); //앨범명 출력
         //printf("%s\n", album_time); //앨범 출시 날짜 출력
     }
-    fclose(fp);
+    printf("\n\n노래리스트 관리 메뉴로 돌아가려면 아무키나 누르세요.");
+    _getwch(); // 한글은 엔터를 쳐야함.
+    // system("cls");
+    // return;
+    main();
 }
 
 void add_song() {
