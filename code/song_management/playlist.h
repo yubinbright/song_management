@@ -1,28 +1,32 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS	
-#include <stdio.h>
 #include <iostream>
 #include <string>
 #include <stdlib.h>
 
-void playlistMenu();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ í™”ë©´ì— ì²˜ìŒ ë“¤ì–´ê°”ì„ ë•Œ
+using namespace std;
 
-void printPlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ì´ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥
+void playlistMenu();//ÇÃ·¹ÀÌ¸®½ºÆ® È­¸é¿¡ Ã³À½ µé¾î°¬À» ¶§
 
-void addPlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì¶”ê°€
+void printPlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ®ÀÌ ¸®½ºÆ®¸¦ Ãâ·Â
 
-void deletePlaylist();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì‚­ì œ
+void addPlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ® Ãß°¡
 
-void openPlaylist(char* playlistName);//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì—´ê¸°
+void deletePlaylist();//ÇÃ·¹ÀÌ¸®½ºÆ® »èÁ¦
 
-void addSong();//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ì— ë…¸ë˜ ì¶”ê°€
+void openPlaylist(char* playlistName);//ÇÃ·¹ÀÌ¸®½ºÆ® ¿­±â
 
-void deleteSong(char* playlistName, char* fileName);//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ì˜ ë…¸ë˜ ì‚­ì œ
+void addSongInPli(char playlistName[]);//ÇÃ·¹ÀÌ¸®½ºÆ®¿¡ ³ë·¡ Ãß°¡
 
-void delName(string index, const char* fileName);//í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ë¦¬ìŠ¤íŠ¸ì—ì„œ í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ ì´ë¦„ì„ ì‚­ì œ
+void deleteSong(char* playlistName, char* fileName);//ÇÃ·¹ÀÌ¸®½ºÆ®ÀÇ ³ë·¡ »èÁ¦
 
-void fileArrange(FILE* fp, const char* pliName); //í”Œë¦¬ ëª©ë¡ì˜ ê° í”Œë¦¬ ì´ë¦„ ì•ì— ë¶™ì€ indexë¥¼ ì •ë ¬í•´ì¤Œ
+void delName(string index, const char* fileName);//ÇÃ·¹ÀÌ¸®½ºÆ® ¸®½ºÆ®¿¡¼­ ÇÃ·¹ÀÌ¸®½ºÆ® ÀÌ¸§À» »èÁ¦
 
-char* removeSpace(char* str); //ê³µë°±ì—´ ì œê±°í•¨ìˆ˜
+void fileArrange(FILE* fp, const char* pliName); //ÇÃ¸® ¸ñ·ÏÀÇ °¢ ÇÃ¸® ÀÌ¸§ ¾Õ¿¡ ºÙÀº index¸¦ Á¤·ÄÇØÁÜ
 
+//void searchInPli();
+//
+//void searchSongInPli(char* filename, char* searchWord, int* found);
+
+char* removeSpace(char* str);
 
