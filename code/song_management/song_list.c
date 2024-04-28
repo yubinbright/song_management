@@ -173,12 +173,17 @@ void song_list_menu() //노래 리스트 주 메뉴
         
         switch (mode) {
         case 1: //노래 리스트 출력
+            // case2나 case3을 한 번 이상 실행 후 mode 입력값에 숫자가 아닌 이상한 값을 넣으면 맨 처음 입력했던 mode의 함수가 실행됨
+            // 예를 들어 mode에 2입력 후 노래 생성하고, 다음 mode 입력 때 다른 문자 등을 넣으면 case 2가 실행됨.
+            mode = -1;
             song_list_print();
             break;
         case 2: //노래 추가
             add_song();
+            mode = -1;
             break;
         case 3: //노래 삭제
+            mode = -1;
             get_dlt_song(input_text); //삭제 문자열 입력 및 생성 후 삭제
             break;
         case 0: //뒤로 가기
