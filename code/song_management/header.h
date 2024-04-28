@@ -21,7 +21,7 @@ void song_dlt(char* filename, char* dlt_song);//노래 삭제
 
 void search();// 노래 검색 함수 선언
 
-void searchSong(char* filename, char* searchWord, int found);
+int searchSong(char* filename, char* searchWord, int found);
 
 void searchTag(); //태그 검색
 
