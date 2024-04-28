@@ -102,8 +102,7 @@ int searchSong(char* filename, char* searchWord, int found) {
     struct Song song;
     char line[STRING_SIZE * 8]; // 가장 긴 라인의 길이를 기준으로 버퍼를 할당
     while (fgets(line, sizeof(line), file) != NULL) {
-        sscanf(line, "%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|]|%[^|\n]", song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
-
+        sscanf(line, "%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t\n]", song.title, song.singer, song.composer, song.lyricist, song.genre, song.playtime, song.album, song.release);
         if (strstr(song.title, searchWord) != NULL || strstr(song.singer, searchWord) != NULL ||
             strstr(song.composer, searchWord) != NULL || strstr(song.lyricist, searchWord) != NULL ||
             strstr(song.genre, searchWord) != NULL || strstr(song.playtime, searchWord) != NULL ||
