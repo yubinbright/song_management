@@ -337,7 +337,7 @@ void song_list_print()//노래 리스트 출력
     _getwch(); // 한글은 엔터를 쳐야함.
     // system("cls");
     // return;
-    main();
+    song_list_menu();
 }
 
 void add_song() {
