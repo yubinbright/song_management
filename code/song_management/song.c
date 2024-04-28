@@ -1,11 +1,12 @@
-﻿#include "header.h"
+#include "header.h"
 
 #define STRING_SIZE 256
 
 int main() {
     int mode;
     int err = 0;
-    while (1)
+    int out = 1;
+    while (out)
     {
         if (err == 0) {
             printf("\n노래 관리 프로그램입니다.\n");
@@ -22,6 +23,7 @@ int main() {
         printf("4. 종료\n\n");
         printf("메뉴 선택 : ");
         scanf(" %d", &mode);
+        while (getchar() != '\n'); //입력 버터 비우기
 
         switch (mode) {
         case 1: //노래 리스트 관리
@@ -33,15 +35,15 @@ int main() {
             break;
 
         case 3: //플레이리스트
-            playlistMenu();
+            //playlistMenu();
             break;
 
         case 4: //종료
             printf("프로그램을 종료합니다\n");
+            out = 0;
             break;
 
         default: //error
-            //while (getchar() != '\n'); //입력 버터 비우기
             err = 1;
             break;
         }
