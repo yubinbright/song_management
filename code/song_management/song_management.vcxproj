@@ -128,19 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="check.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="search.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="playlist.c" />
+    <ClCompile Include="search.c" />
+    <ClCompile Include="searchInPli.c" />
     <ClCompile Include="song.c" />
     <ClCompile Include="song_list.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h" />
     <ClInclude Include="playlist.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="searchInPli.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Playlist_list.txt" />

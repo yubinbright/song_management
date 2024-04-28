@@ -33,7 +33,7 @@ int main() {
             break;
 
         case 3: //플레이리스트
-            //playlistMenu();
+            playlistMenu();
             break;
 
         case 4: //종료

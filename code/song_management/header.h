@@ -27,7 +27,7 @@ void searchTag(); //태그 검색
 
 void searchZero(const char* filename, const char* tag, const char* word);//태그 검색에서 0 입력시
 
-int searchWordExist(const char *tag, const char *word); //검색어 존재유무 판단
+int searchWordExist(const char* tag, const char* word); //검색어 존재유무 판단
 
 void searchWordOfTag(const char* filename, const char* tag, const char* word); //검색어 검색
 
