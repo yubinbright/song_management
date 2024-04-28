@@ -1,10 +1,8 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS	
-#include <iostream>
-#include <string>
+#include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
-
-using namespace std;
 
 void playlistMenu();//플레이리스트 화면에 처음 들어갔을 때
 
@@ -20,13 +18,9 @@ void addSongInPli(char playlistName[]);//플레이리스트에 노래 추가
 
 void deleteSong(char* playlistName, char* fileName);//플레이리스트의 노래 삭제
 
-void delName(string index, const char* fileName);//플레이리스트 리스트에서 플레이리스트 이름을 삭제
+//void delName(char index[], const char* fileName);//플레이리스트 리스트에서 플레이리스트 이름을 삭제
 
 void fileArrange(FILE* fp, const char* pliName); //플리 목록의 각 플리 이름 앞에 붙은 index를 정렬해줌
-
-//void searchInPli();
-//
-//void searchSongInPli(char* filename, char* searchWord, int* found);
 
 char* removeSpace(char* str);
 

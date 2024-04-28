@@ -1,14 +1,14 @@
 #include "playlist.h"
 #include "searchInPli.h"
-#include <stdexcept>
 #define STRING_SIZE 256
+#define MAX 10000
+#define FILE_NAME 100
 
-const int FILE_NAME = 100;
-const int MAX = 100000;
+void delName(char index[], const char* fileName);
 
 void playlistMenu()
 {
-	bool loop = true;
+	int loop = 1;
 	while (loop)
 	{
 		int getMenu;
@@ -24,35 +24,30 @@ void playlistMenu()
 
 		switch (getMenu)
 		{
-			case 0:
-			{
-				//이전메뉴로 돌아갑니다.
-				loop = false;
-				break;
-			}
-			case 1:
-			{
-				//플리 목록 출력
-				printPlaylist();
-				break;
-			}
-			case 2:
-			{
-				//플리 추가
-				addPlaylist();
-				break;
-			}
-			case 3:
-			{
-				//플리 삭제
-				deletePlaylist();
-				break;
-			}
-			//default:
-			//{
-			//	//다시 플리메뉴 선택 페이지로 이동
-			//	break;
-			//}
+		case 0:
+		{
+			//이전메뉴로 돌아갑니다.
+			loop = 0;
+			break;
+		}
+		case 1:
+		{
+			//플리 목록 출력
+			printPlaylist();
+			break;
+		}
+		case 2:
+		{
+			//플리 추가
+			addPlaylist();
+			break;
+		}
+		case 3:
+		{
+			//플리 삭제
+			deletePlaylist();
+			break;
+		}
 		}
 	}
 	return;
@@ -82,52 +77,49 @@ void printPlaylist()
 
 
 
-		cin>> getMenu;//원하는 플리에 해당하는 번호 입력받기
-		cin.ignore();
+		scanf("%d", &getMenu);//원하는 플리에 해당하는 번호 입력받기
+		while (getchar() != '\n');
 
-		int numLength = getMenu/10 + 1; //원하는 플레이리스트의 번호의 길이 입력받음
+		int numLength = getMenu / 10 + 1; //원하는 플레이리스트의 번호의 길이 입력받음
 
-		if (cin.fail())
-		{
-			cin.clear(); // cin의 상태를 초기화
-			cin.ignore(1000, '\n'); // 입력 버퍼를 비우기
-		}
-		else if (getMenu == 0)
+		if (getMenu == 0)
 		{
 			fclose(fp);
 			break;
 		}
-		
+
 		else
 		{
 			fseek(fp, 0, SEEK_SET);//파일 포인터를 다시 파일의 처음으로 이동
-			char playlistName[MAX] = { 0, };
-			while (fgets(playlistName, MAX, fp)!=NULL || listCount<=getMenu) //원하는 플리에 해당하는 번호를 발견할 때까지 루프
+			char playlistName[FILE_NAME] = { 0, };
+			while (fgets(playlistName, MAX, fp) != NULL || listCount <= getMenu) //원하는 플리에 해당하는 번호를 발견할 때까지 루프
 			{
 				//fgets(playlistName, MAX, fp);
 
-				string index = "";
+				char index[MAX] = "";
 
 				int j = 0;
 
 				for (int i = 0; i < numLength; i++)
 				{
-					index += playlistName[i];
+					char numberToAdd[2] = { playlistName[i], '\0' };
+					strcat(index, numberToAdd);
+					//index += playlistName[i];
 					j++;
 				}
-			
+
 				//원하는 플리에 매칭된 번호인가 체크
-				if (stoi(index) == getMenu && playlistName[j] == '.') //index가 "12"일때와 플리에 매칭된 번호 "123. "이 동일시 되는 것을 방지
+				if (atoi(index) == getMenu && playlistName[j] == '.') //index가 "12"일때와 플리에 매칭된 번호 "123. "이 동일시 되는 것을 방지
 				{
 					fclose(fp);
 					openPlaylist(playlistName);
 					break;
 				}
 			}
-			
+
 		}
 	}
-	
+
 }
 
 void openPlaylist(char playlistName[]) //playlistName의 예시 : 1. 퇴근길 플레이리스트
@@ -142,7 +134,7 @@ void openPlaylist(char playlistName[]) //playlistName의 예시 : 1. 퇴근길 플레이�
 
 		int i = 0;
 		char* playlistName = pliName + 3; //숫자를 생략해줌
-		char copyPliName[FILE_NAME] = {0,};
+		char copyPliName[FILE_NAME] = { 0, };
 		strcpy(copyPliName, pliName);
 		int len = 0; // strlen(pliName);
 		len = strlen(pliName);
@@ -159,7 +151,7 @@ void openPlaylist(char playlistName[]) //playlistName의 예시 : 1. 퇴근길 플레이�
 		char buffer[MAX] = { 0, };
 
 		fread(buffer, 1, MAX, fp);
-		
+
 		printf("\n%s\n", buffer);
 
 		fclose(fp);
@@ -198,25 +190,60 @@ void openPlaylist(char playlistName[]) //playlistName의 예시 : 1. 퇴근길 플레이�
 void addPlaylist()
 {
 	char pName[STRING_SIZE];
-	printf("추가하고 싶은 플레이리스트의 이름을 입력해주세요. (공백 입력시 이전 페이지로 이동):");
-	fgets(pName,sizeof(pName),stdin);
+	FILE* fp = fopen("Playlist_list.txt", "r");
+	while (1) {
+		int duplicated = 0;
+		printf("추가하고 싶은 플레이리스트의 이름을 입력해주세요. (공백 입력시 이전 페이지로 이동):");
+		gets(pName);
 
-	int i = 0;
-	int isAllSpace = 0;
-	// 문자열이 공백과 탭으로만 이루어졌는지 확인
-	while (pName[i] != '\0') {
-		if (pName[i] != ' ' && pName[i] != '\t') {
-			isAllSpace = 1;
+		char temp[STRING_SIZE];
+		while (fgets(temp, sizeof(temp), fp) != NULL) {
+			char existingName[STRING_SIZE];
+			strcpy(existingName, temp + 3);
+			existingName[strcspn(existingName, "\n")] = 0; //개행 문자 제거
+			if (strcmp(existingName, pName) == 0) {
+				printf("이미 존재하는 플레이리스트 이름입니다.다른 입력을 입력해주세요.\n");
+				duplicated = 1;
+				break;
+			}
+		}
+
+		if (!duplicated) { //중복이 없으면 반복 종료
 			break;
 		}
-		i++;
-	}
-	if (isAllSpace) {
 	}
 
-	FILE* fp = fopen("Playlist_list.txt", "a");
-	fputs(removeSpace(pName), fp);
-	fputs("\n", fp);
+	int j = 0;
+	int count = 0;
+	// 입력받은 문자열이 공백과 탭으로만 이루어졌는지 확인
+	while (pName[j] != '\0') {
+		if (pName[j] == ' ' || pName[j] == '\t') {
+			count++;
+		}
+		j++;
+	}
+	//공백 입력시 이전 페이지로 이동
+	if (j == count) {
+		printPlaylist();
+	}
+	//추가할 번호 지정
+	fp = fopen("Playlist_list.txt", "r");
+	int num = 0;  // 기존에 존재하는 플레이리스트 개수
+	char temp[STRING_SIZE];
+	while (fgets(temp, sizeof(temp), fp) != NULL) {
+		if (temp[0] >= '0' && temp[0] <= '9') {
+			num++;
+		}
+	}
+
+
+	fp = fopen("Playlist_list.txt", "a");
+	fprintf(fp, "\n%d. %s", num + 1, removeSpace(pName)); // 파일에 플레이리스트 추가 
+
+	// 플레이리스트 텍스트 파일 생성
+	char filename[STRING_SIZE];
+	sprintf(filename, "%s.txt", removeSpace(pName));
+	fp = fopen(filename, "a");
 
 	fclose(fp);
 }
@@ -228,7 +255,7 @@ void deletePlaylist()
 	{
 		system("cls");
 		int getMenu;
-		
+
 		printf("\n플레이리스트 목록\n\n");
 
 		FILE* fp = fopen("Playlist_list.txt", "r");
@@ -243,17 +270,15 @@ void deletePlaylist()
 
 		fseek(fp, 0, SEEK_SET);//파일 포인터를 다시 파일의 처음으로 이동
 
-		cin>>getMenu;
-		cin.ignore();//버퍼비우기
-
-		int numLength = getMenu/10+1;
-
-		if (cin.fail())
+		if (scanf("%d", &getMenu) == 0)
 		{
-			cin.clear(); // cin의 상태를 초기화
-			cin.ignore(1000, '\n'); // 입력 버퍼를 비우기
-		}
-		else if (getMenu == 0)
+			while (getchar() != '\n');
+			continue;
+		}//버퍼비우기
+
+		int numLength = getMenu / 10 + 1;
+
+		if (getMenu == 0)
 		{
 			fclose(fp);
 			break;
@@ -265,20 +290,22 @@ void deletePlaylist()
 
 			while (feof(fp) == 0) //원하는 플리에 해당하는 번호를 발견할 때까지 루프
 			{
-				string index = "";
+				char index[STRING_SIZE] = "";
 
 				fgets(playlistName, MAX, fp);
-				 //원하는 플리에 매칭된 번호인가 체크
+				//원하는 플리에 매칭된 번호인가 체크
 				int j = 0;
 
 				for (int i = 0; i < numLength; i++)
 				{
-					index += playlistName[i];
+					char numToAdd[2] = { playlistName[i], '\n' };
+					strcat(index, numToAdd);
+					//index += playlistName[i];
 					j++;
 				}
 				if (index == "\n")
 					break;
-				if (stoi(index) == getMenu && playlistName[j] == '.') //index가 "12"일때와 플리에 매칭된 번호 "123. "이 동일시 되는 것을 방지
+				if (atoi(index) == getMenu && playlistName[j] == '.') //index가 "12"일때와 플리에 매칭된 번호 "123. "이 동일시 되는 것을 방지
 				{
 					char* pliName = playlistName + 3;
 
@@ -307,13 +334,13 @@ void deletePlaylist()
 			fclose(fp);
 		}
 	}
-	
+
 }
 
-void delName(string index, const char* fileName)//파일에서 index에 해당하는 노래 또는 플리를 삭제
+void delName(char index[], const char* fileName)//파일에서 index에 해당하는 노래 또는 플리를 삭제
 {
-	
-	char sourcefileName[FILE_NAME] = {0,};
+
+	char sourcefileName[FILE_NAME] = { 0, };
 	strcpy(sourcefileName, fileName);
 	FILE* sourceFile = fopen(sourcefileName, "r");//Playlist_list.txt파일을 오픈
 
@@ -321,10 +348,10 @@ void delName(string index, const char* fileName)//파일에서 index에 해당하는 노래
 	FILE* tempFile; //새로 생성할 파일의 포인터
 	char tempName[30] = "tempFile.txt";
 	char buffer[MAX];
-	
+
 	tempFile = fopen(tempName, "w");
 	int currentLine = 1;
-	int lineToRemove = stoi(index);
+	int lineToRemove = atoi(index);
 
 	while (fgets(buffer, MAX, sourceFile) != NULL)
 	{
@@ -334,7 +361,7 @@ void delName(string index, const char* fileName)//파일에서 index에 해당하는 노래
 		currentLine++;
 	}
 	fputs("\n", tempFile);
-	
+
 	fclose(sourceFile);
 	fclose(tempFile);
 
@@ -349,42 +376,40 @@ void fileArrange(FILE* fp, const char* pliName)//텍스트 파일에 쓰여진 인덱스를 �
 	int indexCount = 0;
 	int currentLine = 1;
 	char buffer[MAX] = { 0, };
-	char sourceName[MAX] = {0, };
+	char sourceName[MAX] = { 0, };
 	char tempName[MAX] = "temp.txt";
 
 	strcpy(sourceName, pliName);
 	//const char* sourceName = strcat(source, ".txt");
-	
+
 	FILE* tempFile = fopen(tempName, "w");
 
-	while (fgets(buffer, sizeof(buffer), fp)!=NULL)//라인 인덱스를 순서대로 정렬
+	while (fgets(buffer, sizeof(buffer), fp) != NULL)//라인 인덱스를 순서대로 정렬
 	{
 		if (strlen(buffer) <= 2)
 			break;
-		char index[MAX] = {0, };//라인 정렬을 위한 index받기용
-		sprintf(index, "%d", currentLine); 
+		char index[MAX] = { 0, };//라인 정렬을 위한 index받기용
+		sprintf(index, "%d", currentLine);
 		int spaceToReplace = 0; //라인에 따라 수정할 인데스를 입력할 공간의 수
-		
 
-		while (buffer[spaceToReplace+ 1] == '.')
+
+		while (buffer[spaceToReplace + 1] == '.')
 		{
 			spaceToReplace++;
 		}
-		
+
 		for (int i = 0; i < spaceToReplace; i++)
 		{
-			for(int j =0; j<strlen(buffer); j++)
+			for (int j = 0; j < strlen(buffer); j++)
 				buffer[j] = buffer[j + 1];
-			buffer[strlen(buffer)-1] = NULL;
+			buffer[strlen(buffer) - 1] = NULL;
 		} //인덱스 지워주기 ( ex)"1. 출근길 플레이리스트"->". 출근길 플레이리스트")
 
-		string str1(index);
-		string str2(buffer);
+		strcat(index, buffer);
+		strcat(index, "\n");
+		//새로 정렬된 인덱스와 기존의 플레이리스트 이름에서 인덱스를 지워준 부분을 합쳐준다.
+		fputs(index, tempFile);
 
-		str1 = str1 + str2 + "\n"; //새로 정렬된 인덱스와 기존의 플레이리스트 이름에서 인덱스를 지워준 부분을 합쳐준다.
-		const char* newInput = str1.c_str();
-		fputs(newInput, tempFile);
-		
 		memset(buffer, 0, sizeof(buffer));//버퍼를 비워줌
 
 		currentLine++;
@@ -407,7 +432,7 @@ void addSongInPli(char pliName[])//텍스트파일의 이름을 받음
 		printf("\n");
 
 		int count = 1;
-		string getMenu;
+		char getMenu[STRING_SIZE];
 
 		char buffer[MAX] = { 0, };
 
@@ -424,57 +449,58 @@ void addSongInPli(char pliName[])//텍스트파일의 이름을 받음
 		printf("\n플레이리스트에 추가할 노래 번호를 입력하거나 \"검색\"을 입력하세요\n");
 		printf("숫자 \"0\"을 입력시 이전 페이지로 이동합니다. \"검색\"을 입력시 노래를 검색하여 추가할 수 있습니다.\n\n");
 		printf("메뉴 선택 : ");
-		cin >> getMenu;
-		cin.ignore();
+		scanf("%s", &getMenu);
+		while (getchar() != '\n');
 
-		if (getMenu == "검색")
+		if (!strcmp(getMenu, "검색"))
 		{
 			searchMenuInPli(pliName);
 		}
+		else if (!strcmp(getMenu,"0"))
+			break;
 		else
 		{
-
+			char* endptr = NULL;
 			int songNum = 0;
-			try {
-				// 문자열을 정수로 변환합니다.
-				songNum = stoi(getMenu);
-			}
-			catch (const invalid_argument& e) {
-				continue;
-				// 변환할 수 없는 경우 예외 처리
-			}
-			if (songNum == 0)
-			{
+			songNum = strtol(getMenu, &endptr, 10);
+
+			if (endptr == getMenu) {
 				break;
+				printf("변환 실패: 숫자로 시작하는 문자열이 아닙니다.\n");
 			}
-			int lineNumber = 0;
-			if (count-1 < songNum)//현재 노래 수보다 큰 숫자를 받으면 과정을 생략해준다.
-				continue;
-			else
-			{
-				FILE* songList = fopen("song_list.txt", "r");
-				FILE* playlist = fopen(pliName, "a");
-
-				if (playlist == NULL)
-					printf("파일을 열 수 없습니다!\n");
-				while (fgets(buffer, sizeof(buffer), songList) != NULL)
+			else if (*endptr != '\0') {
+				break;
+				printf("변환 실패: 숫자로 변환된 후에 남아있는 문자열: %s\n", endptr);
+			}
+			else {
+				int lineNumber = 0;
+				if (count - 1 < songNum)//현재 노래 수보다 큰 숫자를 받으면 과정을 생략해준다.
+					continue;
+				else
 				{
-					lineNumber++;
-					if (lineNumber == songNum) {
-						fputs("1. ", playlist);
-						fputs(buffer, playlist);
-						fputs("\n", playlist);
+					FILE* songList = fopen("song_list.txt", "r");
+					FILE* playlist = fopen(pliName, "a");
 
-						fclose(playlist);
-						FILE* fp = fopen(pliName, "r"); //파일 내 커서의 위치를 초기화
-						fileArrange(playlist, pliName); //번호를 정렬
+					if (playlist == NULL)
+						printf("파일을 열 수 없습니다!\n");
+					while (fgets(buffer, sizeof(buffer), songList) != NULL)
+					{
+						lineNumber++;
+						if (lineNumber == songNum) {
+							fputs("1. ", playlist);
+							fputs(buffer, playlist);
+							fputs("\n", playlist);
 
-						break; // 찾은 후에는 더 이상 반복할 필요가 없으므로 반복문을 종료
+							fclose(playlist);
+							FILE* fp = fopen(pliName, "r"); //파일 내 커서의 위치를 초기화
+							fileArrange(playlist, pliName); //번호를 정렬
+
+							break; // 찾은 후에는 더 이상 반복할 필요가 없으므로 반복문을 종료
+						}
 					}
+
 				}
-
 			}
-
 		}
 
 	}
@@ -484,7 +510,7 @@ void addSongInPli(char pliName[])//텍스트파일의 이름을 받음
 
 
 //플레이리스트에서 노래를 삭제 ->현재 플레이리스트의 file pointer는 열린상태
-void deleteSong( char* pliName, char* fileName) //인자로 받은 pliName은 ".txt"를 포함하지 않은 형식이다.
+void deleteSong(char* pliName, char* fileName) //인자로 받은 pliName은 ".txt"를 포함하지 않은 형식이다.
 {
 	while (1)
 	{
@@ -492,10 +518,10 @@ void deleteSong( char* pliName, char* fileName) //인자로 받은 pliName은 ".txt"를
 		char playlistName[FILE_NAME] = { 0, };
 		strcpy(playlistName, pliName);
 		char* noNumName = playlistName + 3;
-		
+
 		FILE* fp = fopen(fileName, "r");
 
-		string getMenu;
+		char getMenu[STRING_SIZE];
 
 		printf("\n\n%s\n\n", noNumName);
 
@@ -509,12 +535,12 @@ void deleteSong( char* pliName, char* fileName) //인자로 받은 pliName은 ".txt"를
 		printf("\n숫자 \"0\"을 입력시 이전 페이지로 이동합니다.\n");
 		printf("플레이리스트에서 삭제할 노래에 해당하는 번호를 입력해주세요 : ");
 
-		cin >> getMenu;
-		cin.clear();
+		scanf("%s", &getMenu);
+		while (getchar() != '\n');
 
-		int numLength = getMenu.length();
+		int numLength = strlen(getMenu);
 
-		if (getMenu == "0")
+		if (!strcmp(getMenu, "0"))
 		{
 			fclose(fp);
 			break;
