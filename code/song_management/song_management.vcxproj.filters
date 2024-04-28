@@ -24,13 +24,13 @@
     <ClCompile Include="check.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="search.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="playlist.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="searchInPli.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="search.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

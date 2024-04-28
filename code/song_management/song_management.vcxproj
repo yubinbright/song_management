@@ -133,9 +133,7 @@
     <ClCompile Include="playlist.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="search.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="search.c" />
     <ClCompile Include="searchInPli.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -144,7 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h" />
-    <ClInclude Include="playlist.h" />
+    <ClInclude Include="playlist.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="searchInPli.h" />
   </ItemGroup>
   <ItemGroup>
