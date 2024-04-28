@@ -180,6 +180,7 @@ void song_list_menu() //노래 리스트 주 메뉴
             break;
 
         case 3: //노래 삭제
+            while (getchar() != '\n'); //입력 버터 비우기
             get_dlt_song(input_text); //삭제 문자열 입력 및 생성 후 삭제
             break;
 
@@ -306,13 +307,22 @@ void song_list_print()//노래 리스트 출력
             printf("%c", lylic_writer[size]);
             size++;
         }
-
-        printf("%s / ", genre); //장르 출력
-        printf("%s / ", playtime); //재생시간 출력
-        printf("%s / ", album_name); //앨범명 출력
-        printf("%s\n", album_time); //앨범 출시 날짜 출력
+        int k = strlen(name) + strlen(singer)+ strlen(song_writer)+strlen(lylic_writer)+4; //공란 예외 처리
+        for (k; k < strlen(song); k++) {
+            if (song[k] == '\t')
+                printf(" / ");
+            else
+                printf("%c", song[k]);
+        }
+        //printf("%s / ", genre); //장르 출력
+        //printf("%s / ", playtime); //재생시간 출력
+        //printf("%s / ", album_name); //앨범명 출력
+        //printf("%s\n", album_time); //앨범 출시 날짜 출력
     }
+    printf("\n\n메인화면으로 돌아가려면 아무키나 누르세요.\n");
+    _getwch();
     fclose(fp);
+    main();
 }
 
 void add_song() {
@@ -511,6 +521,7 @@ void add_song() {
         if (strcmp(genre, "클래식") * strcmp(genre, "재즈") * strcmp(genre, "팝") * strcmp(genre, "발라드") * strcmp(genre, "힙합") * strcmp(genre, "트로트") * strcmp(genre, "디스코") * strcmp(genre, "댄스") == 0 || strlen(genre) == 0) {	//맞는 입력일 경우
             strcat(genre_result, genre);	//장르 저장
         }
+
         else {		//틀린 입력일 경우
             printf("\n장르 입력이 잘못되었습니다.정확히 입력해주세요.(예시:재즈)\n");
             continue;
@@ -787,7 +798,7 @@ void get_dlt_song(char* dlt_song) { // 삭제 문자열 입력 및 생성 함수 -> 해당 문�
         return;
     }
 
-    char buffer[STRING_SIZE];   // txt파일에서 읽어올 문자열 원본
+    char buffer[STRING_SIZE*8];   // txt파일에서 읽어올 문자열 원본
     char dlt_print[STRING_SIZE];   // 노래 정보의 구분자를 '\t' 에서 ' / ' 로 바꿔 출력할 배열
     int line_number = 1; // 중복 노래 각 줄 번호를 저장할 변수
     int selected_line = 0; // 노래가 중복되지 않으면 삭제할 특정 노래의 줄을 담고, 중복되면 사용자가 선택한 번호 저장할 변수
