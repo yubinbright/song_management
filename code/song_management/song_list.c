@@ -176,6 +176,7 @@ void song_list_menu() //노래 리스트 주 메뉴
             break;
 
         case 2: //노래 추가
+            while (getchar() != '\n'); //입력 버터 비우기
             add_song();
             break;
 
@@ -319,10 +320,7 @@ void song_list_print()//노래 리스트 출력
         //printf("%s / ", album_name); //앨범명 출력
         //printf("%s\n", album_time); //앨범 출시 날짜 출력
     }
-    printf("\n\n메인화면으로 돌아가려면 아무키나 누르세요.\n");
-    _getwch();
     fclose(fp);
-    main();
 }
 
 void add_song() {

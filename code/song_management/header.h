@@ -29,6 +29,8 @@ void searchZero(const char* filename, const char* tag, const char* word);//태그 
 
 void searchWordOfTag(const char* filename, const char* tag, const char* word); //검색어 검색
 
+void searchMenu(); //노래 검색 메뉴
+
 //void playlistMenu();//플레이리스트 화면에 처음 들어갔을 때
 
 //void printPlaylist();//플레이리스트이 리스트를 출력
