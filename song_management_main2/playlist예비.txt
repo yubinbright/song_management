@@ -228,25 +228,25 @@ void addPlaylist()
 		printPlaylist();
 	}
 	//추가할 번호 지정
-	fp = fopen("Playlist_list.txt", "r");
-	int num = 0;  // 기존에 존재하는 플레이리스트 개수
-	char temp[STRING_SIZE];
-	while (fgets(temp, sizeof(temp), fp) != NULL) {
-		if (temp[0] >= '0' && temp[0] <= '9') {
-			num++;
-		}
-	}
+    rewind(fp); //파일 포인터 이동
+    int num = 0;  // 기존에 존재하는 플레이리스트 개수
+    char temp[STRING_SIZE];
+    while (fgets(temp, sizeof(temp), fp) != NULL) {
+        if (temp[0] >= '0' && temp[0] <= '9') {
+            num++;
+        }
+    }
+    fclose(fp);
 
+    fp = fopen("Playlist_list.txt", "a");
+    fprintf(fp, "\n%d. %s", num + 1, removeSpace(pName)); // 파일에 플레이리스트 추가 
+    fclose(fp);
+    // 플레이리스트 텍스트 파일 생성
+    char filename[STRING_SIZE];
+    sprintf(filename, "%s.txt", removeSpace(pName));
+    fp = fopen(filename, "a");
 
-	fp = fopen("Playlist_list.txt", "a");
-	fprintf(fp, "\n%d. %s", num + 1, removeSpace(pName)); // 파일에 플레이리스트 추가 
-
-	// 플레이리스트 텍스트 파일 생성
-	char filename[STRING_SIZE];
-	sprintf(filename, "%s.txt", removeSpace(pName));
-	fp = fopen(filename, "a");
-
-	fclose(fp);
+    fclose(fp);
 }
 
 //플레이리스트 삭제
