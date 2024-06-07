@@ -10,6 +10,10 @@ char* strltrim_space(char* s); //뒷 표준공백 제거
 char* trim_space(char* s); //앞뒤 표준공백 제거
 void duplicate_people(const char* filename, const char* people, const char* singer, const char* composer); //동명이인 확인
 int check_date(int y, int m, int d); //날짜 존재 여부 확인
+void deleteSongInPli(const char* dlt_song); //song_dltInPli를 호출하여 플레이리스트들을 방문해 하나씩 노래를 지운다.
+void song_dltInPli(const char* filename, const char* dlt_song);
+void songUpdInPli(const char* filename, const char* sourceSong, const char* destSong);
+void updatePlaylist(const char* sourceSong, const char* destSong); //sourceSong인 노래를 destSong으로 바꾼다.
 
 int IsSpace(char ch)
 {
@@ -1312,6 +1316,7 @@ void get_dlt_song(char* dlt_song) { // 삭제 문자열 입력 및 생성 함수 -> 해당 문�
 
     // dlt_song 문자열을 song_list에서 삭제하는 함수
     song_dlt("song_list.txt", dlt_song);
+    deleteSongInPli(dlt_song);
 }
 
 void song_dlt(const char* filename, const char* dlt_song) {   // dlt_song 문자열을 song_list에서 삭제하는 함수
@@ -1588,4 +1593,116 @@ void update_song(char* selected_song, int selected_line) {
     rename("temp.txt", "song_list.txt");
 
     printf("노래 정보가 수정되었습니다.\n");
+}
+
+void deleteSongInPli(const char* dlt_song)
+{
+    FILE* pliList = fopen("Playlist_list.txt", "r");
+    char buffer[STRING_SIZE];
+
+    while (fgets(buffer, STRING_SIZE, pliList))
+    {
+        int len = 0;
+        char pliName[STRING_SIZE];
+
+        strcpy(pliName, buffer);
+        len = strlen(pliName);
+        if (len > 0 && pliName[len - 1] == '\n')
+        {
+            pliName[len - 1] = '\0'; // 개행 문자를 제거
+        }
+        const char* pliFile = strcat(pliName, ".txt");
+        song_dltInPli(pliFile, dlt_song);
+    }
+    fclose(pliList);
+}
+void song_dltInPli(const char* filename, const char* dlt_song) {   // dlt_song 문자열을 song_list에서 삭제하는 함수
+    FILE* input_file = fopen(filename, "r");    // 기존 txt 파일
+    if (input_file == NULL) {
+        printf("%s파일을 찾지 못했습니다.\n", filename);
+        return;
+    }
+
+    FILE* output_file = fopen("temp.txt", "w"); // 새로 덮어씌울 txt 파일
+    if (output_file == NULL) {
+        printf("파일 생성 에러\n");
+        fclose(input_file);
+        return;
+    }
+
+    char line[STRING_SIZE];   // 기존 문자열을 담아둘 배열
+    int found = 0;  // 문자열 발견 여부 확인 변수
+
+    while (fgets(line, sizeof(line), input_file)) {
+        // 찾으려는 문자열이 포함된 행이 아닌 경우 새 파일에 쓰기
+        if (strstr(line, dlt_song) == NULL) {
+            fputs(line, output_file);
+        }
+        else {
+            found = 1; // 문자열 발견
+        }
+    }
+
+    fclose(input_file);
+    fclose(output_file);
+
+    remove(filename);   // 기존 파일 삭제
+    rename("temp.txt", filename);   // 새로 쓴 파일의 이름 변경
+}
+
+void updatePlaylist(const char* sourceSong, const char* destSong) //sourceSong인 노래를 destSong으로 바꾼다.
+{
+    FILE* pliList = fopen("Playlist_list.txt", "r");
+    char buffer[STRING_SIZE];
+
+    while (fgets(buffer, STRING_SIZE, pliList))
+    {
+        int len = 0;
+        char pliName[STRING_SIZE];
+
+        strcpy(pliName, buffer);
+        len = strlen(pliName);
+        if (len > 0 && pliName[len - 1] == '\n')
+        {
+            pliName[len - 1] = '\0'; // 개행 문자를 제거
+        }
+        const char* pliFile = strcat(pliName, ".txt");
+        songUpdInPli(pliFile, sourceSong, destSong);
+    }
+    fclose(pliList);
+}
+
+void songUpdInPli(const char* filename, const char* sourceSong, const char* destSong) {
+    FILE* input_file = fopen(filename, "r");    // 기존 txt 파일
+    if (input_file == NULL) {
+        printf("%s파일을 찾지 못했습니다.\n", filename);
+        return;
+    }
+
+    FILE* output_file = fopen("temp.txt", "w"); // 새로 덮어씌울 txt 파일
+    if (output_file == NULL) {
+        printf("파일 생성 에러\n");
+        fclose(input_file);
+        return;
+    }
+
+    char line[STRING_SIZE];   // 기존 문자열을 담아둘 배열
+    int found = 0;  // 문자열 발견 여부 확인 변수
+
+    while (fgets(line, sizeof(line), input_file)) {
+        // 찾으려는 문자열이 포함된 행이 아닌 경우 새 파일에 쓰기
+        if (strcmp(line, sourceSong) == NULL) { //문자열을 비교해서 같으면..
+            fputs(destSong, output_file); //수정된 노래를 넣어준다.
+        }
+        else
+        {
+            fputs(line, output_file); //다르면 그냥 줄을 복사해준다.
+        }
+    }
+
+    fclose(input_file);
+    fclose(output_file);
+
+    remove(filename);   // 기존 파일 삭제
+    rename("temp.txt", filename);   // 새로 쓴 파일의 이름 변경
 }
