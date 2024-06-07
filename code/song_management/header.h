@@ -19,6 +19,10 @@ void get_dlt_song(char* dlt_song);//삭제할 문자열 입력 및 생성
 
 void song_dlt(char* filename, char* dlt_song);//노래 삭제
 
+int get_upd_song(char* selected_song, int* selected_line);//노래 수정 문자열 입력 및 생성
+
+void update_song(char* selected_song, int selected_line);//노래 수정
+
 void search();// 노래 검색 함수 선언
 
 int searchSong(char* filename, char* searchWord, int found);
@@ -42,5 +46,3 @@ void searchWordOfTag(const char* filename, const char* tag, const char* word); /
 //void openPlaylist(char* playlistName);//플레이리스트 열기
 
 void add_song();//플레이리스트에 노래 추가
-
-void song_dlt(const char* filename, const char* dlt_song);
