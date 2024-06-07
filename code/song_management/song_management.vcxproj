@@ -24,6 +24,7 @@
     <ProjectGuid>{ef3486dd-f2e3-46d7-9983-672af62a05da}</ProjectGuid>
     <RootNamespace>songmanagement</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>song_management</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

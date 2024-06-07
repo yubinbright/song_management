@@ -20,7 +20,6 @@ void deleteSong(char* playlistName, char* fileName);//플레이리스트의 노래 삭제
 
 //void delName(char index[], const char* fileName);//플레이리스트 리스트에서 플레이리스트 이름을 삭제
 
-void fileArrange(FILE* fp, const char* pliName); //플리 목록의 각 플리 이름 앞에 붙은 index를 정렬해줌
 
 char* removeSpace(char* str);
 
