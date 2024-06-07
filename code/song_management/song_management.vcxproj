@@ -130,6 +130,7 @@
     <ClCompile Include="check.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="like.c" />
     <ClCompile Include="playlist.c" />
     <ClCompile Include="search.c" />
     <ClCompile Include="searchInPli.c" />

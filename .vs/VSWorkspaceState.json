@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\code",
+    "\\code\\song_management"
   ],
+  "SelectedNode": "\\code\\song_management\\song_list.c",
   "PreviewInSolutionExplorer": false
 }
