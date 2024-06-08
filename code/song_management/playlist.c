@@ -450,7 +450,7 @@ void addSongInPli(char pliName[])//플레이리스트의 이름을 받음
 							//fputs("\n", playlist);
 
 							fclose(playlist);
-							FILE* fp = fopen(pliName, "r"); //파일 내 커서의 위치를 초기화
+							fclose(songList);
 							//fileArrange(playlist, pliName); //번호를 정렬
 
 							break; // 찾은 후에는 더 이상 반복할 필요가 없으므로 반복문을 종료

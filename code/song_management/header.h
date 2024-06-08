@@ -19,9 +19,9 @@ void get_dlt_song(char* dlt_song);//삭제할 문자열 입력 및 생성
 
 void song_dlt(char* filename, char* dlt_song);//노래 삭제
 
-int get_upd_song(char* selected_song, int* selected_line);//노래 수정 문자열 입력 및 생성
+int get_upd_song(char* selected_song, int* selected_line, char* songToChange);//노래 수정 문자열 입력 및 생성
 
-void update_song(char* selected_song, int selected_line);//노래 수정
+int update_song(char* selected_song, int selected_line, char* songToChange, char* updatedSong);//노래 수정
 
 void search();// 노래 검색 함수 선언
 

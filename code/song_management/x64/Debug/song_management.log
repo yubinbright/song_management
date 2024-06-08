@@ -1,7 +1,77 @@
-﻿  playlist.c
+﻿  check.c
+C:\전기프1\song_management\code\song_management\check.c(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\전기프1\song_management\code\song_management\header.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  like.c
+C:\전기프1\song_management\code\song_management\header.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\전기프1\song_management\code\song_management\like.c(60,13): warning C4098: 'like_menu': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\like.c(63,5): warning C4098: 'like_menu': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\like.c(73,15): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\전기프1\song_management\code\song_management\like.c(178,38): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(189,30): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(207,43): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(218,35): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(236,44): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(247,36): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(281,13): warning C4098: 'push_like': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\like.c(289,5): warning C4098: 'push_like': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\like.c(256,92): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\전기프1\song_management\code\song_management\like.c(294,15): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\전기프1\song_management\code\song_management\like.c(394,46): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(405,38): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(423,51): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(434,43): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(452,52): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(463,44): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\like.c(486,5): warning C4098: 'like_song_print': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\like.c(472,100): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  playlist.c
 C:\전기프1\song_management\code\song_management\playlist.c(137,9): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\전기프1\song_management\code\song_management\playlist.c(199,3): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
 C:\전기프1\song_management\code\song_management\playlist.c(314,12): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\전기프1\song_management\code\song_management\playlist.c(380,9): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\전기프1\song_management\code\song_management\playlist.c(483,9): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  search.c
+C:\전기프1\song_management\code\song_management\header.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\전기프1\song_management\code\song_management\search.c(21,6): warning C4030: 첫째 정식 매개 변수 목록이 둘째 목록보다 깁니다.
+C:\전기프1\song_management\code\song_management\search.c(23,6): warning C4030: 첫째 정식 매개 변수 목록이 둘째 목록보다 깁니다.
+C:\전기프1\song_management\code\song_management\search.c(116,110): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\전기프1\song_management\code\song_management\search.c(133,9): warning C4101: 'goback' :참조되지 않은 지역 변수입니다.
+C:\전기프1\song_management\code\song_management\search.c(222,180): warning C4474: 'sscanf' : 서식 문자열에 전달된 인수가 너무 많습니다.
+C:\전기프1\song_management\code\song_management\search.c(247,180): warning C4474: 'sscanf' : 서식 문자열에 전달된 인수가 너무 많습니다.
+C:\전기프1\song_management\code\song_management\search.c(283,5): warning C4013: 'main'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\전기프1\song_management\code\song_management\search.c(261,110): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  song_list.c
+C:\전기프1\song_management\code\song_management\header.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\전기프1\song_management\code\song_management\song_list.c(164,70): warning C4020: 'strcpy': 실제 매개 변수가 너무 많습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(280,12): warning C4090: '함수': 'const' 한정자가 서로 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(351,13): warning C4098: 'song_list_menu': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(395,38): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(406,30): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(424,43): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(435,35): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(453,44): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(464,36): warning C4047: '==': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(473,92): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(515,9): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\전기프1\song_management\code\song_management\song_list.c(541,21): warning C4098: 'add_song': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(588,21): warning C4098: 'add_song': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(703,21): warning C4098: 'add_song': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(816,21): warning C4098: 'add_song': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(907,34): warning C4098: 'add_song': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(931,37): warning C4098: 'add_song': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1062,21): warning C4098: 'add_song': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1098,41): warning C4098: 'add_song': 'void' 함수에서 값을 반환하고 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1331,27): warning C4028: 정식 매개 변수 1이(가) 선언과 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1331,49): warning C4028: 정식 매개 변수 2이(가) 선언과 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1560,13): warning C4033: 'update_song'은(는) 값을 반환해야 합니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1572,9): warning C4033: 'update_song'은(는) 값을 반환해야 합니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1630,15): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1679,12): warning C4047: '함수': 'char *'의 간접 참조 수준이 'char *[256]'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1679,12): warning C4024: 'strcpy': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1686,15): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1692,43): warning C4047: '함수': 'const char *'의 간접 참조 수준이 'char *[256]'과(와) 다릅니다.
+C:\전기프1\song_management\code\song_management\song_list.c(1692,43): warning C4024: 'songUpdInPli': 형식 및 실제 매개 변수 3의 형식이 서로 다릅니다.
+  코드를 생성하고 있습니다...
+C:\전기프1\song_management\code\song_management\song_list.c(1617,1): warning C4715: 'update_song': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\전기프1\song_management\code\song_management\like.c(313,1): warning C4715: 'getLastNumber': 모든 제어 경로에서 값을 반환하지는 않습니다.
   song_management.vcxproj -> C:\전기프1\song_management\code\x64\Debug\song_management.exe

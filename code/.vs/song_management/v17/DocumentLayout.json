@@ -3,32 +3,36 @@
   "WorkspaceRootPath": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\playlist.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\playlist.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\song_list.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\song_list.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\song.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\song.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\Playlist_list.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\Playlist_list.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\\uD1F4\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\\uD1F4\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\\uCD9C\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\\uCD9C\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\song_list.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\song_list.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\\uC0B0\uCC45\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\\uC0B0\uCC45\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\song_list.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\song_list.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\\uCD9C\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\\uCD9C\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\Playlist_list.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\Playlist_list.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\song.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\song.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\header.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\header.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\playlist.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EF3486DD-F2E3-46D7-9983-672AF62A05DA}|song_management\\song_management.vcxproj|solutionrelative:song_management\\playlist.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,50 +42,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
+              "Title": "header.h",
+              "DocumentMoniker": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\header.h",
+              "RelativeDocumentMoniker": "song_management\\header.h",
+              "ToolTip": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\header.h",
+              "RelativeToolTip": "song_management\\header.h",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABcAAABmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-08T16:46:36.769Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "song_list.txt",
+              "DocumentMoniker": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\song_list.txt",
+              "RelativeDocumentMoniker": "song_management\\song_list.txt",
+              "ToolTip": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\song_list.txt",
+              "RelativeToolTip": "song_management\\song_list.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-06-08T15:44:59.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "playlist.c",
               "DocumentMoniker": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\playlist.c",
               "RelativeDocumentMoniker": "song_management\\playlist.c",
               "ToolTip": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\playlist.c",
               "RelativeToolTip": "song_management\\playlist.c",
-              "ViewState": "AQIAAF0AAAAAAAAAAAAAAAoAAAAOAAAA",
+              "ViewState": "AQIAAH8AAAAAAAAAAIA3wIsAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-06-07T14:09:59.67Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-07T14:09:59.67Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "song.c",
               "DocumentMoniker": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\song.c",
               "RelativeDocumentMoniker": "song_management\\song.c",
               "ToolTip": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\song.c",
               "RelativeToolTip": "song_management\\song.c",
-              "ViewState": "AQIAABwAAAAAAAAAAAAvwCoAAAAAAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAIA3wCIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-06-07T14:11:02.167Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-07T14:11:02.167Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "\uD1F4\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
-              "DocumentMoniker": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\\uD1F4\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
-              "RelativeDocumentMoniker": "song_management\\\uD1F4\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
-              "ToolTip": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\\uD1F4\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
-              "RelativeToolTip": "song_management\\\uD1F4\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-06-07T14:09:15.735Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "\uCD9C\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
               "DocumentMoniker": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\\uCD9C\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
               "RelativeDocumentMoniker": "song_management\\\uCD9C\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
@@ -89,25 +103,23 @@
               "RelativeToolTip": "song_management\\\uCD9C\uADFC\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-06-07T14:09:12.696Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-07T14:09:12.696Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "\uC0B0\uCC45\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
               "DocumentMoniker": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\\uC0B0\uCC45\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
               "RelativeDocumentMoniker": "song_management\\\uC0B0\uCC45\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
               "ToolTip": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\\uC0B0\uCC45\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
               "RelativeToolTip": "song_management\\\uC0B0\uCC45\uAE38 \uD50C\uB808\uC774\uB9AC\uC2A4\uD2B8.txt",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-06-07T14:09:08.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-07T14:09:08.83Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Playlist_list.txt",
               "DocumentMoniker": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\Playlist_list.txt",
               "RelativeDocumentMoniker": "song_management\\Playlist_list.txt",
@@ -115,18 +127,17 @@
               "RelativeToolTip": "song_management\\Playlist_list.txt",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-06-07T14:09:03.253Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-07T14:09:03.253Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "song_list.c",
               "DocumentMoniker": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\song_list.c",
               "RelativeDocumentMoniker": "song_management\\song_list.c",
               "ToolTip": "C:\\\uC804\uAE30\uD5041\\song_management\\code\\song_management\\song_list.c",
               "RelativeToolTip": "song_management\\song_list.c",
-              "ViewState": "AQIAAEAGAAAAAAAAAAAowJEGAAArAAAA",
+              "ViewState": "AQIAABsBAAAAAAAAAIA3wCgBAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-06-07T14:02:09.08Z",
               "EditorCaption": ""

@@ -299,12 +299,17 @@ int check_date(int y, int m, int d) {
 
 void song_list_menu() //노래 리스트 주 메뉴
 {
-    char input_text[STRING_SIZE];   //삭제할 문자열(노래)이 들어갈 배열
-    char selected_song[STRING_SIZE];    //수정할 문자열(노래)이 들어갈 배열
-    int selected_line;  // txt파일에서 수정할 문자열의 줄
     int mode, err = 0;
+
     while (1)
     {
+        char input_text[STRING_SIZE] = {0,};   //삭제할 문자열(노래)이 들어갈 배열
+        char selected_song[STRING_SIZE] = { 0, };    //수정할 문자열(노래)이 들어갈 배열
+        char songToChange[STRING_SIZE] = { 0, };
+        char updatedSong[STRING_SIZE];
+        //char* updatedSong = (char*)malloc(strlen(songToChange) + 1);
+        int selected_line;  // txt파일에서 수정할 문자열의 줄
+
         if (err == 0) //입력 조건에 맞았을 때
         {
             printf("\n원하는 메뉴를 선택하세요.\n\n");
@@ -335,9 +340,13 @@ void song_list_menu() //노래 리스트 주 메뉴
             get_dlt_song(input_text); //삭제 문자열 입력 및 생성 후 삭제
             break;
         case 4:
-            if (get_upd_song(selected_song, &selected_line)) {  // get_upd_song 성공적으로 실행되면 1을 반환함
-                update_song(selected_song, selected_line);
+            if (get_upd_song(selected_song, &selected_line, songToChange)) {  // get_upd_song 성공적으로 실행되면 1을 반환함
+                fflush(stdin);
+                update_song(selected_song, selected_line, songToChange, updatedSong);
+                updatePlaylist(songToChange, updatedSong);
+         
             }
+            break;
         case 0: //뒤로 가기
             return 0;
             break;
@@ -1366,9 +1375,10 @@ void song_dlt(const char* filename, const char* dlt_song) {   // dlt_song 문자열
     rename("temp.txt", filename);   // 새로 쓴 파일의 이름 변경
 }
 
-int get_upd_song(char* selected_song, int* selected_line) {
+int get_upd_song(char* selected_song, int* selected_line, char* songToChange) {
     char upd_songname[STRING_SIZE];
     char upd_singer[STRING_SIZE];
+
     int upd_line_number_check[MAX_SIZE] = { 0 };
     int upd_line_num = 0;
 
@@ -1475,6 +1485,8 @@ int get_upd_song(char* selected_song, int* selected_line) {
     while (fgets(upd_buffer, STRING_SIZE, upd_file) != NULL) {
         if (upd_line_number == *selected_line) {
             strcpy(selected_song, upd_buffer);
+            strcpy(songToChange, upd_buffer);
+
             break;
         }
         upd_line_number++;
@@ -1484,7 +1496,7 @@ int get_upd_song(char* selected_song, int* selected_line) {
     return 1;
 }
 
-void update_song(char* selected_song, int selected_line) {
+int update_song(char* selected_song, int selected_line, char* songToChange, char* updatedSong) {
     printf("\n(태그 = 제목/가수/작곡가/장르/재생시간/앨범명/앨범출시날짜)\n");
     printf("수정할 노래의 태그를 선택하세요 (0 입력 시 뒤로가기): ");
 
@@ -1560,8 +1572,10 @@ void update_song(char* selected_song, int selected_line) {
         return;
     }
 
-    char line[STRING_SIZE];
+    char line[STRING_SIZE] = { 0, };
     int line_num = 1;
+    char upSong[STRING_SIZE] = { 0, };
+
     while (fgets(line, STRING_SIZE, upd_file) != NULL) {
         if (line_num == selected_line) {
             char* tokens[10]; // Adjust the size based on the number of columns
@@ -1572,11 +1586,13 @@ void update_song(char* selected_song, int selected_line) {
                 token = strtok(NULL, "\t");
             }
             tokens[upd_num] = upd_str;
-
+            upSong[0] = '\0';
             for (int j = 0; j < i; j++) {
                 fprintf(temp_file, "%s", tokens[j]);
+                strcat(upSong, tokens[j]);
                 if (j < i - 1) {
                     fprintf(temp_file, "\t");
+                    strcat(upSong, "\t");
                 }
             }
         }
@@ -1585,12 +1601,17 @@ void update_song(char* selected_song, int selected_line) {
         }
         line_num++;
     }
+    strcat(upSong, "\0");
 
     fclose(upd_file);
     fclose(temp_file);
 
     remove("song_list.txt");
     rename("temp.txt", "song_list.txt");
+
+    fflush(stdin);
+
+    strcpy(updatedSong, upSong);
 
     printf("노래 정보가 수정되었습니다.\n");
 }
@@ -1654,7 +1675,8 @@ void updatePlaylist(const char* sourceSong, const char* destSong) //sourceSong인
 {
     FILE* pliList = fopen("Playlist_list.txt", "r");
     char buffer[STRING_SIZE];
-
+    char* updatedSong[STRING_SIZE];
+    strcpy(updatedSong, destSong);
     while (fgets(buffer, STRING_SIZE, pliList))
     {
         int len = 0;
@@ -1667,7 +1689,7 @@ void updatePlaylist(const char* sourceSong, const char* destSong) //sourceSong인
             pliName[len - 1] = '\0'; // 개행 문자를 제거
         }
         const char* pliFile = strcat(pliName, ".txt");
-        songUpdInPli(pliFile, sourceSong, destSong);
+        songUpdInPli(pliFile, sourceSong, updatedSong);
     }
     fclose(pliList);
 }
@@ -1691,12 +1713,12 @@ void songUpdInPli(const char* filename, const char* sourceSong, const char* dest
 
     while (fgets(line, sizeof(line), input_file)) {
         // 찾으려는 문자열이 포함된 행이 아닌 경우 새 파일에 쓰기
-        if (strcmp(line, sourceSong) == NULL) { //문자열을 비교해서 같으면..
-            fputs(destSong, output_file); //수정된 노래를 넣어준다.
+        if (strstr(line, sourceSong) == NULL) { //문자열을 비교해서 같으면..
+            fputs(line, output_file); //다르면 그냥 줄을 복사해준다.
         }
         else
         {
-            fputs(line, output_file); //다르면 그냥 줄을 복사해준다.
+            fputs(destSong, output_file);
         }
     }
 
