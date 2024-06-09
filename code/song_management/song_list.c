@@ -1497,7 +1497,7 @@ int get_upd_song(char* selected_song, int* selected_line, char* songToChange) {
 }
 
 int update_song(char* selected_song, int selected_line, char* songToChange, char* updatedSong) {
-    printf("\n(태그 = 제목/가수/작곡가/장르/재생시간/앨범명/앨범출시날짜)\n");
+    printf("\n(태그 = 제목/가수/작곡가/작사가/장르/재생시간/앨범명/앨범출시날짜)\n");
     printf("수정할 노래의 태그를 선택하세요 (0 입력 시 뒤로가기): ");
 
     char upd_tag[STRING_SIZE];
