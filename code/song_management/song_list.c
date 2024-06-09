@@ -1,29 +1,29 @@
 #include "header.h"
 
-int IsSpace(char ch); //°ø¹é È®ÀÎ
-char* strrtrim(char* s); //¾Õ °ø¹é Á¦°Å
-char* strltrim(char* s); //µŞ °ø¹é Á¦°Å
-char* trim(char* s); //¾ÕµÚ °ø¹é Á¦°Å
-int onlySpace(char ch); //Ç¥ÁØ°ø¹é È®ÀÎ
-char* strrtrim_space(char* s); //¾Õ Ç¥ÁØ°ø¹é Á¦°Å
-char* strltrim_space(char* s); //µŞ Ç¥ÁØ°ø¹é Á¦°Å
-char* trim_space(char* s); //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-void duplicate_people(const char* filename, const char* people, const char* singer, const char* composer); //µ¿¸íÀÌÀÎ È®ÀÎ
-int check_date(int y, int m, int d); //³¯Â¥ Á¸Àç ¿©ºÎ È®ÀÎ
-void deleteSongInPli(const char* dlt_song); //song_dltInPli¸¦ È£ÃâÇÏ¿© ÇÃ·¹ÀÌ¸®½ºÆ®µéÀ» ¹æ¹®ÇØ ÇÏ³ª¾¿ ³ë·¡¸¦ Áö¿î´Ù.
+int IsSpace(char ch); //ê³µë°± í™•ì¸
+char* strrtrim(char* s); //ì• ê³µë°± ì œê±°
+char* strltrim(char* s); //ë’· ê³µë°± ì œê±°
+char* trim(char* s); //ì•ë’¤ ê³µë°± ì œê±°
+int onlySpace(char ch); //í‘œì¤€ê³µë°± í™•ì¸
+char* strrtrim_space(char* s); //ì• í‘œì¤€ê³µë°± ì œê±°
+char* strltrim_space(char* s); //ë’· í‘œì¤€ê³µë°± ì œê±°
+char* trim_space(char* s); //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+void duplicate_people(const char* filename, const char* people, const char* singer, const char* composer); //ë™ëª…ì´ì¸ í™•ì¸
+int check_date(int y, int m, int d); //ë‚ ì§œ ì¡´ì¬ ì—¬ë¶€ í™•ì¸
+void deleteSongInPli(const char* dlt_song); //song_dltInPlië¥¼ í˜¸ì¶œí•˜ì—¬ í”Œë ˆì´ë¦¬ìŠ¤íŠ¸ë“¤ì„ ë°©ë¬¸í•´ í•˜ë‚˜ì”© ë…¸ë˜ë¥¼ ì§€ìš´ë‹¤.
 void song_dltInPli(const char* filename, const char* dlt_song);
 void songUpdInPli(const char* filename, const char* sourceSong, const char* destSong);
-void updatePlaylist(const char* sourceSong, const char* destSong); //sourceSongÀÎ ³ë·¡¸¦ destSongÀ¸·Î ¹Ù²Û´Ù.
+void updatePlaylist(const char* sourceSong, const char* destSong); //sourceSongì¸ ë…¸ë˜ë¥¼ destSongìœ¼ë¡œ ë°”ê¾¼ë‹¤.
 
 int IsSpace(char ch)
 {
-    if (ch < 0)  // À½¼öÀÎ°æ¿ì ÇÑ±Û·Î °£ÁÖ
+    if (ch < 0)  // ìŒìˆ˜ì¸ê²½ìš° í•œê¸€ë¡œ ê°„ì£¼
         return 0;
     else
         return isspace(ch);
 }
 
-char* strrtrim(char* s)   //µŞ °ø¹é Á¦°Å
+char* strrtrim(char* s)   //ë’· ê³µë°± ì œê±°
 {
     char* t;
 
@@ -34,7 +34,7 @@ char* strrtrim(char* s)   //µŞ °ø¹é Á¦°Å
     return s;
 }
 
-char* strltrim(char* s)   //¾Õ °ø¹é Á¦°Å
+char* strltrim(char* s)   //ì• ê³µë°± ì œê±°
 {
     char* t;
     char* e;
@@ -49,7 +49,7 @@ char* strltrim(char* s)   //¾Õ °ø¹é Á¦°Å
     return s;
 }
 
-char* trim(char* s)   //¾ÕµÚ °ø¹é Á¦°Å
+char* trim(char* s)   //ì•ë’¤ ê³µë°± ì œê±°
 {
     strltrim(s);
     strrtrim(s);
@@ -57,16 +57,16 @@ char* trim(char* s)   //¾ÕµÚ °ø¹é Á¦°Å
     return s;
 }
 
-int onlySpace(char ch)  //Ç¥ÁØ°ø¹é È®ÀÎ
+int onlySpace(char ch)  //í‘œì¤€ê³µë°± í™•ì¸
 {
 
-    if (ch < 0)  // À½¼öÀÎ°æ¿ì ÇÑ±Û·Î °£ÁÖ
+    if (ch < 0)  // ìŒìˆ˜ì¸ê²½ìš° í•œê¸€ë¡œ ê°„ì£¼
         return 0;
     else
         return ch == ' ';
 }
 
-char* strrtrim_space(char* s)   //µŞ Ç¥ÁØ°ø¹é Á¦°Å
+char* strrtrim_space(char* s)   //ë’· í‘œì¤€ê³µë°± ì œê±°
 {
     char* t;
 
@@ -77,7 +77,7 @@ char* strrtrim_space(char* s)   //µŞ Ç¥ÁØ°ø¹é Á¦°Å
     return s;
 }
 
-char* strltrim_space(char* s)   //¾Õ Ç¥ÁØ°ø¹é Á¦°Å
+char* strltrim_space(char* s)   //ì• í‘œì¤€ê³µë°± ì œê±°
 {
     char* t;
     char* e;
@@ -92,7 +92,7 @@ char* strltrim_space(char* s)   //¾Õ Ç¥ÁØ°ø¹é Á¦°Å
     return s;
 }
 
-char* trim_space(char* s)   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
+char* trim_space(char* s)   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
 {
     strltrim_space(s);
     strrtrim_space(s);
@@ -103,54 +103,54 @@ char* trim_space(char* s)   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
 void duplicate_people(const char* filename, const char* people, const char* singer, const char* composer) {
     FILE* file = fopen(filename, "r");
     if (file == NULL) {
-        fprintf(stderr, "ÆÄÀÏÀ» ¿­ ¼ö ¾ø½À´Ï´Ù: %s\n", filename);
+        fprintf(stderr, "íŒŒì¼ì„ ì—´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤: %s\n", filename);
         return;
     }
 
-    char d_line[256]; // txt¿¡¼­ °¢ ÁÙÀ» ÀĞ±â À§ÇÑ ¹öÆÛ
-    char dupli_peoples[256][256]; // index¿Í ÇÔ²² Áßº¹µÈ »ç¶÷ ÀúÀå ¹è¿­
-    int people_count = 0; // Áßº¹µÈ »ç¶÷ ¼ö
-    int is_duplicate; // Áßº¹ ¿©ºÎ È®ÀÎ
+    char d_line[256]; // txtì—ì„œ ê° ì¤„ì„ ì½ê¸° ìœ„í•œ ë²„í¼
+    char dupli_peoples[256][256]; // indexì™€ í•¨ê»˜ ì¤‘ë³µëœ ì‚¬ëŒ ì €ì¥ ë°°ì—´
+    int people_count = 0; // ì¤‘ë³µëœ ì‚¬ëŒ ìˆ˜
+    int is_duplicate; // ì¤‘ë³µ ì—¬ë¶€ í™•ì¸
 
-    while (fgets(d_line, sizeof(d_line), file)) { // txtÆÄÀÏÀÇ °¢ ÁÙ d_line¿¡ ÀúÀå
-        char* tab_pos_q = strchr(d_line, '\t');   //¾Õ ÅÇÅ°
-        char* tab_pos_p = strchr(tab_pos_q + 1, '\t');   //µÚ ÅÇÅ°
+    while (fgets(d_line, sizeof(d_line), file)) { // txtíŒŒì¼ì˜ ê° ì¤„ d_lineì— ì €ì¥
+        char* tab_pos_q = strchr(d_line, '\t');   //ì• íƒ­í‚¤
+        char* tab_pos_p = strchr(tab_pos_q + 1, '\t');   //ë’¤ íƒ­í‚¤
         char dupli_words[STRING_SIZE] = "";
-        strncpy(dupli_words, tab_pos_q + 1, tab_pos_p - tab_pos_q - 1);   //°¡¼ö ´ã°ÜÁø »óÅÂ
-        //      printf("%s\n", dupli_words);   //(°Ë»ç)
+        strncpy(dupli_words, tab_pos_q + 1, tab_pos_p - tab_pos_q - 1);   //ê°€ìˆ˜ ë‹´ê²¨ì§„ ìƒíƒœ
+        //      printf("%s\n", dupli_words);   //(ê²€ì‚¬)
 
-        for (int i = 0; i < 3; i++) {   //°¡¼ö, ÀÛ°î°¡, ÀÛ»ç°¡ Â÷·Ê·Î È®ÀÎ
-            char* dupli_word = strtok(dupli_words, ",");   // ,¸¦ ±¸ºĞÀÚ·Î ²÷¾î dupli_word¿¡ ÀúÀå
+        for (int i = 0; i < 3; i++) {   //ê°€ìˆ˜, ì‘ê³¡ê°€, ì‘ì‚¬ê°€ ì°¨ë¡€ë¡œ í™•ì¸
+            char* dupli_word = strtok(dupli_words, ",");   // ,ë¥¼ êµ¬ë¶„ìë¡œ ëŠì–´ dupli_wordì— ì €ì¥
             while (dupli_word != NULL) {
-                dupli_word = trim(dupli_word);   //¾ÕµÚ °ø¹é Á¦°Å
-                char* pipe_pos = strchr(dupli_word, '|'); // '|' À§Ä¡ Ã£±â
+                dupli_word = trim(dupli_word);   //ì•ë’¤ ê³µë°± ì œê±°
+                char* pipe_pos = strchr(dupli_word, '|'); // '|' ìœ„ì¹˜ ì°¾ê¸°
 
                 if (pipe_pos != NULL) {
-                    *pipe_pos = '\0'; // '|' ÀÌÀüÀÇ ¹®ÀÚ¿­ ÃßÃâ
-                    char extra[256] = ""; // '|' ÀÌÈÄÀÇ ¹®ÀÚ¿­ ÀúÀå
+                    *pipe_pos = '\0'; // '|' ì´ì „ì˜ ë¬¸ìì—´ ì¶”ì¶œ
+                    char extra[256] = ""; // '|' ì´í›„ì˜ ë¬¸ìì—´ ì €ì¥
 
-                    char* after_pipe = pipe_pos + 1; // '|' ÀÌÈÄÀÇ ½ÃÀÛ À§Ä¡
-                    char* next_comma_pos = strchr(after_pipe, ',');   //´ÙÀ½ ',' À§Ä¡ Ã£±â
+                    char* after_pipe = pipe_pos + 1; // '|' ì´í›„ì˜ ì‹œì‘ ìœ„ì¹˜
+                    char* next_comma_pos = strchr(after_pipe, ',');   //ë‹¤ìŒ ',' ìœ„ì¹˜ ì°¾ê¸°
                     if (next_comma_pos != NULL) {
-                        *next_comma_pos = '\0'; // ',' ÀÌÈÄ Á¦°Å      
+                        *next_comma_pos = '\0'; // ',' ì´í›„ ì œê±°      
                     }
-                    after_pipe = trim(after_pipe);   //¾ÕµÚ °ø¹é Á¦°Å
-                    strcpy(extra, after_pipe); // '|' ÀÌÈÄÀÇ ¹®ÀÚ¿­ ÀúÀå
+                    after_pipe = trim(after_pipe);   //ì•ë’¤ ê³µë°± ì œê±°
+                    strcpy(extra, after_pipe); // '|' ì´í›„ì˜ ë¬¸ìì—´ ì €ì¥
 
-                    if (strcmp(dupli_word, people) == 0) { // '|'ÀÌÀüÀÇ ¹®ÀÚ¿­ÀÌ ÀÔ·ÂÇÑ °¡¼ö¿Í ÀÏÄ¡ÇÏ¸é
+                    if (strcmp(dupli_word, people) == 0) { // '|'ì´ì „ì˜ ë¬¸ìì—´ì´ ì…ë ¥í•œ ê°€ìˆ˜ì™€ ì¼ì¹˜í•˜ë©´
                         strcat(dupli_word, "|");
-                        strcat(dupli_word, extra);  //dupli_word¿¡ '|' ÀÌÈÄ ¹®ÀÚ¿­ Ãß°¡
+                        strcat(dupli_word, extra);  //dupli_wordì— '|' ì´í›„ ë¬¸ìì—´ ì¶”ê°€
 
-                        // Áßº¹ ¿©ºÎ È®ÀÎ
+                        // ì¤‘ë³µ ì—¬ë¶€ í™•ì¸
                         is_duplicate = 0;
                         for (int i = 0; i < people_count; i++) {
-                            if (strcmp(dupli_peoples[i], dupli_word) == 0) { // Áßº¹ È®ÀÎ
-                                is_duplicate = 1;   //Áßº¹ÀÌ¶ó¸é
+                            if (strcmp(dupli_peoples[i], dupli_word) == 0) { // ì¤‘ë³µ í™•ì¸
+                                is_duplicate = 1;   //ì¤‘ë³µì´ë¼ë©´
                                 break;
                             }
                         }
 
-                        if (is_duplicate == 0) { // Áßº¹ÀÌ ¾Æ´Ï¸é ÀúÀå
+                        if (is_duplicate == 0) { // ì¤‘ë³µì´ ì•„ë‹ˆë©´ ì €ì¥
                             strcpy(dupli_peoples[people_count], dupli_word);
                             people_count++;
                         }
@@ -159,47 +159,47 @@ void duplicate_people(const char* filename, const char* people, const char* sing
                 dupli_word = strtok(NULL, ",");
             }
 
-            tab_pos_q = tab_pos_p;   //¾Õ ÅÇÅ°
-            tab_pos_p = strchr(tab_pos_q + 1, '\t');   //µÚ ÅÇÅ°
-            strcpy(dupli_words, tab_pos_q + 1, tab_pos_p - tab_pos_q - 1);   //ÀÛ°î°¡ ´ã°ÜÁø »óÅÂ > ÀÛ»ç°¡ ´ã°ÜÁø »óÅÂ
-            dupli_words[tab_pos_p - tab_pos_q - 1] = '\0';   //À¯È¿ÇÑ ¹®ÀÚ¿­±îÁö¸¸ ÀÚ¸£±â
+            tab_pos_q = tab_pos_p;   //ì• íƒ­í‚¤
+            tab_pos_p = strchr(tab_pos_q + 1, '\t');   //ë’¤ íƒ­í‚¤
+            strcpy(dupli_words, tab_pos_q + 1, tab_pos_p - tab_pos_q - 1);   //ì‘ê³¡ê°€ ë‹´ê²¨ì§„ ìƒíƒœ > ì‘ì‚¬ê°€ ë‹´ê²¨ì§„ ìƒíƒœ
+            dupli_words[tab_pos_p - tab_pos_q - 1] = '\0';   //ìœ íš¨í•œ ë¬¸ìì—´ê¹Œì§€ë§Œ ìë¥´ê¸°
         }
     }
 
-    if (strlen(singer) != 0) {  //Ãß°¡ ÁßÀÎ °¡¼ö È®ÀÎ
+    if (strlen(singer) != 0) {  //ì¶”ê°€ ì¤‘ì¸ ê°€ìˆ˜ í™•ì¸
         char dupli_words[STRING_SIZE] = "";
         strcpy(dupli_words, singer);
-        char* dupli_word = strtok(dupli_words, ",");   // ,¸¦ ±¸ºĞÀÚ·Î ²÷¾î dupli_word¿¡ ÀúÀå
+        char* dupli_word = strtok(dupli_words, ",");   // ,ë¥¼ êµ¬ë¶„ìë¡œ ëŠì–´ dupli_wordì— ì €ì¥
         while (dupli_word != NULL) {
-            trim(dupli_word);   //¾ÕµÚ °ø¹é Á¦°Å
-            char* pipe_pos = strchr(dupli_word, '|'); // '|' À§Ä¡ Ã£±â
+            trim(dupli_word);   //ì•ë’¤ ê³µë°± ì œê±°
+            char* pipe_pos = strchr(dupli_word, '|'); // '|' ìœ„ì¹˜ ì°¾ê¸°
 
             if (pipe_pos != NULL) {
-                *pipe_pos = '\0'; // '|' ÀÌÀüÀÇ ¹®ÀÚ¿­ ÃßÃâ
-                char extra[256] = ""; // '|' ÀÌÈÄÀÇ ¹®ÀÚ¿­ ÀúÀå
+                *pipe_pos = '\0'; // '|' ì´ì „ì˜ ë¬¸ìì—´ ì¶”ì¶œ
+                char extra[256] = ""; // '|' ì´í›„ì˜ ë¬¸ìì—´ ì €ì¥
 
-                char* after_pipe = pipe_pos + 1; // '|' ÀÌÈÄÀÇ ½ÃÀÛ À§Ä¡
-                char* next_comma_pos = strchr(after_pipe, ',');   //´ÙÀ½ ',' À§Ä¡ Ã£±â
+                char* after_pipe = pipe_pos + 1; // '|' ì´í›„ì˜ ì‹œì‘ ìœ„ì¹˜
+                char* next_comma_pos = strchr(after_pipe, ',');   //ë‹¤ìŒ ',' ìœ„ì¹˜ ì°¾ê¸°
                 if (next_comma_pos != NULL) {
-                    *next_comma_pos = '\0'; // ',' ÀÌÈÄ Á¦°Å      
+                    *next_comma_pos = '\0'; // ',' ì´í›„ ì œê±°      
                 }
-                after_pipe = trim(after_pipe);   //¾ÕµÚ °ø¹é Á¦°Å
-                strcpy(extra, after_pipe); // '|' ÀÌÈÄÀÇ ¹®ÀÚ¿­ ÀúÀå
+                after_pipe = trim(after_pipe);   //ì•ë’¤ ê³µë°± ì œê±°
+                strcpy(extra, after_pipe); // '|' ì´í›„ì˜ ë¬¸ìì—´ ì €ì¥
 
-                if (strcmp(dupli_word, people) == 0) { // '|'ÀÌÀüÀÇ ¹®ÀÚ¿­ÀÌ ÀÔ·ÂÇÑ °¡¼ö¿Í ÀÏÄ¡ÇÏ¸é
+                if (strcmp(dupli_word, people) == 0) { // '|'ì´ì „ì˜ ë¬¸ìì—´ì´ ì…ë ¥í•œ ê°€ìˆ˜ì™€ ì¼ì¹˜í•˜ë©´
                     strcat(dupli_word, "|");
-                    strcat(dupli_word, extra);  //dupli_word¿¡ '|' ÀÌÈÄ ¹®ÀÚ¿­ Ãß°¡
+                    strcat(dupli_word, extra);  //dupli_wordì— '|' ì´í›„ ë¬¸ìì—´ ì¶”ê°€
 
-                    // Áßº¹ ¿©ºÎ È®ÀÎ
+                    // ì¤‘ë³µ ì—¬ë¶€ í™•ì¸
                     is_duplicate = 0;
                     for (int i = 0; i < people_count; i++) {
-                        if (strcmp(dupli_peoples[i], dupli_word) == 0) { // Áßº¹ È®ÀÎ
-                            is_duplicate = 1;   //Áßº¹ÀÌ¶ó¸é
+                        if (strcmp(dupli_peoples[i], dupli_word) == 0) { // ì¤‘ë³µ í™•ì¸
+                            is_duplicate = 1;   //ì¤‘ë³µì´ë¼ë©´
                             break;
                         }
                     }
 
-                    if (is_duplicate == 0) { // Áßº¹ÀÌ ¾Æ´Ï¸é ÀúÀå
+                    if (is_duplicate == 0) { // ì¤‘ë³µì´ ì•„ë‹ˆë©´ ì €ì¥
                         strcpy(dupli_peoples[people_count], dupli_word);
                         people_count++;
                     }
@@ -209,40 +209,40 @@ void duplicate_people(const char* filename, const char* people, const char* sing
         }
     }
 
-    if (strlen(composer) != 0) {  //Ãß°¡ ÁßÀÎ ÀÛ°î°¡ È®ÀÎ
+    if (strlen(composer) != 0) {  //ì¶”ê°€ ì¤‘ì¸ ì‘ê³¡ê°€ í™•ì¸
         char dupli_words[STRING_SIZE] = "";
         strcpy(dupli_words, composer);
-        char* dupli_word = strtok(dupli_words, ",");   // ,¸¦ ±¸ºĞÀÚ·Î ²÷¾î dupli_word¿¡ ÀúÀå
+        char* dupli_word = strtok(dupli_words, ",");   // ,ë¥¼ êµ¬ë¶„ìë¡œ ëŠì–´ dupli_wordì— ì €ì¥
         while (dupli_word != NULL) {
-            trim(dupli_word);   //¾ÕµÚ °ø¹é Á¦°Å
-            char* pipe_pos = strchr(dupli_word, '|'); // '|' À§Ä¡ Ã£±â
+            trim(dupli_word);   //ì•ë’¤ ê³µë°± ì œê±°
+            char* pipe_pos = strchr(dupli_word, '|'); // '|' ìœ„ì¹˜ ì°¾ê¸°
 
             if (pipe_pos != NULL) {
-                *pipe_pos = '\0'; // '|' ÀÌÀüÀÇ ¹®ÀÚ¿­ ÃßÃâ
-                char extra[256] = ""; // '|' ÀÌÈÄÀÇ ¹®ÀÚ¿­ ÀúÀå
+                *pipe_pos = '\0'; // '|' ì´ì „ì˜ ë¬¸ìì—´ ì¶”ì¶œ
+                char extra[256] = ""; // '|' ì´í›„ì˜ ë¬¸ìì—´ ì €ì¥
 
-                char* after_pipe = pipe_pos + 1; // '|' ÀÌÈÄÀÇ ½ÃÀÛ À§Ä¡
-                char* next_comma_pos = strchr(after_pipe, ',');   //´ÙÀ½ ',' À§Ä¡ Ã£±â
+                char* after_pipe = pipe_pos + 1; // '|' ì´í›„ì˜ ì‹œì‘ ìœ„ì¹˜
+                char* next_comma_pos = strchr(after_pipe, ',');   //ë‹¤ìŒ ',' ìœ„ì¹˜ ì°¾ê¸°
                 if (next_comma_pos != NULL) {
-                    *next_comma_pos = '\0'; // ',' ÀÌÈÄ Á¦°Å      
+                    *next_comma_pos = '\0'; // ',' ì´í›„ ì œê±°      
                 }
-                after_pipe = trim(after_pipe);   //¾ÕµÚ °ø¹é Á¦°Å
-                strcpy(extra, after_pipe); // '|' ÀÌÈÄÀÇ ¹®ÀÚ¿­ ÀúÀå
+                after_pipe = trim(after_pipe);   //ì•ë’¤ ê³µë°± ì œê±°
+                strcpy(extra, after_pipe); // '|' ì´í›„ì˜ ë¬¸ìì—´ ì €ì¥
 
-                if (strcmp(dupli_word, people) == 0) { // '|'ÀÌÀüÀÇ ¹®ÀÚ¿­ÀÌ ÀÔ·ÂÇÑ °¡¼ö¿Í ÀÏÄ¡ÇÏ¸é
+                if (strcmp(dupli_word, people) == 0) { // '|'ì´ì „ì˜ ë¬¸ìì—´ì´ ì…ë ¥í•œ ê°€ìˆ˜ì™€ ì¼ì¹˜í•˜ë©´
                     strcat(dupli_word, "|");
-                    strcat(dupli_word, extra);  //dupli_word¿¡ '|' ÀÌÈÄ ¹®ÀÚ¿­ Ãß°¡
+                    strcat(dupli_word, extra);  //dupli_wordì— '|' ì´í›„ ë¬¸ìì—´ ì¶”ê°€
 
-                    // Áßº¹ ¿©ºÎ È®ÀÎ
+                    // ì¤‘ë³µ ì—¬ë¶€ í™•ì¸
                     is_duplicate = 0;
                     for (int i = 0; i < people_count; i++) {
-                        if (strcmp(dupli_peoples[i], dupli_word) == 0) { // Áßº¹ È®ÀÎ
-                            is_duplicate = 1;   //Áßº¹ÀÌ¶ó¸é
+                        if (strcmp(dupli_peoples[i], dupli_word) == 0) { // ì¤‘ë³µ í™•ì¸
+                            is_duplicate = 1;   //ì¤‘ë³µì´ë¼ë©´
                             break;
                         }
                     }
 
-                    if (is_duplicate == 0) { // Áßº¹ÀÌ ¾Æ´Ï¸é ÀúÀå
+                    if (is_duplicate == 0) { // ì¤‘ë³µì´ ì•„ë‹ˆë©´ ì €ì¥
                         strcpy(dupli_peoples[people_count], dupli_word);
                         people_count++;
                     }
@@ -254,100 +254,100 @@ void duplicate_people(const char* filename, const char* people, const char* sing
 
     int dupli_index;
     char dupli_add[100];
-    if (people_count >= 1) {   // Áßº¹µÈ »ç¶÷ ¼ö°¡ 1°³ ÀÌ»óÀÌ¸é ÀÎµ¦½º¿Í ÇÔ²² Ãâ·Â
+    if (people_count >= 1) {   // ì¤‘ë³µëœ ì‚¬ëŒ ìˆ˜ê°€ 1ê°œ ì´ìƒì´ë©´ ì¸ë±ìŠ¤ì™€ í•¨ê»˜ ì¶œë ¥
         while (1) {
-            printf("µ¿¸íÀÌÀÎ ¾ÆÆ¼½ºÆ®°¡ Á¸ÀçÇÕ´Ï´Ù. µ¿ÀÏÇÑ ¾ÆÆ¼½ºÆ®¸¦ °ñ¶óÁÖ¼¼¿ä.\n");
-            for (int i = 0; i < people_count; i++) {    // Áßº¹µÈ »ç¶÷ Ãâ·Â
+            printf("ë™ëª…ì´ì¸ ì•„í‹°ìŠ¤íŠ¸ê°€ ì¡´ì¬í•©ë‹ˆë‹¤. ë™ì¼í•œ ì•„í‹°ìŠ¤íŠ¸ë¥¼ ê³¨ë¼ì£¼ì„¸ìš”.\n");
+            for (int i = 0; i < people_count; i++) {    // ì¤‘ë³µëœ ì‚¬ëŒ ì¶œë ¥
                 printf("%d. %s\n", i + 1, dupli_peoples[i]);
             }
-            printf("0. ¾øÀ½\n");
-            printf("ÀÔ·Â: ");
-            scanf("%d", &dupli_index);  // ¹øÈ£ ÀÔ·Â
-            while (getchar() != '\n'); //ÀÔ·Â ¹öÅÍ ºñ¿ì±â
-            if (dupli_index == 0) { // 0. ¾øÀ½ ¼±ÅÃ½Ã, »õ·Î ¹øÈ£ »ı¼º ¹× ÀúÀå
+            printf("0. ì—†ìŒ\n");
+            printf("ì…ë ¥: ");
+            scanf("%d", &dupli_index);  // ë²ˆí˜¸ ì…ë ¥
+            while (getchar() != '\n'); //ì…ë ¥ ë²„í„° ë¹„ìš°ê¸°
+            if (dupli_index == 0) { // 0. ì—†ìŒ ì„ íƒì‹œ, ìƒˆë¡œ ë²ˆí˜¸ ìƒì„± ë° ì €ì¥
                 sprintf(dupli_add, "|%d", people_count);
                 break;
             }
-            else if (dupli_index > 0 && dupli_index < people_count + 1) {   // ¼±ÅÃÇÑ »ç¶÷À¸·Î index ÀúÀå
+            else if (dupli_index > 0 && dupli_index < people_count + 1) {   // ì„ íƒí•œ ì‚¬ëŒìœ¼ë¡œ index ì €ì¥
                 sprintf(dupli_add, "|%d", dupli_index - 1);
                 break;
             }
         }
     }
     else {
-        sprintf(dupli_add, "|%d", 0);   // Áßº¹µÈ »ç¶÷ÀÌ ¾ø´Ù¸é |0 À» ºÙÀÓ
+        sprintf(dupli_add, "|%d", 0);   // ì¤‘ë³µëœ ì‚¬ëŒì´ ì—†ë‹¤ë©´ |0 ì„ ë¶™ì„
     }
-    strcat(people, dupli_add);  // ¿Ï¼ºµÈ ¹®ÀÚ¿­À» people¿¡ ÀúÀå
-    fclose(file); // ÆÄÀÏ ´İ±â
+    strcat(people, dupli_add);  // ì™„ì„±ëœ ë¬¸ìì—´ì„ peopleì— ì €ì¥
+    fclose(file); // íŒŒì¼ ë‹«ê¸°
 }
 
 int check_date(int y, int m, int d) {
-    if (y > 1907 && y <= 2024 && m >= 1 && m <= 12) {   //³â,¿ù ¹üÀ§
-        if ((y % 4) == 0 && (y % 100) != 0 || (y % 400) == 0) {   //À±³â
+    if (y > 1907 && y <= 2024 && m >= 1 && m <= 12) {   //ë…„,ì›” ë²”ìœ„
+        if ((y % 4) == 0 && (y % 100) != 0 || (y % 400) == 0) {   //ìœ¤ë…„
             int months[] = { 31,29,31,30,31,30,31,31,30,31,30,31 };
-            if (d >= 1 && d <= months[m - 1]) { return 1; }   //ÀÏ ¹üÀ§±îÁö ¸ÂÀ¸¸é TRUE
-            else { return 0; }   //Æ²¸®¸é FALSE
+            if (d >= 1 && d <= months[m - 1]) { return 1; }   //ì¼ ë²”ìœ„ê¹Œì§€ ë§ìœ¼ë©´ TRUE
+            else { return 0; }   //í‹€ë¦¬ë©´ FALSE
         }
-        else {   //Æò³â
+        else {   //í‰ë…„
             int months[] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
-            if (d >= 1 && d <= months[m - 1]) { return 1; }   //ÀÏ ¹üÀ§±îÁö ¸ÂÀ¸¸é TRUE
-            else { return 0; }   //Æ²¸®¸é FALSE
+            if (d >= 1 && d <= months[m - 1]) { return 1; }   //ì¼ ë²”ìœ„ê¹Œì§€ ë§ìœ¼ë©´ TRUE
+            else { return 0; }   //í‹€ë¦¬ë©´ FALSE
         }
     }
     else { return 0; }
 }
 
-void song_list_menu() //³ë·¡ ¸®½ºÆ® ÁÖ ¸Ş´º
+void song_list_menu() //ë…¸ë˜ ë¦¬ìŠ¤íŠ¸ ì£¼ ë©”ë‰´
 {
     int mode, err = 0;
 
     while (1)
     {
-        char input_text[STRING_SIZE] = {0,};   //»èÁ¦ÇÒ ¹®ÀÚ¿­(³ë·¡)ÀÌ µé¾î°¥ ¹è¿­
-        char selected_song[STRING_SIZE] = { 0, };    //¼öÁ¤ÇÒ ¹®ÀÚ¿­(³ë·¡)ÀÌ µé¾î°¥ ¹è¿­
+        char input_text[STRING_SIZE] = { 0, };   //ì‚­ì œí•  ë¬¸ìì—´(ë…¸ë˜)ì´ ë“¤ì–´ê°ˆ ë°°ì—´
+        char selected_song[STRING_SIZE] = { 0, };    //ìˆ˜ì •í•  ë¬¸ìì—´(ë…¸ë˜)ì´ ë“¤ì–´ê°ˆ ë°°ì—´
         char songToChange[STRING_SIZE] = { 0, };
         char updatedSong[STRING_SIZE];
         //char* updatedSong = (char*)malloc(strlen(songToChange) + 1);
-        int selected_line;  // txtÆÄÀÏ¿¡¼­ ¼öÁ¤ÇÒ ¹®ÀÚ¿­ÀÇ ÁÙ
+        int selected_line;  // txtíŒŒì¼ì—ì„œ ìˆ˜ì •í•  ë¬¸ìì—´ì˜ ì¤„
 
-        if (err == 0) //ÀÔ·Â Á¶°Ç¿¡ ¸Â¾ÒÀ» ¶§
+        if (err == 0) //ì…ë ¥ ì¡°ê±´ì— ë§ì•˜ì„ ë•Œ
         {
-            printf("\n¿øÇÏ´Â ¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä.\n\n");
+            printf("\nì›í•˜ëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”.\n\n");
         }
-        else //ÀÔ·Â Á¶°Ç¿¡ ¸ÂÁö ¾Ê¾ÒÀ» ¶§
+        else //ì…ë ¥ ì¡°ê±´ì— ë§ì§€ ì•Šì•˜ì„ ë•Œ
         {
-            printf("\nÇØ´ç ¸Ş´º´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
-            printf("¹ØÀÇ ¸Ş´º Áß ¼±ÅÃÇÏ¼¼¿ä(¿¹½Ã:1)\n\n");
+            printf("\ní•´ë‹¹ ë©”ë‰´ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
+            printf("ë°‘ì˜ ë©”ë‰´ ì¤‘ ì„ íƒí•˜ì„¸ìš”(ì˜ˆì‹œ:1)\n\n");
             err = 0;
         }
-        printf("1. ³ë·¡ ¸®½ºÆ® Ãâ·Â\n");
-        printf("2. ³ë·¡ Ãß°¡\n");
-        printf("3. ³ë·¡ »èÁ¦\n");
-        printf("4. ³ë·¡ ¼öÁ¤\n");
-        printf("0. µÚ·Î °¡±â\n");
-        printf("\n¸Ş´º ¼±ÅÃ : ");
+        printf("1. ë…¸ë˜ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥\n");
+        printf("2. ë…¸ë˜ ì¶”ê°€\n");
+        printf("3. ë…¸ë˜ ì‚­ì œ\n");
+        printf("4. ë…¸ë˜ ìˆ˜ì •\n");
+        printf("0. ë’¤ë¡œ ê°€ê¸°\n");
+        printf("\në©”ë‰´ ì„ íƒ : ");
         scanf(" %d", &mode);
-        while (getchar() != '\n'); //ÀÔ·Â ¹öÅÍ ºñ¿ì±â
+        while (getchar() != '\n'); //ì…ë ¥ ë²„í„° ë¹„ìš°ê¸°
 
         switch (mode) {
-        case 1: //³ë·¡ ¸®½ºÆ® Ãâ·Â
+        case 1: //ë…¸ë˜ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
             song_list_print();
             break;
-        case 2: //³ë·¡ Ãß°¡
+        case 2: //ë…¸ë˜ ì¶”ê°€
             add_song();
             break;
-        case 3: //³ë·¡ »èÁ¦
-            get_dlt_song(input_text); //»èÁ¦ ¹®ÀÚ¿­ ÀÔ·Â ¹× »ı¼º ÈÄ »èÁ¦
+        case 3: //ë…¸ë˜ ì‚­ì œ
+            get_dlt_song(input_text); //ì‚­ì œ ë¬¸ìì—´ ì…ë ¥ ë° ìƒì„± í›„ ì‚­ì œ
             break;
         case 4:
-            if (get_upd_song(selected_song, &selected_line, songToChange)) {  // get_upd_song ¼º°øÀûÀ¸·Î ½ÇÇàµÇ¸é 1À» ¹İÈ¯ÇÔ
+            if (get_upd_song(selected_song, &selected_line, songToChange)) {  // get_upd_song ì„±ê³µì ìœ¼ë¡œ ì‹¤í–‰ë˜ë©´ 1ì„ ë°˜í™˜í•¨
                 fflush(stdin);
                 update_song(selected_song, selected_line, songToChange, updatedSong);
                 updatePlaylist(songToChange, updatedSong);
-         
+
             }
             break;
-        case 0: //µÚ·Î °¡±â
+        case 0: //ë’¤ë¡œ ê°€ê¸°
             return 0;
             break;
         default: //error
@@ -358,52 +358,52 @@ void song_list_menu() //³ë·¡ ¸®½ºÆ® ÁÖ ¸Ş´º
 }
 
 
-void song_list_print()//³ë·¡ ¸®½ºÆ® Ãâ·Â
+void song_list_print()//ë…¸ë˜ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
 {
-    printf("\n³ë·¡ ¸®½ºÆ®¸¦ Ãâ·ÂÇÕ´Ï´Ù.");
-    printf("\n\nÁ¦¸ñ / °¡¼ö / ÀÛ°î°¡ / ÀÛ»ç°¡ / Àå¸£ / Àç»ı½Ã°£ / ¾Ù¹ü¸í / ¾Ù¹ü Ãâ½Ã ³¯Â¥ / ÁÁ¾Æ¿ä\n\n");
+    printf("\në…¸ë˜ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.");
+    printf("\n\nì œëª© / ê°€ìˆ˜ / ì‘ê³¡ê°€ / ì‘ì‚¬ê°€ / ì¥ë¥´ / ì¬ìƒì‹œê°„ / ì•¨ë²”ëª… / ì•¨ë²” ì¶œì‹œ ë‚ ì§œ / ì¢‹ì•„ìš”\n\n");
     FILE* fp;
-    fp = fopen("song_list.txt", "r"); //ÅØ½ºÆ® ÆÄÀÏ ºÒ·¯¿À±â
-    //if (fp == NULL) //ÆÄÀÏ ³»¿ë Ã¼Å©
+    fp = fopen("song_list.txt", "r"); //í…ìŠ¤íŠ¸ íŒŒì¼ ë¶ˆëŸ¬ì˜¤ê¸°
+    //if (fp == NULL) //íŒŒì¼ ë‚´ìš© ì²´í¬
     //{
-    //    printf("¿À·ù");
+    //    printf("ì˜¤ë¥˜");
     //}
-    char name[STRING_SIZE]; //Á¦¸ñ
-    char singer[STRING_SIZE]; //°¡¼ö
-    char song_writer[STRING_SIZE]; //ÀÛ°î°¡
-    char lylic_writer[STRING_SIZE]; //ÀÛ»ç°¡
-    char genre[STRING_SIZE]; //Àå¸£
-    char playtime[STRING_SIZE]; //Àç»ı½Ã°£
-    char album_name[STRING_SIZE]; //¾Ù¹ü¸í
-    char album_time[STRING_SIZE]; //¾Ù¹ü Ãâ½Ã ³¯Â¥
+    char name[STRING_SIZE]; //ì œëª©
+    char singer[STRING_SIZE]; //ê°€ìˆ˜
+    char song_writer[STRING_SIZE]; //ì‘ê³¡ê°€
+    char lylic_writer[STRING_SIZE]; //ì‘ì‚¬ê°€
+    char genre[STRING_SIZE]; //ì¥ë¥´
+    char playtime[STRING_SIZE]; //ì¬ìƒì‹œê°„
+    char album_name[STRING_SIZE]; //ì•¨ë²”ëª…
+    char album_time[STRING_SIZE]; //ì•¨ë²” ì¶œì‹œ ë‚ ì§œ
 
-    char song[STRING_SIZE * 8]; //ºÒ·¯¿Ã ÇÑ ÁÙ
-    while (fgets(song, sizeof(song), fp) != NULL) //ÇÑ ÁÙ ¾¿ ºÒ·¯¿À±â
+    char song[STRING_SIZE * 8]; //ë¶ˆëŸ¬ì˜¬ í•œ ì¤„
+    while (fgets(song, sizeof(song), fp) != NULL) //í•œ ì¤„ ì”© ë¶ˆëŸ¬ì˜¤ê¸°
     {
-        sscanf(song, "%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t\n]", name, singer, song_writer, lylic_writer, genre, playtime, album_name, album_time); //ÅÇÅ°¸¦ ±¸ºĞÀÚ·Î ÇÏ³ª¾¿ ºÒ·¯¿À±â
-        printf("%s / ", name); //Á¦¸ñ Ãâ·Â
+        sscanf(song, "%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t]\t%[^\t\n]", name, singer, song_writer, lylic_writer, genre, playtime, album_name, album_time); //íƒ­í‚¤ë¥¼ êµ¬ë¶„ìë¡œ í•˜ë‚˜ì”© ë¶ˆëŸ¬ì˜¤ê¸°
+        printf("%s / ", name); //ì œëª© ì¶œë ¥
         int size = 0;
 
-        //°¡¼ö Ãâ·Â
+        //ê°€ìˆ˜ ì¶œë ¥
         while (1)
         {
-            if (singer[size] == '|') //ÀÎ¹° ±¸ºĞÀÚ¸¦ ¸¸³µÀ» ¶§
+            if (singer[size] == '|') //ì¸ë¬¼ êµ¬ë¶„ìë¥¼ ë§Œë‚¬ì„ ë•Œ
             {
-                while (1) //¶ç¾î¾²±â¸¦ ¸¸³¯ ¶§ ¶Ç´Â ³¡³¯ ¶§ ±îÁö °Ç³Ê¶Ù±â
+                while (1) //ë„ì–´ì“°ê¸°ë¥¼ ë§Œë‚  ë•Œ ë˜ëŠ” ëë‚  ë•Œ ê¹Œì§€ ê±´ë„ˆë›°ê¸°
                 {
                     size++;
-                    if (singer[size] == NULL) //¹®ÀÚ¿­ÀÌ ³¡³µÀ» ¶§
+                    if (singer[size] == NULL) //ë¬¸ìì—´ì´ ëë‚¬ì„ ë•Œ
                     {
                         break;
                     }
-                    else if (singer[size] == ' ') //¶ç¾î¾²±â¸¦ ¸¸³µÀ» ¶§
+                    else if (singer[size] == ' ') //ë„ì–´ì“°ê¸°ë¥¼ ë§Œë‚¬ì„ ë•Œ
                     {
-                        size = size + 1; //´ÙÀ½ ÀÎ¹°ÀÇ ÀÌ¸§À¸·Î ÀÌµ¿
+                        size = size + 1; //ë‹¤ìŒ ì¸ë¬¼ì˜ ì´ë¦„ìœ¼ë¡œ ì´ë™
                         break;
                     }
                 }
             }
-            if (singer[size] == NULL) //¹®ÀÚ¿­ÀÌ ³¡³µÀ» ¶§
+            if (singer[size] == NULL) //ë¬¸ìì—´ì´ ëë‚¬ì„ ë•Œ
             {
                 printf(" / ");
                 break;
@@ -413,26 +413,26 @@ void song_list_print()//³ë·¡ ¸®½ºÆ® Ãâ·Â
         }
         size = 0;
 
-        //ÀÛ°î°¡ Ãâ·Â
+        //ì‘ê³¡ê°€ ì¶œë ¥
         while (1)
         {
-            if (song_writer[size] == '|') //ÀÎ¹° ±¸ºĞÀÚ¸¦ ¸¸³µÀ» ¶§
+            if (song_writer[size] == '|') //ì¸ë¬¼ êµ¬ë¶„ìë¥¼ ë§Œë‚¬ì„ ë•Œ
             {
-                while (1) //¶ç¾î¾²±â¸¦ ¸¸³¯ ¶§ ¶Ç´Â ³¡³¯ ¶§ ±îÁö °Ç³Ê¶Ù±â
+                while (1) //ë„ì–´ì“°ê¸°ë¥¼ ë§Œë‚  ë•Œ ë˜ëŠ” ëë‚  ë•Œ ê¹Œì§€ ê±´ë„ˆë›°ê¸°
                 {
                     size++;
-                    if (song_writer[size] == NULL) //¹®ÀÚ¿­ÀÌ ³¡³µÀ» ¶§
+                    if (song_writer[size] == NULL) //ë¬¸ìì—´ì´ ëë‚¬ì„ ë•Œ
                     {
                         break;
                     }
-                    else if (song_writer[size] == ' ') //¶ç¾î¾²±â¸¦ ¸¸³µÀ» ¶§
+                    else if (song_writer[size] == ' ') //ë„ì–´ì“°ê¸°ë¥¼ ë§Œë‚¬ì„ ë•Œ
                     {
                         size = size + 1;
                         break;
                     }
                 }
             }
-            if (song_writer[size] == NULL) //¹®ÀÚ¿­ÀÌ ³¡³µÀ» ¶§
+            if (song_writer[size] == NULL) //ë¬¸ìì—´ì´ ëë‚¬ì„ ë•Œ
             {
                 printf(" / ");
                 break;
@@ -442,26 +442,26 @@ void song_list_print()//³ë·¡ ¸®½ºÆ® Ãâ·Â
         }
         size = 0;
 
-        //ÀÛ»ç°¡ Ãâ·Â
+        //ì‘ì‚¬ê°€ ì¶œë ¥
         while (1)
         {
-            if (lylic_writer[size] == '|') //ÀÎ¹° ±¸ºĞÀÚ¸¦ ¸¸³µÀ» ¶§
+            if (lylic_writer[size] == '|') //ì¸ë¬¼ êµ¬ë¶„ìë¥¼ ë§Œë‚¬ì„ ë•Œ
             {
-                while (1) //¶ç¾î¾²±â¸¦ ¸¸³¯ ¶§ ¶Ç´Â ³¡³¯ ¶§ ±îÁö °Ç³Ê¶Ù±â
+                while (1) //ë„ì–´ì“°ê¸°ë¥¼ ë§Œë‚  ë•Œ ë˜ëŠ” ëë‚  ë•Œ ê¹Œì§€ ê±´ë„ˆë›°ê¸°
                 {
                     size++;
-                    if (lylic_writer[size] == NULL) //¹®ÀÚ¿­ÀÌ ³¡³µÀ» ¶§
+                    if (lylic_writer[size] == NULL) //ë¬¸ìì—´ì´ ëë‚¬ì„ ë•Œ
                     {
                         break;
                     }
-                    else if (lylic_writer[size] == ' ') //¶ç¾î¾²±â¸¦ ¸¸³µÀ» ¶§
+                    else if (lylic_writer[size] == ' ') //ë„ì–´ì“°ê¸°ë¥¼ ë§Œë‚¬ì„ ë•Œ
                     {
                         size = size + 1;
                         break;
                     }
                 }
             }
-            if (lylic_writer[size] == NULL) //¹®ÀÚ¿­ÀÌ ³¡³µÀ» ¶§
+            if (lylic_writer[size] == NULL) //ë¬¸ìì—´ì´ ëë‚¬ì„ ë•Œ
             {
                 printf(" / ");
                 break;
@@ -470,7 +470,7 @@ void song_list_print()//³ë·¡ ¸®½ºÆ® Ãâ·Â
             size++;
         }
 
-        int k = strlen(name) + strlen(singer) + strlen(song_writer) + strlen(lylic_writer) + 4; //°ø¶õ ¿¹¿Ü Ã³¸®
+        int k = strlen(name) + strlen(singer) + strlen(song_writer) + strlen(lylic_writer) + 4; //ê³µë€ ì˜ˆì™¸ ì²˜ë¦¬
         for (k; k < strlen(song); k++) {
             if (song[k] == '\t')
                 printf(" / ");
@@ -479,443 +479,443 @@ void song_list_print()//³ë·¡ ¸®½ºÆ® Ãâ·Â
         }
     }
     fclose(fp);
-    printf("\n\n³ë·¡¸®½ºÆ® °ü¸® ¸Ş´º·Î µ¹¾Æ°¡·Á¸é ¾Æ¹«Å°³ª ´©¸£¼¼¿ä.");
+    printf("\n\në…¸ë˜ë¦¬ìŠ¤íŠ¸ ê´€ë¦¬ ë©”ë‰´ë¡œ ëŒì•„ê°€ë ¤ë©´ ì•„ë¬´í‚¤ë‚˜ ëˆ„ë¥´ì„¸ìš”.");
     _getwch();
 }
 
 
 void add_song() {
-    //ÀÔ·ÂÀ» ¹ŞÀ» º¯¼ö
-    char title_buffer[STRING_SIZE] = "";   //Á¦¸ñ
-    char singers_buffer[STRING_SIZE] = "";   //°¡¼ö
-    char composers_buffer[STRING_SIZE] = "";   //ÀÛ°î°¡
-    char lyricists_buffer[STRING_SIZE] = "";   //ÀÛ»ç°¡
-    char genre_buffer[STRING_SIZE] = "";    //Àå¸£
-    char playtime_buffer[STRING_SIZE] = ""; //Àç»ı½Ã°£
-    char album_buffer[STRING_SIZE] = "";    //¾Ù¹ü¸í
-    char release_buffer[STRING_SIZE] = "";  //¾Ù¹üÃâ½Ã³¯Â¥
+    //ì…ë ¥ì„ ë°›ì„ ë³€ìˆ˜
+    char title_buffer[STRING_SIZE] = "";   //ì œëª©
+    char singers_buffer[STRING_SIZE] = "";   //ê°€ìˆ˜
+    char composers_buffer[STRING_SIZE] = "";   //ì‘ê³¡ê°€
+    char lyricists_buffer[STRING_SIZE] = "";   //ì‘ì‚¬ê°€
+    char genre_buffer[STRING_SIZE] = "";    //ì¥ë¥´
+    char playtime_buffer[STRING_SIZE] = ""; //ì¬ìƒì‹œê°„
+    char album_buffer[STRING_SIZE] = "";    //ì•¨ë²”ëª…
+    char release_buffer[STRING_SIZE] = "";  //ì•¨ë²”ì¶œì‹œë‚ ì§œ
 
-    //ÀÔ·ÂÀ» ÀúÀåÇÒ º¯¼ö
-    char title_result[STRING_SIZE] = "";   //Á¦¸ñ
-    char singers_result[STRING_SIZE] = "";   //°¡¼ö
-    char composers_result[STRING_SIZE] = "";   //ÀÛ°î°¡
-    char lyricists_result[STRING_SIZE] = "";   //ÀÛ»ç°¡
-    char genre_result[STRING_SIZE] = "";    //Àå¸£
-    char playtime_result[STRING_SIZE] = ""; //Àç»ı½Ã°£
-    char album_result[STRING_SIZE] = "";    //¾Ù¹ü¸í
-    char release_result[STRING_SIZE] = "";  //¾Ù¹üÃâ½Ã³¯Â¥
+    //ì…ë ¥ì„ ì €ì¥í•  ë³€ìˆ˜
+    char title_result[STRING_SIZE] = "";   //ì œëª©
+    char singers_result[STRING_SIZE] = "";   //ê°€ìˆ˜
+    char composers_result[STRING_SIZE] = "";   //ì‘ê³¡ê°€
+    char lyricists_result[STRING_SIZE] = "";   //ì‘ì‚¬ê°€
+    char genre_result[STRING_SIZE] = "";    //ì¥ë¥´
+    char playtime_result[STRING_SIZE] = ""; //ì¬ìƒì‹œê°„
+    char album_result[STRING_SIZE] = "";    //ì•¨ë²”ëª…
+    char release_result[STRING_SIZE] = "";  //ì•¨ë²”ì¶œì‹œë‚ ì§œ
 
-    FILE* fp = fopen("song_list.txt", "a");   //Ãß°¡¸ğµå·Î ÆÄÀÏ ¿­±â
+    FILE* fp = fopen("song_list.txt", "a");   //ì¶”ê°€ëª¨ë“œë¡œ íŒŒì¼ ì—´ê¸°
 
 
-    printf("\nÁ¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.(0 ÀÔ·Â ½Ã µÚ·Î°¡±â)\n");   //Á¦¸ñ
+    printf("\nì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”.(0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°)\n");   //ì œëª©
     while (1) {
         printf("\n");
-        printf("Á¦¸ñ :");
-        gets(title_buffer, STRING_SIZE);   //Á¦¸ñ ÀÔ·Â¹Ş±â
+        printf("ì œëª© :");
+        gets(title_buffer, STRING_SIZE);   //ì œëª© ì…ë ¥ë°›ê¸°
 
-        char* title = trim(title_buffer);   //¾ÕµÚ °ø¹é Á¦°Å
+        char* title = trim(title_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
 
-        //printf("%s\n", title);         //Á¦´ë·Î ÀÔ·ÂµÇ¾ú´ÂÁö È®ÀÎ(°Ë»ç)
-        if (strlen(title) == 0) {   //Æ²¸° ÀÔ·ÂÀÏ °æ¿ì
-            printf("\nÁ¦¸ñ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:ÁÁ´Ï)\n");
+        //printf("%s\n", title);         //ì œëŒ€ë¡œ ì…ë ¥ë˜ì—ˆëŠ”ì§€ í™•ì¸(ê²€ì‚¬)
+        if (strlen(title) == 0) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+            printf("\nì œëª© ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ì¢‹ë‹ˆ)\n");
             continue;
         }
-        else if (strchr(title, '|')) {  //" | "ÀÌ ÀÖ´Â °æ¿ì
-            printf("\nÁ¦¸ñ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:ÁÁ´Ï)\n");
+        else if (strchr(title, '|')) {  //" | "ì´ ìˆëŠ” ê²½ìš°
+            printf("\nì œëª© ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ì¢‹ë‹ˆ)\n");
             continue;
         }
-        else if (!strcmp(title, "0")) {  //"0" ÀÔ·ÂÇÑ °æ¿ì
+        else if (!strcmp(title, "0")) {  //"0" ì…ë ¥í•œ ê²½ìš°
             char str_temp[STRING_SIZE] = "";
-            //while¹® µ¹·Á¼­ 'µÚ·Î°¡±â'ÀÎÁö '0'ÀÎÁö È®ÀÎ
-            printf("\n'0'À» ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. Á¤¸» µÚ·Î °¡½Ã°Ú½À´Ï±î?\n\n");
+            //whileë¬¸ ëŒë ¤ì„œ 'ë’¤ë¡œê°€ê¸°'ì¸ì§€ '0'ì¸ì§€ í™•ì¸
+            printf("\n'0'ì„ ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ì •ë§ ë’¤ë¡œ ê°€ì‹œê² ìŠµë‹ˆê¹Œ?\n\n");
             while (1) {
-                printf("1. µÚ·Î°¡±â\n");
-                printf("2. '0' ÀÔ·ÂÇÏ±â\n\n");
-                printf("¸Ş´º¼±ÅÃ : ");
-                gets(str_temp, STRING_SIZE);  //¸Ş´º ÀÔ·Â¹Ş±â
+                printf("1. ë’¤ë¡œê°€ê¸°\n");
+                printf("2. '0' ì…ë ¥í•˜ê¸°\n\n");
+                printf("ë©”ë‰´ì„ íƒ : ");
+                gets(str_temp, STRING_SIZE);  //ë©”ë‰´ ì…ë ¥ë°›ê¸°
 
-                trim(str_temp);  //¾ÕµÚ °ø¹éÁ¦°Å
+                trim(str_temp);  //ì•ë’¤ ê³µë°±ì œê±°
 
-                if (!strcmp(str_temp, "1"))  //1. µÚ·Î°¡±â
+                if (!strcmp(str_temp, "1"))  //1. ë’¤ë¡œê°€ê¸°
                     return 0;
-                else if (!strcmp(str_temp, "2")) {  //2. '0' ÀÔ·ÂÇÏ±â
-                    strcat(title_result, title);   //Á¦¸ñ ÀúÀå
+                else if (!strcmp(str_temp, "2")) {  //2. '0' ì…ë ¥í•˜ê¸°
+                    strcat(title_result, title);   //ì œëª© ì €ì¥
                     break;
                 }
                 else {
-                    printf("\nÀß¸ø ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ¼±ÅÃÇØÁÖ¼¼¿ä.\n\n");
+                    printf("\nì˜ëª» ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
                     continue;
                 }
             }
         }
-        else {      //¸Â´Â ÀÔ·ÂÀÏ °æ¿ì
-            strcat(title_result, title);   //Á¦¸ñ ÀúÀå
+        else {      //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+            strcat(title_result, title);   //ì œëª© ì €ì¥
         }
         break;
-    }   //Á¦¸ñ ³¡
+    }   //ì œëª© ë
 
-    printf("\n°¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.(0 ÀÔ·Â ½Ã µÚ·Î°¡±â)\n");   //°¡¼ö
+    printf("\nê°€ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.(0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°)\n");   //ê°€ìˆ˜
     while (1) {
-        int error = 0;   //¿¡·¯ È®ÀÎ
+        int error = 0;   //ì—ëŸ¬ í™•ì¸
         printf("\n");
-        printf("°¡¼ö :");
-        gets(singers_buffer);   //°¡¼ö ÀÔ·Â¹Ş±â
+        printf("ê°€ìˆ˜ :");
+        gets(singers_buffer);   //ê°€ìˆ˜ ì…ë ¥ë°›ê¸°
 
-        char* singers = trim_space(singers_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
+        char* singers = trim_space(singers_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
 
-        if (strlen(singers) == 0) {   //Æ²¸° ÀÔ·ÂÀÏ °æ¿ì
-            printf("\n°¡¼ö ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+        if (strlen(singers) == 0) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+            printf("\nê°€ìˆ˜ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
             continue;
         }
-        else if (strchr(singers, '|') || strchr(singers, ',')) {  //"|",","ÀÌ ÀÖ´Â °æ¿ì
-            printf("\n°¡¼ö ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+        else if (strchr(singers, '|') || strchr(singers, ',')) {  //"|",","ì´ ìˆëŠ” ê²½ìš°
+            printf("\nê°€ìˆ˜ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
             continue;
         }
-        else if (!strcmp(singers, "0")) {  //"0" ÀÔ·ÂÇÑ °æ¿ì
+        else if (!strcmp(singers, "0")) {  //"0" ì…ë ¥í•œ ê²½ìš°
             char str_temp[STRING_SIZE] = "";
-            //while¹® µ¹·Á¼­ 'µÚ·Î°¡±â'ÀÎÁö '0'ÀÎÁö È®ÀÎ
-            printf("\n'0'À» ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. Á¤¸» µÚ·Î °¡½Ã°Ú½À´Ï±î?\n\n");
+            //whileë¬¸ ëŒë ¤ì„œ 'ë’¤ë¡œê°€ê¸°'ì¸ì§€ '0'ì¸ì§€ í™•ì¸
+            printf("\n'0'ì„ ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ì •ë§ ë’¤ë¡œ ê°€ì‹œê² ìŠµë‹ˆê¹Œ?\n\n");
             while (1) {
-                printf("1. µÚ·Î°¡±â\n");
-                printf("2. '0' ÀÔ·ÂÇÏ±â\n\n");
-                printf("¸Ş´º¼±ÅÃ : ");
-                gets(str_temp, STRING_SIZE);  //¸Ş´º ÀÔ·Â¹Ş±â
+                printf("1. ë’¤ë¡œê°€ê¸°\n");
+                printf("2. '0' ì…ë ¥í•˜ê¸°\n\n");
+                printf("ë©”ë‰´ì„ íƒ : ");
+                gets(str_temp, STRING_SIZE);  //ë©”ë‰´ ì…ë ¥ë°›ê¸°
 
-                trim(str_temp);  //¾ÕµÚ °ø¹éÁ¦°Å
+                trim(str_temp);  //ì•ë’¤ ê³µë°±ì œê±°
 
-                if (!strcmp(str_temp, "1"))  //1. µÚ·Î°¡±â
+                if (!strcmp(str_temp, "1"))  //1. ë’¤ë¡œê°€ê¸°
                     return 0;
-                else if (!strcmp(str_temp, "2")) {  //2. '0' ÀÔ·ÂÇÏ±â
+                else if (!strcmp(str_temp, "2")) {  //2. '0' ì…ë ¥í•˜ê¸°
                     duplicate_people("song_list.txt", singers, singers_result, composers_result);
-                    strcat(singers_result, singers);   //°¡¼ö ÀúÀå
+                    strcat(singers_result, singers);   //ê°€ìˆ˜ ì €ì¥
                     break;
                 }
                 else {
-                    printf("\nÀß¸ø ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ¼±ÅÃÇØÁÖ¼¼¿ä.\n\n");
+                    printf("\nì˜ëª» ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
                     continue;
                 }
             }
         }
-        else {      //¸Â´Â ÀÔ·ÂÀÏ °æ¿ì
-            char* ptr_tab_q = singers;   //¾Õ ÅÇ
-            char* ptr_tab_p = strchr(singers, '\t');   //µÚ ÅÇ
-            if (ptr_tab_p == NULL) {   //°¡¼ö°¡ ÇÑ¸íÀÏ ¶§
+        else {      //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+            char* ptr_tab_q = singers;   //ì• íƒ­
+            char* ptr_tab_p = strchr(singers, '\t');   //ë’¤ íƒ­
+            if (ptr_tab_p == NULL) {   //ê°€ìˆ˜ê°€ í•œëª…ì¼ ë•Œ
                 duplicate_people("song_list.txt", singers, singers_result, composers_result);
                 strcat(singers_result, singers);
             }
             else {
-                //°¡¼ö ÇÑ¸íÇÑ¸íÀÌ °ø¹éÀÎÁö Ã¼Å©
+                //ê°€ìˆ˜ í•œëª…í•œëª…ì´ ê³µë°±ì¸ì§€ ì²´í¬
                 char check_first_singer_buffer[STRING_SIZE] = "";
-                strncpy(check_first_singer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //Ã¹ °¡¼ö ÃßÃâ
-                char* check_first_singer = trim_space(check_first_singer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                if (strcmp(check_first_singer, "") == 0) {   //°ø¹éÀÏ°æ¿ì
-                    printf("\n°¡¼ö ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+                strncpy(check_first_singer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //ì²« ê°€ìˆ˜ ì¶”ì¶œ
+                char* check_first_singer = trim_space(check_first_singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                if (strcmp(check_first_singer, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                    printf("\nê°€ìˆ˜ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
                     continue;
                 }
                 ptr_tab_q = ptr_tab_p;
                 ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                 while (ptr_tab_p != NULL) {
                     char check_singer_buffer[STRING_SIZE] = "";
-                    strncpy(check_singer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //°¡¼ö ÃßÃâ
-                    char* check_singer = trim_space(check_singer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                    if (strcmp(check_singer, "") == 0) { error = 1; break; }   //°ø¹éÀÏ °æ¿ì
+                    strncpy(check_singer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ê°€ìˆ˜ ì¶”ì¶œ
+                    char* check_singer = trim_space(check_singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                    if (strcmp(check_singer, "") == 0) { error = 1; break; }   //ê³µë°±ì¼ ê²½ìš°
                     ptr_tab_q = ptr_tab_p;
                     ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                 }
-                if (error == 1) {   //Æ²¸° ÀÔ·ÂÀÏ °æ¿ì
-                    printf("\n°¡¼ö ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+                if (error == 1) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+                    printf("\nê°€ìˆ˜ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
                     continue;
                 }
                 char check_last_singer_buffer[STRING_SIZE] = "";
                 ptr_tab_p = strrchr(singers, '\t');
-                strncpy(check_last_singer_buffer, ptr_tab_p + 1, (singers + strlen(singers) - 1) - ptr_tab_p);   //¸¶Áö¸· °¡¼ö ÃßÃâ
-                char* check_last_singer = trim_space(check_last_singer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                if (strcmp(check_last_singer, "") == 0) {   //°ø¹éÀÏ°æ¿ì
-                    printf("\n°¡¼ö ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+                strncpy(check_last_singer_buffer, ptr_tab_p + 1, (singers + strlen(singers) - 1) - ptr_tab_p);   //ë§ˆì§€ë§‰ ê°€ìˆ˜ ì¶”ì¶œ
+                char* check_last_singer = trim_space(check_last_singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                if (strcmp(check_last_singer, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                    printf("\nê°€ìˆ˜ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
                     continue;
                 }
 
-                //°ø¹é ¾øÀ¸¸é °¡¼ö µ¿¸íÀÌÀÎ ºñ±³ ¹× ÀúÀå
+                //ê³µë°± ì—†ìœ¼ë©´ ê°€ìˆ˜ ë™ëª…ì´ì¸ ë¹„êµ ë° ì €ì¥
                 ptr_tab_q = singers;
                 ptr_tab_p = strchr(singers, '\t');
                 char first_singer_buffer[STRING_SIZE] = "";
-                strncpy(first_singer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //Ã¹ °¡¼ö ÃßÃâ
-                char* first_singer = trim_space(first_singer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                duplicate_people("song_list.txt", first_singer, singers_result, composers_result);   //Áßº¹È®ÀÎ
-                strcat(singers_result, first_singer);   //Ã¹ °¡¼ö ÀúÀå
+                strncpy(first_singer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //ì²« ê°€ìˆ˜ ì¶”ì¶œ
+                char* first_singer = trim_space(first_singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                duplicate_people("song_list.txt", first_singer, singers_result, composers_result);   //ì¤‘ë³µí™•ì¸
+                strcat(singers_result, first_singer);   //ì²« ê°€ìˆ˜ ì €ì¥
                 ptr_tab_q = ptr_tab_p;
                 ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
-                while (ptr_tab_p != NULL) {   //°¡¼ö°¡ ´õ ÀÖ´ÂÁö È®ÀÎ
+                while (ptr_tab_p != NULL) {   //ê°€ìˆ˜ê°€ ë” ìˆëŠ”ì§€ í™•ì¸
                     char singer_buffer[STRING_SIZE] = "";
-                    strncpy(singer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //°¡¼ö ÃßÃâ
-                    char* singer = trim_space(singer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                    duplicate_people("song_list.txt", singer, singers_result, composers_result);   //Áßº¹È®ÀÎ
+                    strncpy(singer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ê°€ìˆ˜ ì¶”ì¶œ
+                    char* singer = trim_space(singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                    duplicate_people("song_list.txt", singer, singers_result, composers_result);   //ì¤‘ë³µí™•ì¸
                     strcat(singers_result, " , ");
-                    strcat(singers_result, singer);   //°¡¼ö ÀúÀå
+                    strcat(singers_result, singer);   //ê°€ìˆ˜ ì €ì¥
                     ptr_tab_q = ptr_tab_p;
                     ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                 }
                 char last_singer_buffer[STRING_SIZE] = "";
                 ptr_tab_p = strrchr(singers, '\t');
-                strncpy(last_singer_buffer, ptr_tab_p + 1, (singers + strlen(singers) - 1) - ptr_tab_p);   //¸¶Áö¸· °¡¼ö ÃßÃâ
-                char* last_singer = trim_space(last_singer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                duplicate_people("song_list.txt", last_singer, singers_result, composers_result);   //Áßº¹È®ÀÎ
+                strncpy(last_singer_buffer, ptr_tab_p + 1, (singers + strlen(singers) - 1) - ptr_tab_p);   //ë§ˆì§€ë§‰ ê°€ìˆ˜ ì¶”ì¶œ
+                char* last_singer = trim_space(last_singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                duplicate_people("song_list.txt", last_singer, singers_result, composers_result);   //ì¤‘ë³µí™•ì¸
                 strcat(singers_result, " , ");
-                strcat(singers_result, last_singer);   //¸¶Áö¸· °¡¼ö ÀúÀå
+                strcat(singers_result, last_singer);   //ë§ˆì§€ë§‰ ê°€ìˆ˜ ì €ì¥
             }
         }
 
         break;
-    }      //°¡¼ö ³¡
+    }      //ê°€ìˆ˜ ë
 
 
-    printf("\nÀÛ°î°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä.(0 ÀÔ·Â ½Ã µÚ·Î°¡±â)\n");   //ÀÛ°î°¡
+    printf("\nì‘ê³¡ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.(0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°)\n");   //ì‘ê³¡ê°€
     while (1) {
-        int error = 0;   //¿¡·¯ È®ÀÎ
+        int error = 0;   //ì—ëŸ¬ í™•ì¸
         printf("\n");
-        printf("ÀÛ°î°¡ :");
-        gets(composers_buffer);   //ÀÛ°î°¡ ÀÔ·Â¹Ş±â
+        printf("ì‘ê³¡ê°€ :");
+        gets(composers_buffer);   //ì‘ê³¡ê°€ ì…ë ¥ë°›ê¸°
 
-        char* composers = trim_space(composers_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
+        char* composers = trim_space(composers_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
 
-        if (strlen(composers) == 0) {   //Æ²¸° ÀÔ·ÂÀÏ °æ¿ì
-            printf("\nÀÛ°î°¡ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+        if (strlen(composers) == 0) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+            printf("\nì‘ê³¡ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
             continue;
         }
-        else if (strchr(composers, '|') || strchr(composers, ',')) {  //"|",","ÀÌ ÀÖ´Â °æ¿ì
-            printf("\nÀÛ°î°¡ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+        else if (strchr(composers, '|') || strchr(composers, ',')) {  //"|",","ì´ ìˆëŠ” ê²½ìš°
+            printf("\nì‘ê³¡ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
             continue;
         }
-        else if (!strcmp(composers, "0")) {  //"0" ÀÔ·ÂÇÑ °æ¿ì
+        else if (!strcmp(composers, "0")) {  //"0" ì…ë ¥í•œ ê²½ìš°
             char str_temp[STRING_SIZE] = "";
-            //while¹® µ¹·Á¼­ 'µÚ·Î°¡±â'ÀÎÁö '0'ÀÎÁö È®ÀÎ
-            printf("\n'0'À» ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. Á¤¸» µÚ·Î °¡½Ã°Ú½À´Ï±î?\n\n");
+            //whileë¬¸ ëŒë ¤ì„œ 'ë’¤ë¡œê°€ê¸°'ì¸ì§€ '0'ì¸ì§€ í™•ì¸
+            printf("\n'0'ì„ ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ì •ë§ ë’¤ë¡œ ê°€ì‹œê² ìŠµë‹ˆê¹Œ?\n\n");
             while (1) {
-                printf("1. µÚ·Î°¡±â\n");
-                printf("2. '0' ÀÔ·ÂÇÏ±â\n\n");
-                printf("¸Ş´º¼±ÅÃ : ");
-                gets(str_temp, STRING_SIZE);  //¸Ş´º ÀÔ·Â¹Ş±â
+                printf("1. ë’¤ë¡œê°€ê¸°\n");
+                printf("2. '0' ì…ë ¥í•˜ê¸°\n\n");
+                printf("ë©”ë‰´ì„ íƒ : ");
+                gets(str_temp, STRING_SIZE);  //ë©”ë‰´ ì…ë ¥ë°›ê¸°
 
-                trim(str_temp);  //¾ÕµÚ °ø¹éÁ¦°Å
+                trim(str_temp);  //ì•ë’¤ ê³µë°±ì œê±°
 
-                if (!strcmp(str_temp, "1"))  //1. µÚ·Î°¡±â
+                if (!strcmp(str_temp, "1"))  //1. ë’¤ë¡œê°€ê¸°
                     return 0;
-                else if (!strcmp(str_temp, "2")) {  //2. '0' ÀÔ·ÂÇÏ±â
+                else if (!strcmp(str_temp, "2")) {  //2. '0' ì…ë ¥í•˜ê¸°
                     duplicate_people("song_list.txt", composers, singers_result, composers_result);
-                    strcat(composers_result, composers);   //ÀÛ°î°¡ ÀúÀå
+                    strcat(composers_result, composers);   //ì‘ê³¡ê°€ ì €ì¥
                     break;
                 }
                 else {
-                    printf("\nÀß¸ø ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ¼±ÅÃÇØÁÖ¼¼¿ä.\n\n");
+                    printf("\nì˜ëª» ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
                     continue;
                 }
             }
         }
-        else {      //¸Â´Â ÀÔ·ÂÀÏ °æ¿ì
-            char* ptr_tab_q = composers;   //¾Õ ÅÇ
-            char* ptr_tab_p = strchr(composers, '\t');   //µÚ ÅÇ
-            if (ptr_tab_p == NULL) {   //ÀÛ°î°¡ ÇÑ¸íÀÏ ¶§
+        else {      //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+            char* ptr_tab_q = composers;   //ì• íƒ­
+            char* ptr_tab_p = strchr(composers, '\t');   //ë’¤ íƒ­
+            if (ptr_tab_p == NULL) {   //ì‘ê³¡ê°€ í•œëª…ì¼ ë•Œ
                 duplicate_people("song_list.txt", composers, singers_result, composers_result);
                 strcat(composers_result, composers);
             }
             else {
-                //ÀÛ°î°¡ ÇÑ¸íÇÑ¸íÀÌ °ø¹éÀÎÁö Ã¼Å©
+                //ì‘ê³¡ê°€ í•œëª…í•œëª…ì´ ê³µë°±ì¸ì§€ ì²´í¬
                 char check_first_composer_buffer[STRING_SIZE] = "";
-                strncpy(check_first_composer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //Ã¹ ÀÛ°î°¡ ÃßÃâ
-                char* check_first_composer = trim_space(check_first_composer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                if (strcmp(check_first_composer, "") == 0) {   //°ø¹éÀÏ°æ¿ì
-                    printf("\nÀÛ°î°¡ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+                strncpy(check_first_composer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //ì²« ì‘ê³¡ê°€ ì¶”ì¶œ
+                char* check_first_composer = trim_space(check_first_composer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                if (strcmp(check_first_composer, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                    printf("\nì‘ê³¡ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
                     continue;
                 }
                 ptr_tab_q = ptr_tab_p;
                 ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                 while (ptr_tab_p != NULL) {
                     char check_composer_buffer[STRING_SIZE] = "";
-                    strncpy(check_composer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ÀÛ°î°¡ ÃßÃâ
-                    char* check_composer = trim_space(check_composer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                    if (strcmp(check_composer, "") == 0) { error = 1; break; }   //°ø¹éÀÏ °æ¿ì
+                    strncpy(check_composer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ì‘ê³¡ê°€ ì¶”ì¶œ
+                    char* check_composer = trim_space(check_composer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                    if (strcmp(check_composer, "") == 0) { error = 1; break; }   //ê³µë°±ì¼ ê²½ìš°
                     ptr_tab_q = ptr_tab_p;
                     ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                 }
-                if (error == 1) {   //Æ²¸° ÀÔ·ÂÀÏ °æ¿ì
-                    printf("\nÀÛ°î°¡ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+                if (error == 1) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+                    printf("\nì‘ê³¡ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
                     continue;
                 }
                 char check_last_composer_buffer[STRING_SIZE] = "";
                 ptr_tab_p = strrchr(composers, '\t');
-                strncpy(check_last_composer_buffer, ptr_tab_p + 1, (composers + strlen(composers) - 1) - ptr_tab_p);   //¸¶Áö¸· ÀÛ°î°¡ ÃßÃâ
-                char* check_last_composer = trim_space(check_last_composer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                if (strcmp(check_last_composer, "") == 0) {   //°ø¹éÀÏ°æ¿ì
-                    printf("\nÀÛ°î°¡ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+                strncpy(check_last_composer_buffer, ptr_tab_p + 1, (composers + strlen(composers) - 1) - ptr_tab_p);   //ë§ˆì§€ë§‰ ì‘ê³¡ê°€ ì¶”ì¶œ
+                char* check_last_composer = trim_space(check_last_composer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                if (strcmp(check_last_composer, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                    printf("\nì‘ê³¡ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
                     continue;
                 }
 
-                //°ø¹é ¾øÀ¸¸é ÀÛ°î°¡ µ¿¸íÀÌÀÎ ºñ±³ ¹× ÀúÀå
+                //ê³µë°± ì—†ìœ¼ë©´ ì‘ê³¡ê°€ ë™ëª…ì´ì¸ ë¹„êµ ë° ì €ì¥
                 ptr_tab_q = composers;
                 ptr_tab_p = strchr(composers, '\t');
                 char first_composer_buffer[STRING_SIZE] = "";
-                strncpy(first_composer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //Ã¹ ÀÛ°î°¡ ÃßÃâ
-                char* first_composer = trim_space(first_composer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                duplicate_people("song_list.txt", first_composer, singers_result, composers_result);   //Áßº¹È®ÀÎ
-                strcat(composers_result, first_composer);   //Ã¹ ÀÛ°î°¡ ÀúÀå
+                strncpy(first_composer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //ì²« ì‘ê³¡ê°€ ì¶”ì¶œ
+                char* first_composer = trim_space(first_composer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                duplicate_people("song_list.txt", first_composer, singers_result, composers_result);   //ì¤‘ë³µí™•ì¸
+                strcat(composers_result, first_composer);   //ì²« ì‘ê³¡ê°€ ì €ì¥
                 ptr_tab_q = ptr_tab_p;
                 ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
-                while (ptr_tab_p != NULL) {   //ÀÛ°î°¡°¡ ´õ ÀÖ´ÂÁö È®ÀÎ
+                while (ptr_tab_p != NULL) {   //ì‘ê³¡ê°€ê°€ ë” ìˆëŠ”ì§€ í™•ì¸
                     char composer_buffer[STRING_SIZE] = "";
-                    strncpy(composer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ÀÛ°î°¡ ÃßÃâ
-                    char* composer = trim_space(composer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                    duplicate_people("song_list.txt", composer, singers_result, composers_result);   //Áßº¹È®ÀÎ
+                    strncpy(composer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ì‘ê³¡ê°€ ì¶”ì¶œ
+                    char* composer = trim_space(composer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                    duplicate_people("song_list.txt", composer, singers_result, composers_result);   //ì¤‘ë³µí™•ì¸
                     strcat(composers_result, " , ");
-                    strcat(composers_result, composer);   //ÀÛ°î°¡ ÀúÀå
+                    strcat(composers_result, composer);   //ì‘ê³¡ê°€ ì €ì¥
                     ptr_tab_q = ptr_tab_p;
                     ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                 }
                 char last_composer_buffer[STRING_SIZE] = "";
                 ptr_tab_p = strrchr(composers, '\t');
-                strncpy(last_composer_buffer, ptr_tab_p + 1, (composers + strlen(composers) - 1) - ptr_tab_p);   //¸¶Áö¸· ÀÛ°î°¡ ÃßÃâ
-                char* last_composer = trim_space(last_composer_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                duplicate_people("song_list.txt", last_composer, singers_result, composers_result);   //Áßº¹È®ÀÎ
+                strncpy(last_composer_buffer, ptr_tab_p + 1, (composers + strlen(composers) - 1) - ptr_tab_p);   //ë§ˆì§€ë§‰ ì‘ê³¡ê°€ ì¶”ì¶œ
+                char* last_composer = trim_space(last_composer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                duplicate_people("song_list.txt", last_composer, singers_result, composers_result);   //ì¤‘ë³µí™•ì¸
                 strcat(composers_result, " , ");
-                strcat(composers_result, last_composer);   //¸¶Áö¸· ÀÛ°î°¡ ÀúÀå
+                strcat(composers_result, last_composer);   //ë§ˆì§€ë§‰ ì‘ê³¡ê°€ ì €ì¥
             }
         }
-        break;   //ÀÛ°î°¡ ³¡
+        break;   //ì‘ê³¡ê°€ ë
     }
 
-    printf("\nÀÛ»ç°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä.(0 ÀÔ·Â ½Ã µÚ·Î°¡±â)\n");   //ÀÛ»ç°¡
+    printf("\nì‘ì‚¬ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.(0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°)\n");   //ì‘ì‚¬ê°€
     while (1) {
-        int error = 0;   //¿¡·¯ È®ÀÎ
+        int error = 0;   //ì—ëŸ¬ í™•ì¸
         printf("\n");
-        printf("ÀÛ»ç°¡ :");
-        gets(lyricists_buffer);   //ÀÛ»ç°¡ ÀÔ·Â¹Ş±â
+        printf("ì‘ì‚¬ê°€ :");
+        gets(lyricists_buffer);   //ì‘ì‚¬ê°€ ì…ë ¥ë°›ê¸°
 
-        char* lyricists = trim_space(lyricists_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
+        char* lyricists = trim_space(lyricists_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
 
-        if (strlen(lyricists) == 0) {   //Æ²¸° ÀÔ·ÂÀÏ °æ¿ì
-            printf("\nÀÛ»ç°¡ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+        if (strlen(lyricists) == 0) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+            printf("\nì‘ì‚¬ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
             continue;
         }
-        else if (strchr(lyricists, '|') || strchr(lyricists, ',')) {  //"|",","ÀÌ ÀÖ´Â °æ¿ì
-            printf("\nÀÛ»ç°¡ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+        else if (strchr(lyricists, '|') || strchr(lyricists, ',')) {  //"|",","ì´ ìˆëŠ” ê²½ìš°
+            printf("\nì‘ì‚¬ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
             continue;
         }
-        else if (!strcmp(lyricists, "0")) {  //"0" ÀÔ·ÂÇÑ °æ¿ì
+        else if (!strcmp(lyricists, "0")) {  //"0" ì…ë ¥í•œ ê²½ìš°
             char str_temp[STRING_SIZE] = "";
-            //while¹® µ¹·Á¼­ 'µÚ·Î°¡±â'ÀÎÁö '0'ÀÎÁö È®ÀÎ
-            printf("\n'0'À» ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. Á¤¸» µÚ·Î °¡½Ã°Ú½À´Ï±î?\n\n");
+            //whileë¬¸ ëŒë ¤ì„œ 'ë’¤ë¡œê°€ê¸°'ì¸ì§€ '0'ì¸ì§€ í™•ì¸
+            printf("\n'0'ì„ ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ì •ë§ ë’¤ë¡œ ê°€ì‹œê² ìŠµë‹ˆê¹Œ?\n\n");
             while (1) {
-                printf("1. µÚ·Î°¡±â\n");
-                printf("2. '0' ÀÔ·ÂÇÏ±â\n\n");
-                printf("¸Ş´º¼±ÅÃ : ");
-                gets(str_temp, STRING_SIZE);  //¸Ş´º ÀÔ·Â¹Ş±â
+                printf("1. ë’¤ë¡œê°€ê¸°\n");
+                printf("2. '0' ì…ë ¥í•˜ê¸°\n\n");
+                printf("ë©”ë‰´ì„ íƒ : ");
+                gets(str_temp, STRING_SIZE);  //ë©”ë‰´ ì…ë ¥ë°›ê¸°
 
-                trim(str_temp);  //¾ÕµÚ °ø¹éÁ¦°Å
+                trim(str_temp);  //ì•ë’¤ ê³µë°±ì œê±°
 
-                if (!strcmp(str_temp, "1"))  //1. µÚ·Î°¡±â
+                if (!strcmp(str_temp, "1"))  //1. ë’¤ë¡œê°€ê¸°
                     return 0;
-                else if (!strcmp(str_temp, "2")) {  //2. '0' ÀÔ·ÂÇÏ±â
+                else if (!strcmp(str_temp, "2")) {  //2. '0' ì…ë ¥í•˜ê¸°
                     duplicate_people("song_list.txt", lyricists, singers_result, composers_result);
-                    strcat(lyricists_result, lyricists);   //ÀÛ»ç°¡ ÀúÀå
+                    strcat(lyricists_result, lyricists);   //ì‘ì‚¬ê°€ ì €ì¥
                     break;
                 }
                 else {
-                    printf("\nÀß¸ø ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ¼±ÅÃÇØÁÖ¼¼¿ä.\n\n");
+                    printf("\nì˜ëª» ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
                     continue;
                 }
             }
         }
-        else {      //¸Â´Â ÀÔ·ÂÀÏ °æ¿ì
-            char* ptr_tab_q = lyricists;   //¾Õ ÅÇ
-            char* ptr_tab_p = strchr(lyricists, '\t');   //µÚ ÅÇ
-            if (ptr_tab_p == NULL) {   //ÀÛ»ç°¡°¡ ÇÑ¸íÀÏ ¶§
+        else {      //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+            char* ptr_tab_q = lyricists;   //ì• íƒ­
+            char* ptr_tab_p = strchr(lyricists, '\t');   //ë’¤ íƒ­
+            if (ptr_tab_p == NULL) {   //ì‘ì‚¬ê°€ê°€ í•œëª…ì¼ ë•Œ
                 duplicate_people("song_list.txt", lyricists, singers_result, composers_result);
                 strcat(lyricists_result, lyricists);
             }
             else {
-                //ÀÛ»ç°¡ ÇÑ¸íÇÑ¸íÀÌ °ø¹éÀÎÁö Ã¼Å©
+                //ì‘ì‚¬ê°€ í•œëª…í•œëª…ì´ ê³µë°±ì¸ì§€ ì²´í¬
                 char check_first_lyricist_buffer[STRING_SIZE] = "";
-                strncpy(check_first_lyricist_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //Ã¹ ÀÛ»ç°¡ ÃßÃâ
-                char* check_first_lyricist = trim_space(check_first_lyricist_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                if (strcmp(check_first_lyricist, "") == 0) {   //°ø¹éÀÏ°æ¿ì
-                    printf("\nÀÛ»ç°¡ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+                strncpy(check_first_lyricist_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //ì²« ì‘ì‚¬ê°€ ì¶”ì¶œ
+                char* check_first_lyricist = trim_space(check_first_lyricist_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                if (strcmp(check_first_lyricist, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                    printf("\nì‘ì‚¬ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
                     continue;
                 }
                 ptr_tab_q = ptr_tab_p;
                 ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                 while (ptr_tab_p != NULL) {
                     char check_lyricist_buffer[STRING_SIZE] = "";
-                    strncpy(check_lyricist_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ÀÛ»ç°¡ ÃßÃâ
-                    char* check_lyricist = trim_space(check_lyricist_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                    if (strcmp(check_lyricist, "") == 0) { error = 1; break; }   //°ø¹éÀÏ °æ¿ì
+                    strncpy(check_lyricist_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ì‘ì‚¬ê°€ ì¶”ì¶œ
+                    char* check_lyricist = trim_space(check_lyricist_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                    if (strcmp(check_lyricist, "") == 0) { error = 1; break; }   //ê³µë°±ì¼ ê²½ìš°
                     ptr_tab_q = ptr_tab_p;
                     ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                 }
-                if (error == 1) {   //Æ²¸° ÀÔ·ÂÀÏ °æ¿ì
-                    printf("\nÀÛ»ç°¡ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+                if (error == 1) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+                    printf("\nì‘ì‚¬ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
                     continue;
                 }
                 char check_last_lyricist_buffer[STRING_SIZE] = "";
                 ptr_tab_p = strrchr(lyricists, '\t');
-                strncpy(check_last_lyricist_buffer, ptr_tab_p + 1, (lyricists + strlen(lyricists) - 1) - ptr_tab_p);   //¸¶Áö¸· ÀÛ»ç°¡ ÃßÃâ
-                char* check_last_lyricist = trim_space(check_last_lyricist_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                if (strcmp(check_last_lyricist, "") == 0) {   //°ø¹éÀÏ°æ¿ì
-                    printf("\nÀÛ»ç°¡ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:À±Á¾½Å)\n");
+                strncpy(check_last_lyricist_buffer, ptr_tab_p + 1, (lyricists + strlen(lyricists) - 1) - ptr_tab_p);   //ë§ˆì§€ë§‰ ì‘ì‚¬ê°€ ì¶”ì¶œ
+                char* check_last_lyricist = trim_space(check_last_lyricist_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                if (strcmp(check_last_lyricist, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                    printf("\nì‘ì‚¬ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
                     continue;
                 }
 
-                //°ø¹é ¾øÀ¸¸é ÀÛ»ç°¡ µ¿¸íÀÌÀÎ ºñ±³ ¹× ÀúÀå
+                //ê³µë°± ì—†ìœ¼ë©´ ì‘ì‚¬ê°€ ë™ëª…ì´ì¸ ë¹„êµ ë° ì €ì¥
                 ptr_tab_q = lyricists;
                 ptr_tab_p = strchr(lyricists, '\t');
                 char first_lyricist_buffer[STRING_SIZE] = "";
-                strncpy(first_lyricist_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //Ã¹ ÀÛ»ç°¡ ÃßÃâ
-                char* first_lyricist = trim_space(first_lyricist_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                duplicate_people("song_list.txt", first_lyricist, singers_result, composers_result);   //Áßº¹È®ÀÎ
-                strcat(lyricists_result, first_lyricist);   //Ã¹ ÀÛ»ç°¡ ÀúÀå
+                strncpy(first_lyricist_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //ì²« ì‘ì‚¬ê°€ ì¶”ì¶œ
+                char* first_lyricist = trim_space(first_lyricist_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                duplicate_people("song_list.txt", first_lyricist, singers_result, composers_result);   //ì¤‘ë³µí™•ì¸
+                strcat(lyricists_result, first_lyricist);   //ì²« ì‘ì‚¬ê°€ ì €ì¥
                 ptr_tab_q = ptr_tab_p;
                 ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
-                while (ptr_tab_p != NULL) {   //ÀÛ»ç°¡°¡ ´õ ÀÖ´ÂÁö È®ÀÎ
+                while (ptr_tab_p != NULL) {   //ì‘ì‚¬ê°€ê°€ ë” ìˆëŠ”ì§€ í™•ì¸
                     char lyricist_buffer[STRING_SIZE] = "";
-                    strncpy(lyricist_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ÀÛ»ç°¡ ÃßÃâ
-                    char* lyricist = trim_space(lyricist_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                    duplicate_people("song_list.txt", lyricist, singers_result, composers_result);   //Áßº¹È®ÀÎ
+                    strncpy(lyricist_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ì‘ì‚¬ê°€ ì¶”ì¶œ
+                    char* lyricist = trim_space(lyricist_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                    duplicate_people("song_list.txt", lyricist, singers_result, composers_result);   //ì¤‘ë³µí™•ì¸
                     strcat(lyricists_result, " , ");
-                    strcat(lyricists_result, lyricist);   //ÀÛ»ç°¡ ÀúÀå
+                    strcat(lyricists_result, lyricist);   //ì‘ì‚¬ê°€ ì €ì¥
                     ptr_tab_q = ptr_tab_p;
                     ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                 }
                 char last_lyricist_buffer[STRING_SIZE] = "";
                 ptr_tab_p = strrchr(lyricists, '\t');
-                strncpy(last_lyricist_buffer, ptr_tab_p + 1, (lyricists + strlen(lyricists) - 1) - ptr_tab_p);   //¸¶Áö¸· ÀÛ»ç°¡ ÃßÃâ
-                char* last_singer = trim_space(last_lyricist_buffer);   //¾ÕµÚ Ç¥ÁØ°ø¹é Á¦°Å
-                duplicate_people("song_list.txt", last_singer, singers_result, composers_result);   //Áßº¹È®ÀÎ
+                strncpy(last_lyricist_buffer, ptr_tab_p + 1, (lyricists + strlen(lyricists) - 1) - ptr_tab_p);   //ë§ˆì§€ë§‰ ì‘ì‚¬ê°€ ì¶”ì¶œ
+                char* last_singer = trim_space(last_lyricist_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                duplicate_people("song_list.txt", last_singer, singers_result, composers_result);   //ì¤‘ë³µí™•ì¸
                 strcat(lyricists_result, " , ");
-                strcat(lyricists_result, last_singer);   //¸¶Áö¸· ÀÛ»ç°¡ ÀúÀå
+                strcat(lyricists_result, last_singer);   //ë§ˆì§€ë§‰ ì‘ì‚¬ê°€ ì €ì¥
             }
         }
-        break;   //ÀÛ»ç°¡ ³¡
+        break;   //ì‘ì‚¬ê°€ ë
     }
 
-    printf("\nÀå¸£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.(0 ÀÔ·Â ½Ã µÚ·Î°¡±â)\n");   //Àå¸£
+    printf("\nì¥ë¥´ë¥¼ ì…ë ¥í•˜ì„¸ìš”.(0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°)\n");   //ì¥ë¥´
     while (1) {
         printf("\n");
-        printf("Àå¸£ :");
+        printf("ì¥ë¥´ :");
         gets(genre_buffer);
 
-        char* genre = trim(genre_buffer);   //¾ÕµÚ °ø¹é Á¦°Å
+        char* genre = trim(genre_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
 
-        if (!strcmp(genre, "0")) return 0;  //"0" ÀÔ·ÂÇÑ °æ¿ì
-        else if (strcmp(genre, "Å¬·¡½Ä") * strcmp(genre, "ÀçÁî") * strcmp(genre, "ÆË") * strcmp(genre, "¹ß¶óµå") * strcmp(genre, "ÈüÇÕ") * strcmp(genre, "Æ®·ÎÆ®") * strcmp(genre, "µğ½ºÄÚ") * strcmp(genre, "´í½º") == 0 || strlen(genre) == 0) {   //¸Â´Â ÀÔ·ÂÀÏ °æ¿ì
-            strcat(genre_result, genre);   //Àå¸£ ÀúÀå
+        if (!strcmp(genre, "0")) return 0;  //"0" ì…ë ¥í•œ ê²½ìš°
+        else if (strcmp(genre, "í´ë˜ì‹") * strcmp(genre, "ì¬ì¦ˆ") * strcmp(genre, "íŒ") * strcmp(genre, "ë°œë¼ë“œ") * strcmp(genre, "í™í•©") * strcmp(genre, "íŠ¸ë¡œíŠ¸") * strcmp(genre, "ë””ìŠ¤ì½”") * strcmp(genre, "ëŒ„ìŠ¤") == 0 || strlen(genre) == 0) {   //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+            strcat(genre_result, genre);   //ì¥ë¥´ ì €ì¥
         }
-        else {      //Æ²¸° ÀÔ·ÂÀÏ °æ¿ì
-            printf("\nÀå¸£ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:ÀçÁî)\n");
+        else {      //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+            printf("\nì¥ë¥´ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ì¬ì¦ˆ)\n");
             continue;
         }
         break;
-    }      //Àå¸£ ³¡
+    }      //ì¥ë¥´ ë
 
-    printf("\n½Ã°£À» ÀÔ·ÂÇÏ¼¼¿ä.(0 ÀÔ·Â ½Ã µÚ·Î°¡±â)\n");   //Àç»ı½Ã°£
+    printf("\nì‹œê°„ì„ ì…ë ¥í•˜ì„¸ìš”.(0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°)\n");   //ì¬ìƒì‹œê°„
     while (1) {
         char minute_str[STRING_SIZE] = "";
         char second_str[STRING_SIZE] = "";
@@ -923,42 +923,42 @@ void add_song() {
         int count_s = 0;
         int error = 0;
         printf("\n");
-        printf("½Ã°£ :");
+        printf("ì‹œê°„ :");
         gets(playtime_buffer);
 
-        char* playtime = trim(playtime_buffer);   //¾ÕµÚ °ø¹é Á¦°Å
+        char* playtime = trim(playtime_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
 
-        if (!strcmp(playtime, "0")) return 0;  //"0" ÀÔ·ÂÇÑ °æ¿ì
+        if (!strcmp(playtime, "0")) return 0;  //"0" ì…ë ¥í•œ ê²½ìš°
 
-        //"ºĞ","ÃÊ" °¢°¢ °³¼ö ¼¼±â
-        char* ptr_m_temp = strstr(playtime, "ºĞ");
-        while (ptr_m_temp != NULL) // ´õÀÌ»ó "ºĞ"ÀÌ µîÀåÇÏÁö ¾ÊÀ» ¶§±îÁö ¹İº¹
+        //"ë¶„","ì´ˆ" ê°ê° ê°œìˆ˜ ì„¸ê¸°
+        char* ptr_m_temp = strstr(playtime, "ë¶„");
+        while (ptr_m_temp != NULL) // ë”ì´ìƒ "ë¶„"ì´ ë“±ì¥í•˜ì§€ ì•Šì„ ë•Œê¹Œì§€ ë°˜ë³µ
         {
-            ptr_m_temp = strstr(ptr_m_temp + 1, "ºĞ"); // ´ÙÀ½ µîÀå À§Ä¡ Å½»ö
+            ptr_m_temp = strstr(ptr_m_temp + 1, "ë¶„"); // ë‹¤ìŒ ë“±ì¥ ìœ„ì¹˜ íƒìƒ‰
             count_m++;
         }
-        char* ptr_s_temp = strstr(playtime, "ÃÊ");
-        while (ptr_s_temp != NULL) // ´õÀÌ»ó "ÃÊ"°¡ µîÀåÇÏÁö ¾ÊÀ» ¶§±îÁö ¹İº¹
+        char* ptr_s_temp = strstr(playtime, "ì´ˆ");
+        while (ptr_s_temp != NULL) // ë”ì´ìƒ "ì´ˆ"ê°€ ë“±ì¥í•˜ì§€ ì•Šì„ ë•Œê¹Œì§€ ë°˜ë³µ
         {
-            ptr_s_temp = strstr(ptr_s_temp + 1, "ÃÊ"); // ´ÙÀ½ µîÀå À§Ä¡ Å½»ö
+            ptr_s_temp = strstr(ptr_s_temp + 1, "ì´ˆ"); // ë‹¤ìŒ ë“±ì¥ ìœ„ì¹˜ íƒìƒ‰
             count_s++;
         }
 
-        //Àç»ı½Ã°£ ¹®¹ı Çü½Ä È®ÀÎ
-        if (strlen(playtime) == 0) { error = 1; }   //Æ²¸° ÀÔ·ÂÀÏ °æ¿ì   
-        else if (count_m == 1 && count_s == 1) {   //¸ğµÎ 1°³¾¿ ÀÖ´Â °æ¿ì
-            char* ptr_m = strstr(playtime, "ºĞ");
-            char* ptr_s = strstr(playtime, "ÃÊ");
-            if ((ptr_s - playtime) == strlen(playtime) - 2 && ptr_m < ptr_s) {   //"ÃÊ"°¡ ¸¶Áö¸·ÀÌ°í "ºĞ"ÀÌ "ÃÊ"º¸´Ù ¾Õ¿¡ ÀÖ¾î¾ß µÊ
+        //ì¬ìƒì‹œê°„ ë¬¸ë²• í˜•ì‹ í™•ì¸
+        if (strlen(playtime) == 0) { error = 1; }   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°   
+        else if (count_m == 1 && count_s == 1) {   //ëª¨ë‘ 1ê°œì”© ìˆëŠ” ê²½ìš°
+            char* ptr_m = strstr(playtime, "ë¶„");
+            char* ptr_s = strstr(playtime, "ì´ˆ");
+            if ((ptr_s - playtime) == strlen(playtime) - 2 && ptr_m < ptr_s) {   //"ì´ˆ"ê°€ ë§ˆì§€ë§‰ì´ê³  "ë¶„"ì´ "ì´ˆ"ë³´ë‹¤ ì•ì— ìˆì–´ì•¼ ë¨
                 strncpy(minute_str, playtime, ptr_m - playtime);
                 strncpy(second_str, ptr_m + 2, ptr_s - ptr_m - 2);
-                if (strchr(minute_str, ' ') || strchr(minute_str, '\t') || strcmp(minute_str, "") == 0 || strchr(second_str, ' ') || strchr(second_str, '\t') || strcmp(second_str, "") == 0) { error = 1; }   //°ø¹éÀÌ ¾ø¾î¾ß µÊ
+                if (strchr(minute_str, ' ') || strchr(minute_str, '\t') || strcmp(minute_str, "") == 0 || strchr(second_str, ' ') || strchr(second_str, '\t') || strcmp(second_str, "") == 0) { error = 1; }   //ê³µë°±ì´ ì—†ì–´ì•¼ ë¨
                 else {
-                    for (int i = 0; i < strlen(minute_str); i++)   //¹®ÀÚ¿­ÀÌ ¼ıÀÚÀÎÁö È®ÀÎ
+                    for (int i = 0; i < strlen(minute_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
                     {
                         if ((int)minute_str[i] < 48 || (int)minute_str[i] > 57) { error = 1; }
                     }
-                    for (int i = 0; i < strlen(second_str); i++)   //¹®ÀÚ¿­ÀÌ ¼ıÀÚÀÎÁö È®ÀÎ
+                    for (int i = 0; i < strlen(second_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
                     {
                         if ((int)second_str[i] < 48 || (int)second_str[i] > 57) { error = 1; }
                     }
@@ -966,13 +966,13 @@ void add_song() {
             }
             else { error = 1; }
         }
-        else if (count_m == 1 && count_s == 0) {   //ÀÔ·Â¿¡ "ºĞ"ÀÌ 1°³ ÀÖ´Â °æ¿ì
-            char* ptr_m = strstr(playtime, "ºĞ");
-            if ((ptr_m - playtime) == strlen(playtime) - 2) {   //"ºĞ"ÀÌ ¸¶Áö¸·ÀÌ¾î¾ß µÊ
+        else if (count_m == 1 && count_s == 0) {   //ì…ë ¥ì— "ë¶„"ì´ 1ê°œ ìˆëŠ” ê²½ìš°
+            char* ptr_m = strstr(playtime, "ë¶„");
+            if ((ptr_m - playtime) == strlen(playtime) - 2) {   //"ë¶„"ì´ ë§ˆì§€ë§‰ì´ì–´ì•¼ ë¨
                 strncpy(minute_str, playtime, ptr_m - playtime);
-                if (strchr(minute_str, ' ') || strchr(minute_str, '\t') || strcmp(minute_str, "") == 0) { error = 1; }   //°ø¹éÀÌ ¾ø¾î¾ß µÊ
+                if (strchr(minute_str, ' ') || strchr(minute_str, '\t') || strcmp(minute_str, "") == 0) { error = 1; }   //ê³µë°±ì´ ì—†ì–´ì•¼ ë¨
                 else {
-                    for (int i = 0; i < strlen(minute_str); i++)   //¹®ÀÚ¿­ÀÌ ¼ıÀÚÀÎÁö È®ÀÎ
+                    for (int i = 0; i < strlen(minute_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
                     {
                         if ((int)minute_str[i] < 48 || (int)minute_str[i] > 57) { error = 1; }
                     }
@@ -980,13 +980,13 @@ void add_song() {
             }
             else { error = 1; }
         }
-        else if (count_m == 0 && count_s == 1) {   //ÀÔ·Â¿¡ "ÃÊ"°¡ 1°³ ÀÖ´Â °æ¿ì
-            char* ptr_s = strstr(playtime, "ÃÊ");
-            if ((ptr_s - playtime) == strlen(playtime) - 2) {   //"ÃÊ"°¡ ¸¶Áö¸·ÀÌ¾î¾ß µÊ
+        else if (count_m == 0 && count_s == 1) {   //ì…ë ¥ì— "ì´ˆ"ê°€ 1ê°œ ìˆëŠ” ê²½ìš°
+            char* ptr_s = strstr(playtime, "ì´ˆ");
+            if ((ptr_s - playtime) == strlen(playtime) - 2) {   //"ì´ˆ"ê°€ ë§ˆì§€ë§‰ì´ì–´ì•¼ ë¨
                 strncpy(second_str, playtime, ptr_s - playtime);
-                if (strchr(second_str, ' ') || strchr(second_str, '\t') || strcmp(second_str, "") == 0) { error = 1; }   //°ø¹éÀÌ ¾ø¾î¾ß µÊ
+                if (strchr(second_str, ' ') || strchr(second_str, '\t') || strcmp(second_str, "") == 0) { error = 1; }   //ê³µë°±ì´ ì—†ì–´ì•¼ ë¨
                 else {
-                    for (int i = 0; i < strlen(second_str); i++)   //¹®ÀÚ¿­ÀÌ ¼ıÀÚÀÎÁö È®ÀÎ
+                    for (int i = 0; i < strlen(second_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
                     {
                         if ((int)second_str[i] < 48 || (int)second_str[i] > 57) { error = 1; }
                     }
@@ -994,89 +994,89 @@ void add_song() {
             }
             else { error = 1; }
         }
-        else { error = 1; }      //³ª¸ÓÁö´Â ¸ğµÎ Æ²¸° °æ¿ì
+        else { error = 1; }      //ë‚˜ë¨¸ì§€ëŠ” ëª¨ë‘ í‹€ë¦° ê²½ìš°
 
-        if (error == 1) {      //¿À·ù Ã³¸®
-            printf("\n½Ã°£ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:02ºĞ44ÃÊ)\n");
+        if (error == 1) {      //ì˜¤ë¥˜ ì²˜ë¦¬
+            printf("\nì‹œê°„ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:02ë¶„44ì´ˆ)\n");
             continue;
         }
 
-        //Àç»ı½Ã°£ ÀÇ¹Ì ±ÔÄ¢ È®ÀÎ
+        //ì¬ìƒì‹œê°„ ì˜ë¯¸ ê·œì¹™ í™•ì¸
         int minute = 0;
         int second = 0;
-        if (strcmp(minute_str, "")) {   //"ºĞ"ÀÌ °ø¹éÀÌ ¾Æ´Ï¸é
+        if (strcmp(minute_str, "")) {   //"ë¶„"ì´ ê³µë°±ì´ ì•„ë‹ˆë©´
             minute = atoi(minute_str);
-            if (minute <= 0) { error = 1; }   //"ºĞ"Àº 0º¸´Ù Å©´Ù
+            if (minute <= 0) { error = 1; }   //"ë¶„"ì€ 0ë³´ë‹¤ í¬ë‹¤
         }
-        if (strcmp(second_str, "")) {   //"ÃÊ"°¡ °ø¹éÀÌ ¾Æ´Ï¸é
+        if (strcmp(second_str, "")) {   //"ì´ˆ"ê°€ ê³µë°±ì´ ì•„ë‹ˆë©´
             second = atoi(second_str);
-            if (second <= 0 || second >= 60) { error = 1; }   //"ÃÊ"´Â 1~59»çÀÌ
+            if (second <= 0 || second >= 60) { error = 1; }   //"ì´ˆ"ëŠ” 1~59ì‚¬ì´
         }
-        if (error == 1) {      //¿À·ù Ã³¸®
-            printf("\n½Ã°£ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:02ºĞ44ÃÊ)\n");
+        if (error == 1) {      //ì˜¤ë¥˜ ì²˜ë¦¬
+            printf("\nì‹œê°„ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:02ë¶„44ì´ˆ)\n");
             continue;
         }
 
-        if (strcmp(minute_str, "")) {   //"ºĞ"ÀÌ °ø¹éÀÌ ¾Æ´Ï¸é "ºĞ" ÀúÀå
+        if (strcmp(minute_str, "")) {   //"ë¶„"ì´ ê³µë°±ì´ ì•„ë‹ˆë©´ "ë¶„" ì €ì¥
             sprintf(minute_str, "%02d", minute);
             strcat(playtime_result, minute_str);
-            strcat(playtime_result, "ºĞ");
+            strcat(playtime_result, "ë¶„");
         }
-        if (strcmp(second_str, "")) {   //"ÃÊ"°¡ °ø¹éÀÌ ¾Æ´Ï¸é "ÃÊ" ÀúÀå
+        if (strcmp(second_str, "")) {   //"ì´ˆ"ê°€ ê³µë°±ì´ ì•„ë‹ˆë©´ "ì´ˆ" ì €ì¥
             sprintf(second_str, "%02d", second);
             strcat(playtime_result, second_str);
-            strcat(playtime_result, "ÃÊ");
+            strcat(playtime_result, "ì´ˆ");
         }
         break;
-    }      //Àç»ı½Ã°£ ³¡
+    }      //ì¬ìƒì‹œê°„ ë
 
-    printf("\n¾Ù¹ü¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä.(0 ÀÔ·Â ½Ã µÚ·Î°¡±â)\n");   //¾Ù¹ü¸í
+    printf("\nì•¨ë²”ëª…ì„ ì…ë ¥í•˜ì„¸ìš”.(0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°)\n");   //ì•¨ë²”ëª…
     while (1) {
         printf("\n");
-        printf("¾Ù¹ü¸í :");
-        gets(album_buffer);   //¾Ù¹ü¸í ÀÔ·Â¹Ş±â
+        printf("ì•¨ë²”ëª… :");
+        gets(album_buffer);   //ì•¨ë²”ëª… ì…ë ¥ë°›ê¸°
 
-        char* album = trim(album_buffer);   //¾ÕµÚ °ø¹é Á¦°Å
+        char* album = trim(album_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
 
-        if (0) {   //Æ²¸° ÀÔ·ÂÀÏ °æ¿ì(¾øÀ½)
-            printf("\n¾Ù¹ü¸í ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:¹ã¾ç°»)\n");
+        if (0) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°(ì—†ìŒ)
+            printf("\nì•¨ë²”ëª… ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ë°¤ì–‘ê°±)\n");
             continue;
         }
-        else if (strchr(album, '|')) {  //" | "ÀÌ ÀÖ´Â °æ¿ì
-            printf("\n¾Ù¹ü¸í ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.(¿¹½Ã:¹ã¾ç°»)\n");
+        else if (strchr(album, '|')) {  //" | "ì´ ìˆëŠ” ê²½ìš°
+            printf("\nì•¨ë²”ëª… ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ë°¤ì–‘ê°±)\n");
             continue;
         }
-        else if (!strcmp(album, "0")) {  //"0" ÀÔ·ÂÇÑ °æ¿ì
+        else if (!strcmp(album, "0")) {  //"0" ì…ë ¥í•œ ê²½ìš°
             char str_temp[STRING_SIZE] = "";
-            //while¹® µ¹·Á¼­ 'µÚ·Î°¡±â'ÀÎÁö '0'ÀÎÁö È®ÀÎ
-            printf("\n'0'À» ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. Á¤¸» µÚ·Î °¡½Ã°Ú½À´Ï±î?\n\n");
+            //whileë¬¸ ëŒë ¤ì„œ 'ë’¤ë¡œê°€ê¸°'ì¸ì§€ '0'ì¸ì§€ í™•ì¸
+            printf("\n'0'ì„ ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ì •ë§ ë’¤ë¡œ ê°€ì‹œê² ìŠµë‹ˆê¹Œ?\n\n");
             while (1) {
-                printf("1. µÚ·Î°¡±â\n");
-                printf("2. '0' ÀÔ·ÂÇÏ±â\n\n");
-                printf("¸Ş´º¼±ÅÃ : ");
-                gets(str_temp, STRING_SIZE);  //¸Ş´º ÀÔ·Â¹Ş±â
+                printf("1. ë’¤ë¡œê°€ê¸°\n");
+                printf("2. '0' ì…ë ¥í•˜ê¸°\n\n");
+                printf("ë©”ë‰´ì„ íƒ : ");
+                gets(str_temp, STRING_SIZE);  //ë©”ë‰´ ì…ë ¥ë°›ê¸°
 
-                trim(str_temp);  //¾ÕµÚ °ø¹éÁ¦°Å
+                trim(str_temp);  //ì•ë’¤ ê³µë°±ì œê±°
 
-                if (!strcmp(str_temp, "1"))  //1. µÚ·Î°¡±â
+                if (!strcmp(str_temp, "1"))  //1. ë’¤ë¡œê°€ê¸°
                     return 0;
-                else if (!strcmp(str_temp, "2")) {  //2. '0' ÀÔ·ÂÇÏ±â
-                    strcat(album_result, album);   //¾Ù¹ü¸í ÀúÀå
+                else if (!strcmp(str_temp, "2")) {  //2. '0' ì…ë ¥í•˜ê¸°
+                    strcat(album_result, album);   //ì•¨ë²”ëª… ì €ì¥
                     break;
                 }
                 else {
-                    printf("\nÀß¸ø ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ¼±ÅÃÇØÁÖ¼¼¿ä.\n\n");
+                    printf("\nì˜ëª» ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
                     continue;
                 }
             }
         }
-        else {      //¸Â´Â ÀÔ·ÂÀÏ °æ¿ì
-            strcat(album_result, album);   //¾Ù¹ü¸í ÀúÀå
+        else {      //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+            strcat(album_result, album);   //ì•¨ë²”ëª… ì €ì¥
         }
         break;
-    }   //¾Ù¹ü¸í ³¡
+    }   //ì•¨ë²”ëª… ë
 
-    printf("\n¾Ù¹ü Ãâ½Ã ³¯Â¥¸¦ ÀÔ·ÂÇÏ¼¼¿ä.(0 ÀÔ·Â ½Ã µÚ·Î°¡±â)\n");   //¾Ù¹ü Ãâ½Ã ³¯Â¥
+    printf("\nì•¨ë²” ì¶œì‹œ ë‚ ì§œë¥¼ ì…ë ¥í•˜ì„¸ìš”.(0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°)\n");   //ì•¨ë²” ì¶œì‹œ ë‚ ì§œ
     while (1) {
         char year_str[5] = "";
         char month_str[3] = "";
@@ -1086,63 +1086,63 @@ void add_song() {
         int count_dot = 0;
         int error = 0;
         printf("\n");
-        printf("¾Ù¹ü Ãâ½Ã ³¯Â¥ :");
+        printf("ì•¨ë²” ì¶œì‹œ ë‚ ì§œ :");
         gets(release_buffer);
 
-        char* release = trim(release_buffer);   //¾ÕµÚ °ø¹é Á¦°Å
+        char* release = trim(release_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
 
-        if (strlen(release) == 0) {      //°ø¹éÀÏ °æ¿ì
+        if (strlen(release) == 0) {      //ê³µë°±ì¼ ê²½ìš°
             strcat(release_result, release);
             break;
         }
-        else if (!strcmp(release, "0")) return 0;  //"0" ÀÔ·ÂÇÑ °æ¿ì
+        else if (!strcmp(release, "0")) return 0;  //"0" ì…ë ¥í•œ ê²½ìš°
 
-        //'-','/','.' °¢°¢ °³¼ö ¼¼±â
+        //'-','/','.' ê°ê° ê°œìˆ˜ ì„¸ê¸°
         char* ptr_hyphen_temp = strchr(release, '-');
-        while (ptr_hyphen_temp != NULL) // ´õÀÌ»ó '-'ÀÌ µîÀåÇÏÁö ¾ÊÀ» ¶§±îÁö ¹İº¹
+        while (ptr_hyphen_temp != NULL) // ë”ì´ìƒ '-'ì´ ë“±ì¥í•˜ì§€ ì•Šì„ ë•Œê¹Œì§€ ë°˜ë³µ
         {
-            ptr_hyphen_temp = strchr(ptr_hyphen_temp + 1, '-'); // ´ÙÀ½ µîÀå À§Ä¡ Å½»ö
+            ptr_hyphen_temp = strchr(ptr_hyphen_temp + 1, '-'); // ë‹¤ìŒ ë“±ì¥ ìœ„ì¹˜ íƒìƒ‰
             count_hyphen++;
         }
         char* ptr_slash_temp = strchr(release, '/');
-        while (ptr_slash_temp != NULL) // ´õÀÌ»ó '/'°¡ µîÀåÇÏÁö ¾ÊÀ» ¶§±îÁö ¹İº¹
+        while (ptr_slash_temp != NULL) // ë”ì´ìƒ '/'ê°€ ë“±ì¥í•˜ì§€ ì•Šì„ ë•Œê¹Œì§€ ë°˜ë³µ
         {
-            ptr_slash_temp = strchr(ptr_slash_temp + 1, '/'); // ´ÙÀ½ µîÀå À§Ä¡ Å½»ö
+            ptr_slash_temp = strchr(ptr_slash_temp + 1, '/'); // ë‹¤ìŒ ë“±ì¥ ìœ„ì¹˜ íƒìƒ‰
             count_slash++;
         }
         char* ptr_dot_temp = strchr(release, '.');
-        while (ptr_dot_temp != NULL) // ´õÀÌ»ó '.'°¡ µîÀåÇÏÁö ¾ÊÀ» ¶§±îÁö ¹İº¹
+        while (ptr_dot_temp != NULL) // ë”ì´ìƒ '.'ê°€ ë“±ì¥í•˜ì§€ ì•Šì„ ë•Œê¹Œì§€ ë°˜ë³µ
         {
-            ptr_dot_temp = strchr(ptr_dot_temp + 1, '.'); // ´ÙÀ½ µîÀå À§Ä¡ Å½»ö
+            ptr_dot_temp = strchr(ptr_dot_temp + 1, '.'); // ë‹¤ìŒ ë“±ì¥ ìœ„ì¹˜ íƒìƒ‰
             count_dot++;
         }
 
-        //¾Ù¹ü Ãâ½Ã ³¯Â¥ ¹®¹ı Çü½Ä È®ÀÎ
+        //ì•¨ë²” ì¶œì‹œ ë‚ ì§œ ë¬¸ë²• í˜•ì‹ í™•ì¸
         if (strlen(release) == 10) {
-            if (count_hyphen == 2 && count_slash == 0 && count_dot == 0) {   //'-'ÀÌ 2°³ÀÎ °æ¿ì
+            if (count_hyphen == 2 && count_slash == 0 && count_dot == 0) {   //'-'ì´ 2ê°œì¸ ê²½ìš°
                 char* ptr_hyphen_1 = strchr(release, '-');
                 char* ptr_hyphen_2 = strchr(ptr_hyphen_1 + 1, '-');
-                if ((ptr_hyphen_1 - release) == 4 && (ptr_hyphen_2 - ptr_hyphen_1) == 3) {   //³â,¿ù,ÀÏÀÌ °¢°¢ 4,2,2ÀÚ¸®ÀÎÁö È®ÀÎ
+                if ((ptr_hyphen_1 - release) == 4 && (ptr_hyphen_2 - ptr_hyphen_1) == 3) {   //ë…„,ì›”,ì¼ì´ ê°ê° 4,2,2ìë¦¬ì¸ì§€ í™•ì¸
                     strncpy(year_str, release, 4);
                     strncpy(month_str, ptr_hyphen_1 + 1, 2);
                     strncpy(day_str, ptr_hyphen_2 + 1, 2);
                 }
                 else { error = 1; }
             }
-            else if (count_hyphen == 0 && count_slash == 2 && count_dot == 0) {   //'/'ÀÌ 2°³ÀÎ °æ¿ì
+            else if (count_hyphen == 0 && count_slash == 2 && count_dot == 0) {   //'/'ì´ 2ê°œì¸ ê²½ìš°
                 char* ptr_slash_1 = strchr(release, '/');
                 char* ptr_slash_2 = strchr(ptr_slash_1 + 1, '/');
-                if ((ptr_slash_1 - release) == 4 && (ptr_slash_2 - ptr_slash_1) == 3) {   //³â,¿ù,ÀÏÀÌ °¢°¢ 4,2,2ÀÚ¸®ÀÎÁö È®ÀÎ
+                if ((ptr_slash_1 - release) == 4 && (ptr_slash_2 - ptr_slash_1) == 3) {   //ë…„,ì›”,ì¼ì´ ê°ê° 4,2,2ìë¦¬ì¸ì§€ í™•ì¸
                     strncpy(year_str, release, 4);
                     strncpy(month_str, ptr_slash_1 + 1, 2);
                     strncpy(day_str, ptr_slash_2 + 1, 2);
                 }
                 else { error = 1; }
             }
-            else if (count_hyphen == 0 && count_slash == 0 && count_dot == 2) {   //'.'ÀÌ 2°³ÀÎ °æ¿ì
+            else if (count_hyphen == 0 && count_slash == 0 && count_dot == 2) {   //'.'ì´ 2ê°œì¸ ê²½ìš°
                 char* ptr_dot_1 = strchr(release, '.');
                 char* ptr_dot_2 = strchr(ptr_dot_1 + 1, '.');
-                if ((ptr_dot_1 - release) == 4 && (ptr_dot_2 - ptr_dot_1) == 3) {   //³â,¿ù,ÀÏÀÌ °¢°¢ 4,2,2ÀÚ¸®ÀÎÁö È®ÀÎ
+                if ((ptr_dot_1 - release) == 4 && (ptr_dot_2 - ptr_dot_1) == 3) {   //ë…„,ì›”,ì¼ì´ ê°ê° 4,2,2ìë¦¬ì¸ì§€ í™•ì¸
                     strncpy(year_str, release, 4);
                     strncpy(month_str, ptr_dot_1 + 1, 2);
                     strncpy(day_str, ptr_dot_2 + 1, 2);
@@ -1156,63 +1156,63 @@ void add_song() {
             strncpy(month_str, release + 4, 2);
             strncpy(day_str, release + 6, 2);
         }
-        else { error = 1; }   //³ª¸ÓÁö´Â ¸ğµÎ Æ²¸° °æ¿ì
+        else { error = 1; }   //ë‚˜ë¨¸ì§€ëŠ” ëª¨ë‘ í‹€ë¦° ê²½ìš°
 
         if (error == 1) {
-            printf("\n¾Ù¹ü Ãâ½Ã ³¯Â¥ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.\n(¿¹½Ã:2024-04-01 ¶Ç´Â 2024/04/01 ¶Ç´Â 2024.04.01 ¶Ç´Â 20240401)\n");
+            printf("\nì•¨ë²” ì¶œì‹œ ë‚ ì§œ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.\n(ì˜ˆì‹œ:2024-04-01 ë˜ëŠ” 2024/04/01 ë˜ëŠ” 2024.04.01 ë˜ëŠ” 20240401)\n");
             continue;
         }
 
-        for (int i = 0; i < strlen(year_str); i++)   //¹®ÀÚ¿­ÀÌ ¼ıÀÚÀÎÁö È®ÀÎ
+        for (int i = 0; i < strlen(year_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
         {
             if ((int)year_str[i] < 48 || (int)year_str[i] > 57) { error = 1; }
         }
-        for (int i = 0; i < strlen(month_str); i++)   //¹®ÀÚ¿­ÀÌ ¼ıÀÚÀÎÁö È®ÀÎ
+        for (int i = 0; i < strlen(month_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
         {
             if ((int)month_str[i] < 48 || (int)month_str[i] > 57) { error = 1; }
         }
-        for (int i = 0; i < strlen(day_str); i++)   //¹®ÀÚ¿­ÀÌ ¼ıÀÚÀÎÁö È®ÀÎ
+        for (int i = 0; i < strlen(day_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
         {
             if ((int)day_str[i] < 48 || (int)day_str[i] > 57) { error = 1; }
         }
 
         if (error == 1) {
-            printf("\n¾Ù¹ü Ãâ½Ã ³¯Â¥ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.\n(¿¹½Ã:2024-04-01 ¶Ç´Â 2024/04/01 ¶Ç´Â 2024.04.01 ¶Ç´Â 20240401)\n");
+            printf("\nì•¨ë²” ì¶œì‹œ ë‚ ì§œ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.\n(ì˜ˆì‹œ:2024-04-01 ë˜ëŠ” 2024/04/01 ë˜ëŠ” 2024.04.01 ë˜ëŠ” 20240401)\n");
             continue;
         }
 
-        //¾Ù¹ü Ãâ½Ã ³¯Â¥ ÀÇ¹Ì ±ÔÄ¢ È®ÀÎ
+        //ì•¨ë²” ì¶œì‹œ ë‚ ì§œ ì˜ë¯¸ ê·œì¹™ í™•ì¸
         int year = atoi(year_str);
         int month = atoi(month_str);
         int day = atoi(day_str);
-        if (check_date(year, month, day)) {   //³¯Â¥ Á¸Àç ¿©ºÎ È®ÀÎ
+        if (check_date(year, month, day)) {   //ë‚ ì§œ ì¡´ì¬ ì—¬ë¶€ í™•ì¸
             sprintf(release_result, "%04d-%02d-%02d", year, month, day);
         }
         else {
-            printf("\n¾Ù¹ü Ãâ½Ã ³¯Â¥ ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä.\n(¿¹½Ã:2024-04-01 ¶Ç´Â 2024/04/01 ¶Ç´Â 2024.04.01 ¶Ç´Â 20240401)\n");
+            printf("\nì•¨ë²” ì¶œì‹œ ë‚ ì§œ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.\n(ì˜ˆì‹œ:2024-04-01 ë˜ëŠ” 2024/04/01 ë˜ëŠ” 2024.04.01 ë˜ëŠ” 20240401)\n");
             continue;
         }
         break;
-    }      //¾Ù¹ü Ãâ½Ã ³¯Â¥ ³¡
+    }      //ì•¨ë²” ì¶œì‹œ ë‚ ì§œ ë
 
     fprintf(fp, "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", title_result, singers_result, composers_result, lyricists_result, genre_result, playtime_result, album_result, release_result);
     fclose(fp);
 }
 
-void get_dlt_song(char* dlt_song) { // »èÁ¦ ¹®ÀÚ¿­ ÀÔ·Â ¹× »ı¼º ÇÔ¼ö -> ÇØ´ç ¹®ÀÚ¿­ »èÁ¦ ÇÔ¼ö·Î ³Ñ¾î°¨
-    char dlt_songname[STRING_SIZE];   // »èÁ¦ÇÒ ³ë·¡ Á¦¸ñ
-    char dlt_singer[STRING_SIZE];   // »èÁ¦ÇÒ ³ë·¡ °¡¼ö
-    int line_number_check[MAX_SIZE] = { 0 };   // ³ë·¡ Áßº¹½Ã »èÁ¦ÇÒ ³ë·¡ ¼±ÅÃ ¶§ »ç¿ëÇÒ ¹è¿­
-    int line_num = 0;   // Áßº¹ ³ë·¡ °³¼ö ´ãÀ» º¯¼ö
+void get_dlt_song(char* dlt_song) { // ì‚­ì œ ë¬¸ìì—´ ì…ë ¥ ë° ìƒì„± í•¨ìˆ˜ -> í•´ë‹¹ ë¬¸ìì—´ ì‚­ì œ í•¨ìˆ˜ë¡œ ë„˜ì–´ê°
+    char dlt_songname[STRING_SIZE];   // ì‚­ì œí•  ë…¸ë˜ ì œëª©
+    char dlt_singer[STRING_SIZE];   // ì‚­ì œí•  ë…¸ë˜ ê°€ìˆ˜
+    int line_number_check[MAX_SIZE] = { 0 };   // ë…¸ë˜ ì¤‘ë³µì‹œ ì‚­ì œí•  ë…¸ë˜ ì„ íƒ ë•Œ ì‚¬ìš©í•  ë°°ì—´
+    int line_num = 0;   // ì¤‘ë³µ ë…¸ë˜ ê°œìˆ˜ ë‹´ì„ ë³€ìˆ˜
 
-    printf("³ë·¡¸¦ »èÁ¦ÇÕ´Ï´Ù.\n");
-    printf("»èÁ¦ÇÒ ³ë·¡ÀÇ Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä: ");
+    printf("ë…¸ë˜ë¥¼ ì‚­ì œí•©ë‹ˆë‹¤.\n");
+    printf("ì‚­ì œí•  ë…¸ë˜ì˜ ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”: ");
     fgets(dlt_songname, STRING_SIZE, stdin);
-    dlt_songname[strcspn(dlt_songname, "\n")] = '\0'; // °³Çà ¹®ÀÚ Á¦°Å
+    dlt_songname[strcspn(dlt_songname, "\n")] = '\0'; // ê°œí–‰ ë¬¸ì ì œê±°
 
-    printf("»èÁ¦ÇÒ ³ë·¡ÀÇ °¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+    printf("ì‚­ì œí•  ë…¸ë˜ì˜ ê°€ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
     fgets(dlt_singer, STRING_SIZE, stdin);
-    dlt_singer[strcspn(dlt_singer, "\n")] = '\0'; // °³Çà ¹®ÀÚ Á¦°Å
+    dlt_singer[strcspn(dlt_singer, "\n")] = '\0'; // ê°œí–‰ ë¬¸ì ì œê±°
 
     FILE* file = fopen("song_list.txt", "r");
     if (file == NULL) {
@@ -1220,15 +1220,15 @@ void get_dlt_song(char* dlt_song) { // »èÁ¦ ¹®ÀÚ¿­ ÀÔ·Â ¹× »ı¼º ÇÔ¼ö -> ÇØ´ç ¹®À
         return;
     }
 
-    char buffer[STRING_SIZE];   // txtÆÄÀÏ¿¡¼­ ÀĞ¾î¿Ã ¹®ÀÚ¿­ ¿øº»
-    char dlt_print[STRING_SIZE];   // ³ë·¡ Á¤º¸ÀÇ ±¸ºĞÀÚ¸¦ '\t' ¿¡¼­ ' / ' ·Î ¹Ù²ã Ãâ·ÂÇÒ ¹è¿­
-    int line_number = 1; // Áßº¹ ³ë·¡ °¢ ÁÙ ¹øÈ£¸¦ ÀúÀåÇÒ º¯¼ö
-    int selected_line = 0; // ³ë·¡°¡ Áßº¹µÇÁö ¾ÊÀ¸¸é »èÁ¦ÇÒ Æ¯Á¤ ³ë·¡ÀÇ ÁÙÀ» ´ã°í, Áßº¹µÇ¸é »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ¹øÈ£ ÀúÀåÇÒ º¯¼ö
+    char buffer[STRING_SIZE];   // txtíŒŒì¼ì—ì„œ ì½ì–´ì˜¬ ë¬¸ìì—´ ì›ë³¸
+    char dlt_print[STRING_SIZE];   // ë…¸ë˜ ì •ë³´ì˜ êµ¬ë¶„ìë¥¼ '\t' ì—ì„œ ' / ' ë¡œ ë°”ê¿” ì¶œë ¥í•  ë°°ì—´
+    int line_number = 1; // ì¤‘ë³µ ë…¸ë˜ ê° ì¤„ ë²ˆí˜¸ë¥¼ ì €ì¥í•  ë³€ìˆ˜
+    int selected_line = 0; // ë…¸ë˜ê°€ ì¤‘ë³µë˜ì§€ ì•Šìœ¼ë©´ ì‚­ì œí•  íŠ¹ì • ë…¸ë˜ì˜ ì¤„ì„ ë‹´ê³ , ì¤‘ë³µë˜ë©´ ì‚¬ìš©ìê°€ ì„ íƒí•œ ë²ˆí˜¸ ì €ì¥í•  ë³€ìˆ˜
     while (fgets(buffer, STRING_SIZE, file) != NULL) {
-        char* token = strtok(buffer, "\t"); // ÅÇÀ» ±¸ºĞÀÚ·Î »ç¿ëÇÏ¿© ¹®ÀÚ¿­À» ºĞÇÒ
+        char* token = strtok(buffer, "\t"); // íƒ­ì„ êµ¬ë¶„ìë¡œ ì‚¬ìš©í•˜ì—¬ ë¬¸ìì—´ì„ ë¶„í• 
         char* song = strtok(NULL, "\t");
 
-        // ÀÔ·ÂÇÑ Á¦¸ñ°ú °¡¼ö¸¦ txtÆÄÀÏ¿¡¼­ ºñ±³ÇÏ¸ç, Áßº¹ ³ë·¡ °³¼ö Ä«¿îÆ®
+        // ì…ë ¥í•œ ì œëª©ê³¼ ê°€ìˆ˜ë¥¼ txtíŒŒì¼ì—ì„œ ë¹„êµí•˜ë©°, ì¤‘ë³µ ë…¸ë˜ ê°œìˆ˜ ì¹´ìš´íŠ¸
         if (strcmp(dlt_songname, token) == 0 && strcmp(dlt_singer, song) == 0) {
             line_number_check[line_num] = line_number;
             line_num++;
@@ -1238,15 +1238,15 @@ void get_dlt_song(char* dlt_song) { // »èÁ¦ ¹®ÀÚ¿­ ÀÔ·Â ¹× »ı¼º ÇÔ¼ö -> ÇØ´ç ¹®À
 
     fclose(file);
 
-    if (line_num > 1) { // »èÁ¦ ³ë·¡ Á¦¸ñ°ú °¡¼ö°¡ Áßº¹ÀÎ °æ¿ì
-        line_number = 1; // ÁÙ ¹øÈ£ ÃÊ±âÈ­
-        file = fopen("song_list.txt", "r"); // ÆÄÀÏÀ» ´Ù½Ã ¿­¾î¼­ Ãâ·Â
+    if (line_num > 1) { // ì‚­ì œ ë…¸ë˜ ì œëª©ê³¼ ê°€ìˆ˜ê°€ ì¤‘ë³µì¸ ê²½ìš°
+        line_number = 1; // ì¤„ ë²ˆí˜¸ ì´ˆê¸°í™”
+        file = fopen("song_list.txt", "r"); // íŒŒì¼ì„ ë‹¤ì‹œ ì—´ì–´ì„œ ì¶œë ¥
         while (fgets(buffer, STRING_SIZE, file) != NULL) {
             strcpy(dlt_print, buffer);
-            char* token = strtok(buffer, "\t"); // ÅÇÀ» ±¸ºĞÀÚ·Î »ç¿ëÇÏ¿© ¹®ÀÚ¿­À» ºĞÇÒ
+            char* token = strtok(buffer, "\t"); // íƒ­ì„ êµ¬ë¶„ìë¡œ ì‚¬ìš©í•˜ì—¬ ë¬¸ìì—´ì„ ë¶„í• 
             char* song = strtok(NULL, "\t");
 
-            // Á¦¸ñ°ú °¡¼ö ÀÏÄ¡½Ã ÇØ´ç ³ë·¡ Á¤º¸ Ãâ·Â
+            // ì œëª©ê³¼ ê°€ìˆ˜ ì¼ì¹˜ì‹œ í•´ë‹¹ ë…¸ë˜ ì •ë³´ ì¶œë ¥
             if (strcmp(dlt_songname, token) == 0 && strcmp(dlt_singer, song) == 0) {
                 printf("%d.  ", line_number);
                 for (int k = 0; k < strlen(dlt_print); k++) {
@@ -1260,11 +1260,11 @@ void get_dlt_song(char* dlt_song) { // »èÁ¦ ¹®ÀÚ¿­ ÀÔ·Â ¹× »ı¼º ÇÔ¼ö -> ÇØ´ç ¹®À
         }
         fclose(file);
 
-        printf("»èÁ¦ÇÒ ³ë·¡ÀÇ ¹øÈ£¸¦ ¼±ÅÃÇÏ¼¼¿ä: ");
+        printf("ì‚­ì œí•  ë…¸ë˜ì˜ ë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”: ");
         scanf("%d", &selected_line);
         getchar();
 
-        // ¼±ÅÃÇÑ ¹øÈ£°¡ Àß¸øµÈ °æ¿ì ¿À·ù ¸Ş½ÃÁö Ãâ·Â ÈÄ Á¾·á
+        // ì„ íƒí•œ ë²ˆí˜¸ê°€ ì˜ëª»ëœ ê²½ìš° ì˜¤ë¥˜ ë©”ì‹œì§€ ì¶œë ¥ í›„ ì¢…ë£Œ
         int valid_selection = 0;
         for (int i = 0; i < line_num; i++) {
             if (selected_line == line_number_check[i]) {
@@ -1273,19 +1273,19 @@ void get_dlt_song(char* dlt_song) { // »èÁ¦ ¹®ÀÚ¿­ ÀÔ·Â ¹× »ı¼º ÇÔ¼ö -> ÇØ´ç ¹®À
             }
         }
         if (!valid_selection) {
-            printf("Àß¸øµÈ ³ë·¡ÀÇ ¹øÈ£ÀÔ´Ï´Ù.\n");
+            printf("ì˜ëª»ëœ ë…¸ë˜ì˜ ë²ˆí˜¸ì…ë‹ˆë‹¤.\n");
             return;
         }
     }
-    else if (line_num == 1) { // »èÁ¦ ³ë·¡°¡ Áßº¹µÇÁö ¾ÊÀº °æ¿ì
-        line_number = 1; // ÁÙ ¹øÈ£ ÃÊ±âÈ­
-        file = fopen("song_list.txt", "r"); // ÆÄÀÏÀ» ´Ù½Ã ¿­¾î¼­ Ãâ·Â
+    else if (line_num == 1) { // ì‚­ì œ ë…¸ë˜ê°€ ì¤‘ë³µë˜ì§€ ì•Šì€ ê²½ìš°
+        line_number = 1; // ì¤„ ë²ˆí˜¸ ì´ˆê¸°í™”
+        file = fopen("song_list.txt", "r"); // íŒŒì¼ì„ ë‹¤ì‹œ ì—´ì–´ì„œ ì¶œë ¥
         while (fgets(buffer, STRING_SIZE, file) != NULL) {
             strcpy(dlt_print, buffer);
-            char* token = strtok(buffer, "\t"); // ÅÇÀ» ±¸ºĞÀÚ·Î »ç¿ëÇÏ¿© ¹®ÀÚ¿­À» ºĞÇÒ
+            char* token = strtok(buffer, "\t"); // íƒ­ì„ êµ¬ë¶„ìë¡œ ì‚¬ìš©í•˜ì—¬ ë¬¸ìì—´ì„ ë¶„í• 
             char* song = strtok(NULL, "\t");
 
-            // Á¦¸ñ°ú °¡¼ö ÀÏÄ¡½Ã ÇØ´ç ³ë·¡ Á¤º¸ Ãâ·Â
+            // ì œëª©ê³¼ ê°€ìˆ˜ ì¼ì¹˜ì‹œ í•´ë‹¹ ë…¸ë˜ ì •ë³´ ì¶œë ¥
             if (strcmp(dlt_songname, token) == 0 && strcmp(dlt_singer, song) == 0) {
                 for (int k = 0; k < strlen(dlt_print); k++) {
                     if (dlt_print[k] == '\t')
@@ -1300,18 +1300,18 @@ void get_dlt_song(char* dlt_song) { // »èÁ¦ ¹®ÀÚ¿­ ÀÔ·Â ¹× »ı¼º ÇÔ¼ö -> ÇØ´ç ¹®À
         fclose(file);
     }
     else {
-        printf(".!! »èÁ¦ ´ë»óÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù\n");
+        printf(".!! ì‚­ì œ ëŒ€ìƒì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤\n");
         return;
     }
 
-    // ¼±ÅÃÇÑ ¹øÈ£¿¡ ÇØ´çÇÏ´Â ÁÙÀ» ´Ù½Ã ÀĞ±â À§ÇØ fopen
+    // ì„ íƒí•œ ë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” ì¤„ì„ ë‹¤ì‹œ ì½ê¸° ìœ„í•´ fopen
     file = fopen("song_list.txt", "r");
     if (file == NULL) {
         printf("Error opening file for reading.\n");
         return;
     }
 
-    // ¼±ÅÃÇÑ ¹øÈ£¿¡ ÇØ´çÇÏ´Â ÁÙÀ» ´Ù½Ã ÀĞ¾î¼­ dlt_song¿¡ ÀúÀå
+    // ì„ íƒí•œ ë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” ì¤„ì„ ë‹¤ì‹œ ì½ì–´ì„œ dlt_songì— ì €ì¥
     line_number = 1;
     while (fgets(buffer, STRING_SIZE, file) != NULL) {
         if (line_number == selected_line) {
@@ -1323,56 +1323,56 @@ void get_dlt_song(char* dlt_song) { // »èÁ¦ ¹®ÀÚ¿­ ÀÔ·Â ¹× »ı¼º ÇÔ¼ö -> ÇØ´ç ¹®À
 
     fclose(file);
 
-    // dlt_song ¹®ÀÚ¿­À» song_list¿¡¼­ »èÁ¦ÇÏ´Â ÇÔ¼ö
+    // dlt_song ë¬¸ìì—´ì„ song_listì—ì„œ ì‚­ì œí•˜ëŠ” í•¨ìˆ˜
     song_dlt("song_list.txt", dlt_song);
     deleteSongInPli(dlt_song);
 }
 
-void song_dlt(const char* filename, const char* dlt_song) {   // dlt_song ¹®ÀÚ¿­À» song_list¿¡¼­ »èÁ¦ÇÏ´Â ÇÔ¼ö
-    FILE* input_file = fopen(filename, "r");    // ±âÁ¸ txt ÆÄÀÏ
+void song_dlt(const char* filename, const char* dlt_song) {   // dlt_song ë¬¸ìì—´ì„ song_listì—ì„œ ì‚­ì œí•˜ëŠ” í•¨ìˆ˜
+    FILE* input_file = fopen(filename, "r");    // ê¸°ì¡´ txt íŒŒì¼
     if (input_file == NULL) {
-        printf("%sÆÄÀÏÀ» Ã£Áö ¸øÇß½À´Ï´Ù.\n", filename);
+        printf("%síŒŒì¼ì„ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.\n", filename);
         return;
     }
 
-    FILE* output_file = fopen("temp.txt", "w"); // »õ·Î µ¤¾î¾º¿ï txt ÆÄÀÏ
+    FILE* output_file = fopen("temp.txt", "w"); // ìƒˆë¡œ ë®ì–´ì”Œìš¸ txt íŒŒì¼
     if (output_file == NULL) {
-        printf("ÆÄÀÏ »ı¼º ¿¡·¯\n");
+        printf("íŒŒì¼ ìƒì„± ì—ëŸ¬\n");
         fclose(input_file);
         return;
     }
 
-    char line[STRING_SIZE];   // ±âÁ¸ ¹®ÀÚ¿­À» ´ã¾ÆµÑ ¹è¿­
-    int found = 0;  // ¹®ÀÚ¿­ ¹ß°ß ¿©ºÎ È®ÀÎ º¯¼ö
+    char line[STRING_SIZE];   // ê¸°ì¡´ ë¬¸ìì—´ì„ ë‹´ì•„ë‘˜ ë°°ì—´
+    int found = 0;  // ë¬¸ìì—´ ë°œê²¬ ì—¬ë¶€ í™•ì¸ ë³€ìˆ˜
 
     while (fgets(line, sizeof(line), input_file)) {
-        // Ã£À¸·Á´Â ¹®ÀÚ¿­ÀÌ Æ÷ÇÔµÈ ÇàÀÌ ¾Æ´Ñ °æ¿ì »õ ÆÄÀÏ¿¡ ¾²±â
+        // ì°¾ìœ¼ë ¤ëŠ” ë¬¸ìì—´ì´ í¬í•¨ëœ í–‰ì´ ì•„ë‹Œ ê²½ìš° ìƒˆ íŒŒì¼ì— ì“°ê¸°
         if (strstr(line, dlt_song) == NULL) {
             fputs(line, output_file);
         }
         else {
-            found = 1; // ¹®ÀÚ¿­ ¹ß°ß
+            found = 1; // ë¬¸ìì—´ ë°œê²¬
         }
     }
 
-    char dlt_ans[STRING_SIZE];   // »èÁ¦ ¿©ºÎ ´äº¯ ÀÔ·Â ¹è¿­
+    char dlt_ans[STRING_SIZE];   // ì‚­ì œ ì—¬ë¶€ ë‹µë³€ ì…ë ¥ ë°°ì—´
     if (found) {
-        printf("Á¤¸» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î? (Delete/...)\n");
+        printf("ì •ë§ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (Delete/...)\n");
         fgets(dlt_ans, STRING_SIZE, stdin);
-        if (dlt_ans[0] == 'D' && dlt_ans[1] == 'e' && dlt_ans[2] == 'l' && dlt_ans[3] == 'e' && dlt_ans[4] == 't' && dlt_ans[5] == 'e' && dlt_ans[6] == '\n')   // "Delete"¿Í ÀÏÄ¡½Ã »èÁ¦ ÁøÇà
-            printf("¼º°øÀûÀ¸·Î ³ë·¡¸¦ »èÁ¦Çß½À´Ï´Ù.\n");
+        if (dlt_ans[0] == 'D' && dlt_ans[1] == 'e' && dlt_ans[2] == 'l' && dlt_ans[3] == 'e' && dlt_ans[4] == 't' && dlt_ans[5] == 'e' && dlt_ans[6] == '\n')   // "Delete"ì™€ ì¼ì¹˜ì‹œ ì‚­ì œ ì§„í–‰
+            printf("ì„±ê³µì ìœ¼ë¡œ ë…¸ë˜ë¥¼ ì‚­ì œí–ˆìŠµë‹ˆë‹¤.\n");
         else
-            return;   // ÀÏÄ¡ÇÏÁö ¾ÊÀ¸¸é ¸®ÅÏ
+            return;   // ì¼ì¹˜í•˜ì§€ ì•Šìœ¼ë©´ ë¦¬í„´
     }
     else {
-        printf("..! »èÁ¦ ´ë»óÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù\n");
+        printf("..! ì‚­ì œ ëŒ€ìƒì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤\n");
     }
 
     fclose(input_file);
     fclose(output_file);
 
-    remove(filename);   // ±âÁ¸ ÆÄÀÏ »èÁ¦
-    rename("temp.txt", filename);   // »õ·Î ¾´ ÆÄÀÏÀÇ ÀÌ¸§ º¯°æ
+    remove(filename);   // ê¸°ì¡´ íŒŒì¼ ì‚­ì œ
+    rename("temp.txt", filename);   // ìƒˆë¡œ ì“´ íŒŒì¼ì˜ ì´ë¦„ ë³€ê²½
 }
 
 int get_upd_song(char* selected_song, int* selected_line, char* songToChange) {
@@ -1382,12 +1382,12 @@ int get_upd_song(char* selected_song, int* selected_line, char* songToChange) {
     int upd_line_number_check[MAX_SIZE] = { 0 };
     int upd_line_num = 0;
 
-    printf("³ë·¡¸¦ ¼öÁ¤ÇÕ´Ï´Ù.\n");
-    printf("¼öÁ¤ÇÒ ³ë·¡ÀÇ Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä: ");
+    printf("ë…¸ë˜ë¥¼ ìˆ˜ì •í•©ë‹ˆë‹¤.\n");
+    printf("ìˆ˜ì •í•  ë…¸ë˜ì˜ ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”: ");
     fgets(upd_songname, STRING_SIZE, stdin);
     upd_songname[strcspn(upd_songname, "\n")] = '\0';
 
-    printf("¼öÁ¤ÇÒ ³ë·¡ÀÇ °¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+    printf("ìˆ˜ì •í•  ë…¸ë˜ì˜ ê°€ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
     fgets(upd_singer, STRING_SIZE, stdin);
     upd_singer[strcspn(upd_singer, "\n")] = '\0';
 
@@ -1433,7 +1433,7 @@ int get_upd_song(char* selected_song, int* selected_line, char* songToChange) {
         }
         fclose(upd_file);
 
-        printf("¼öÁ¤ÇÒ ³ë·¡ÀÇ ¹øÈ£¸¦ ¼±ÅÃÇÏ¼¼¿ä: ");
+        printf("ìˆ˜ì •í•  ë…¸ë˜ì˜ ë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”: ");
         int upd_selected_line;
         scanf("%d", &upd_selected_line);
         getchar();
@@ -1447,7 +1447,7 @@ int get_upd_song(char* selected_song, int* selected_line, char* songToChange) {
             }
         }
         if (!upd_valid_selection) {
-            printf("Àß¸øµÈ ³ë·¡ÀÇ ¹øÈ£ÀÔ´Ï´Ù.\n");
+            printf("ì˜ëª»ëœ ë…¸ë˜ì˜ ë²ˆí˜¸ì…ë‹ˆë‹¤.\n");
             return 0;
         }
     }
@@ -1471,7 +1471,7 @@ int get_upd_song(char* selected_song, int* selected_line, char* songToChange) {
         fclose(upd_file);
     }
     else {
-        printf("¼öÁ¤ ´ë»óÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
+        printf("ìˆ˜ì • ëŒ€ìƒì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
         return 0;
     }
 
@@ -1497,8 +1497,8 @@ int get_upd_song(char* selected_song, int* selected_line, char* songToChange) {
 }
 
 int update_song(char* selected_song, int selected_line, char* songToChange, char* updatedSong) {
-    printf("\n(ÅÂ±× = Á¦¸ñ/°¡¼ö/ÀÛ°î°¡/Àå¸£/Àç»ı½Ã°£/¾Ù¹ü¸í/¾Ù¹üÃâ½Ã³¯Â¥)\n");
-    printf("¼öÁ¤ÇÒ ³ë·¡ÀÇ ÅÂ±×¸¦ ¼±ÅÃÇÏ¼¼¿ä (0 ÀÔ·Â ½Ã µÚ·Î°¡±â): ");
+    printf("\n(íƒœê·¸ = ì œëª©/ê°€ìˆ˜/ì‘ê³¡ê°€/ì¥ë¥´/ì¬ìƒì‹œê°„/ì•¨ë²”ëª…/ì•¨ë²”ì¶œì‹œë‚ ì§œ)\n");
+    printf("ìˆ˜ì •í•  ë…¸ë˜ì˜ íƒœê·¸ë¥¼ ì„ íƒí•˜ì„¸ìš” (0 ì…ë ¥ ì‹œ ë’¤ë¡œê°€ê¸°): ");
 
     char upd_tag[STRING_SIZE];
     char upd_str[STRING_SIZE];
@@ -1507,60 +1507,536 @@ int update_song(char* selected_song, int selected_line, char* songToChange, char
     upd_tag[strcspn(upd_tag, "\n")] = '\0';
 
     while (1) {
-        if (strcmp(upd_tag, "Á¦¸ñ") == 0) {
-            printf("¼öÁ¤ÇÒ Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä: ");
-            fgets(upd_str, STRING_SIZE, stdin);
-            upd_str[strcspn(upd_str, "\n")] = '\0';
+        if (strcmp(upd_tag, "ì œëª©") == 0) {
+            printf("ìˆ˜ì •í•  ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”: ");
+            fgets(upd_str, STRING_SIZE, stdin);   //ì œëª© ì…ë ¥ë°›ê¸°
+
+            char* upd_title = trim(upd_str);   //ì•ë’¤ ê³µë°± ì œê±°
+
+            //printf("%s\n", title);         //ì œëŒ€ë¡œ ì…ë ¥ë˜ì—ˆëŠ”ì§€ í™•ì¸(ê²€ì‚¬)
+            if (strlen(upd_title) == 0) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+                printf("\nì œëª© ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ì¢‹ë‹ˆ)\n");
+                continue;
+            }
+            else {      //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+                strcpy(upd_str, upd_title);   //ì œëª© ì €ì¥
+            }
             upd_num = 0;
             break;
         }
-        else if (strcmp(upd_tag, "°¡¼ö") == 0) {
-            printf("¼öÁ¤ÇÒ °¡¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
-            fgets(upd_str, STRING_SIZE, stdin);
-            upd_str[strcspn(upd_str, "\n")] = '\0';
+        else if (strcmp(upd_tag, "ê°€ìˆ˜") == 0) {
+            printf("ìˆ˜ì •í•  ê°€ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+            int upd_error = 0;
+            fgets(upd_str, STRING_SIZE, stdin);   //ê°€ìˆ˜ ì…ë ¥ë°›ê¸°
+
+            char* upd_singers = trim(upd_str);   //ì•ë’¤ ê³µë°± ì œê±°
+
+            if (strlen(upd_singers) == 0) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+                printf("\nê°€ìˆ˜ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                continue;
+            }
+            else if (strchr(upd_singers, '|') || strchr(upd_singers, ',')) {  //"|",","ì´ ìˆëŠ” ê²½ìš°
+                printf("\nê°€ìˆ˜ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                continue;
+            }
+            else {      //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+                char* ptr_tab_q = upd_singers;   //ì• íƒ­
+                char* ptr_tab_p = strchr(upd_singers, '\t');   //ë’¤ íƒ­
+                if (ptr_tab_p == NULL) {   //ê°€ìˆ˜ê°€ í•œëª…ì¼ ë•Œ
+                    duplicate_people("song_list.txt", upd_singers, upd_str, "");
+                    strcpy(upd_str, upd_singers);
+                }
+                else {
+                    //ê°€ìˆ˜ í•œëª…í•œëª…ì´ ê³µë°±ì¸ì§€ ì²´í¬
+                    char check_first_singer_buffer[STRING_SIZE] = "";
+                    strncpy(check_first_singer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //ì²« ê°€ìˆ˜ ì¶”ì¶œ
+                    char* check_first_singer = trim_space(check_first_singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                    if (strcmp(check_first_singer, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                        printf("\nê°€ìˆ˜ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                        continue;
+                    }
+                    ptr_tab_q = ptr_tab_p;
+                    ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
+                    while (ptr_tab_p != NULL) {
+                        char check_singer_buffer[STRING_SIZE] = "";
+                        strncpy(check_singer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ê°€ìˆ˜ ì¶”ì¶œ
+                        char* check_singer = trim_space(check_singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                        if (strcmp(check_singer, "") == 0) { upd_error = 1; break; }   //ê³µë°±ì¼ ê²½ìš°
+                        ptr_tab_q = ptr_tab_p;
+                        ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
+                    }
+                    if (upd_error == 1) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+                        printf("\nê°€ìˆ˜ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                        continue;
+                    }
+                    char check_last_singer_buffer[STRING_SIZE] = "";
+                    ptr_tab_p = strrchr(upd_singers, '\t');
+                    strncpy(check_last_singer_buffer, ptr_tab_p + 1, (upd_singers + strlen(upd_singers) - 1) - ptr_tab_p);   //ë§ˆì§€ë§‰ ê°€ìˆ˜ ì¶”ì¶œ
+                    char* check_last_singer = trim_space(check_last_singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                    if (strcmp(check_last_singer, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                        printf("\nê°€ìˆ˜ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                        continue;
+                    }
+
+                    //ê³µë°± ì—†ìœ¼ë©´ ê°€ìˆ˜ ë™ëª…ì´ì¸ ë¹„êµ ë° ì €ì¥
+                    ptr_tab_q = upd_singers;
+                    ptr_tab_p = strchr(upd_singers, '\t');
+                    char first_singer_buffer[STRING_SIZE] = "";
+                    strncpy(first_singer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //ì²« ê°€ìˆ˜ ì¶”ì¶œ
+                    char* first_singer = trim_space(first_singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                    duplicate_people("song_list.txt", first_singer, upd_str, "");   //ì¤‘ë³µí™•ì¸
+                    strcpy(upd_str, first_singer);   //ì²« ê°€ìˆ˜ ì €ì¥
+                    ptr_tab_q = ptr_tab_p;
+                    ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
+                    while (ptr_tab_p != NULL) {   //ê°€ìˆ˜ê°€ ë” ìˆëŠ”ì§€ í™•ì¸
+                        char singer_buffer[STRING_SIZE] = "";
+                        strncpy(singer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //ê°€ìˆ˜ ì¶”ì¶œ
+                        char* singer = trim_space(singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                        duplicate_people("song_list.txt", singer, upd_str, "");   //ì¤‘ë³µí™•ì¸
+                        strcat(upd_str, " , ");
+                        strcat(upd_str, singer);   //ê°€ìˆ˜ ì €ì¥
+                        ptr_tab_q = ptr_tab_p;
+                        ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
+                    }
+                    char last_singer_buffer[STRING_SIZE] = "";
+                    ptr_tab_p = strrchr(upd_singers, '\t');
+                    strncpy(last_singer_buffer, ptr_tab_p + 1, (upd_singers + strlen(upd_singers) - 1) - ptr_tab_p);   //ë§ˆì§€ë§‰ ê°€ìˆ˜ ì¶”ì¶œ
+                    char* last_singer = trim_space(last_singer_buffer);   //ì•ë’¤ í‘œì¤€ê³µë°± ì œê±°
+                    duplicate_people("song_list.txt", last_singer, upd_str, "");   //ì¤‘ë³µí™•ì¸
+                    strcat(upd_str, " , ");
+                    strcat(upd_str, last_singer);   //ë§ˆì§€ë§‰ ê°€ìˆ˜ ì €ì¥
+                }
+            }
             upd_num = 1;
             break;
         }
-        else if (strcmp(upd_tag, "ÀÛ°î°¡") == 0) {
-            printf("¼öÁ¤ÇÒ ÀÛ°î°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
-            fgets(upd_str, STRING_SIZE, stdin);
-            upd_str[strcspn(upd_str, "\n")] = '\0';
+        else if (strcmp(upd_tag, "ì‘ê³¡ê°€") == 0) {
+            printf("ìˆ˜ì •í•  ì‘ê³¡ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+            int upd_error = 0;
+            fgets(upd_str, STRING_SIZE, stdin); //ì‘ê³¡ê°€ ì…ë ¥ë°›ê¸°
+
+            char* upd_composers = trim(upd_str);   //ì•ë’¤ ê³µë°± ì œê±°
+
+            if (strlen(upd_composers) == 0) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+                printf("\nì‘ê³¡ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                continue;
+            }
+            else {      //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+                char* ptr_comma_q = upd_composers;   //ì• ì½¤ë§ˆ
+                char* ptr_comma_p = strchr(upd_composers, ',');   //ë’¤ ì½¤ë§ˆ
+                if (ptr_comma_p == NULL) {   //ì‘ê³¡ê°€ í•œëª…ì¼ ë•Œ
+                    duplicate_people("song_list.txt", upd_composers, upd_str, "");
+                    strcpy(upd_str, upd_composers);
+                }
+                else {
+                    //ì‘ê³¡ê°€ í•œëª…í•œëª…ì´ ê³µë°±ì¸ì§€ ì²´í¬
+                    char check_first_composer_buffer[STRING_SIZE] = "";
+                    strncpy(check_first_composer_buffer, ptr_comma_q, ptr_comma_p - ptr_comma_q);   //ì²« ì‘ê³¡ê°€ ì¶”ì¶œ
+                    char* check_first_composer = trim(check_first_composer_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                    if (strcmp(check_first_composer, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                        printf("\nì‘ê³¡ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                        continue;
+                    }
+                    ptr_comma_q = ptr_comma_p;
+                    ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                    while (ptr_comma_p != NULL) {
+                        char check_composer_buffer[STRING_SIZE] = "";
+                        strncpy(check_composer_buffer, ptr_comma_q + 1, ptr_comma_p - ptr_comma_q - 1);   //ì‘ê³¡ê°€ ì¶”ì¶œ
+                        char* check_composer = trim(check_composer_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                        if (strcmp(check_composer, "") == 0) { upd_error = 1; break; }   //ê³µë°±ì¼ ê²½ìš°
+                        ptr_comma_q = ptr_comma_p;
+                        ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                    }
+                    if (upd_error == 1) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+                        printf("\nì‘ê³¡ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                        continue;
+                    }
+                    char check_last_composer_buffer[STRING_SIZE] = "";
+                    ptr_comma_p = strrchr(upd_composers, ',');
+                    strncpy(check_last_composer_buffer, ptr_comma_p + 1, (upd_composers + strlen(upd_composers) - 1) - ptr_comma_p);   //ë§ˆì§€ë§‰ ì‘ê³¡ê°€ ì¶”ì¶œ
+                    char* check_last_composer = trim(check_last_composer_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                    if (strcmp(check_last_composer, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                        printf("\nì‘ê³¡ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                        continue;
+                    }
+
+                    //ê³µë°± ì—†ìœ¼ë©´ ì‘ê³¡ê°€ ë™ëª…ì´ì¸ ë¹„êµ ë° ì €ì¥
+                    ptr_comma_q = upd_composers;
+                    ptr_comma_p = strchr(upd_composers, ',');
+                    char first_composer_buffer[STRING_SIZE] = "";
+                    strncpy(first_composer_buffer, ptr_comma_q, ptr_comma_p - ptr_comma_q);   //ì²« ì‘ê³¡ê°€ ì¶”ì¶œ
+                    char* first_composer = trim(first_composer_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                    duplicate_people("song_list.txt", upd_composers, upd_str, "");   //ì¤‘ë³µí™•ì¸
+                    strcat(upd_str, first_composer);   //ì²« ì‘ê³¡ê°€ ì €ì¥
+                    ptr_comma_q = ptr_comma_p;
+                    ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                    while (ptr_comma_p != NULL) {   //ì‘ê³¡ê°€ê°€ ë” ìˆëŠ”ì§€ í™•ì¸
+                        char composer_buffer[STRING_SIZE] = "";
+                        strncpy(composer_buffer, ptr_comma_q + 1, ptr_comma_p - ptr_comma_q - 1);   //ì‘ê³¡ê°€ ì¶”ì¶œ
+                        char* composer = trim(composer_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                        duplicate_people("song_list.txt", upd_composers, upd_str, "");   //ì¤‘ë³µí™•ì¸
+                        strcat(upd_str, " , ");
+                        strcat(upd_str, composer);   //ì‘ê³¡ê°€ ì €ì¥
+                        ptr_comma_q = ptr_comma_p;
+                        ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                    }
+                    char last_composer_buffer[STRING_SIZE] = "";
+                    ptr_comma_p = strrchr(upd_composers, ',');
+                    strncpy(last_composer_buffer, ptr_comma_p + 1, (upd_composers + strlen(upd_composers) - 1) - ptr_comma_p);   //ë§ˆì§€ë§‰ ê°€ìˆ˜ ì¶”ì¶œ
+                    char* last_composer = trim(last_composer_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                    duplicate_people("song_list.txt", upd_composers, upd_str, "");   //ì¤‘ë³µí™•ì¸
+                    strcat(upd_str, " , ");
+                    strcat(upd_str, last_composer);   //ë§ˆì§€ë§‰ ì‘ê³¡ê°€ ì €ì¥
+                }
+            }
             upd_num = 2;
             break;
         }
-        else if (strcmp(upd_tag, "Àå¸£") == 0) {
-            printf("¼öÁ¤ÇÒ Àå¸£¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
-            fgets(upd_str, STRING_SIZE, stdin);
-            upd_str[strcspn(upd_str, "\n")] = '\0';
+        else if (strcmp(upd_tag, "ì‘ì‚¬ê°€") == 0) {
+            printf("ìˆ˜ì •í•  ì¥ë¥´ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+            int upd_error = 0;
+            fgets(upd_str, STRING_SIZE, stdin); //ì‘ì‚¬ê°€ ì…ë ¥ë°›ê¸°
+
+            char* upd_lyricists = trim(upd_str);   //ì•ë’¤ ê³µë°± ì œê±°
+
+            if (strlen(upd_lyricists) == 0) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+                printf("\nì‘ì‚¬ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                continue;
+            }
+            else {      //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+                char* ptr_comma_q = upd_lyricists;   //ì• ì½¤ë§ˆ
+                char* ptr_comma_p = strchr(upd_lyricists, ',');   //ë’¤ ì½¤ë§ˆ
+                if (ptr_comma_p == NULL) {   //ì‘ì‚¬ê°€ê°€ í•œëª…ì¼ ë•Œ
+                    duplicate_people("song_list.txt", upd_lyricists, upd_str, "");
+                    strcpy(upd_str, upd_lyricists);
+                }
+                else {
+                    //ì‘ì‚¬ê°€ í•œëª…í•œëª…ì´ ê³µë°±ì¸ì§€ ì²´í¬
+                    char check_first_lyricist_buffer[STRING_SIZE] = "";
+                    strncpy(check_first_lyricist_buffer, ptr_comma_q, ptr_comma_p - ptr_comma_q);   //ì²« ì‘ì‚¬ê°€ ì¶”ì¶œ
+                    char* check_first_lyricist = trim(check_first_lyricist_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                    if (strcmp(check_first_lyricist, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                        printf("\nì‘ì‚¬ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                        continue;
+                    }
+                    ptr_comma_q = ptr_comma_p;
+                    ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                    while (ptr_comma_p != NULL) {
+                        char check_lyricist_buffer[STRING_SIZE] = "";
+                        strncpy(check_lyricist_buffer, ptr_comma_q + 1, ptr_comma_p - ptr_comma_q - 1);   //ì‘ì‚¬ê°€ ì¶”ì¶œ
+                        char* check_lyricist = trim(check_lyricist_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                        if (strcmp(check_lyricist, "") == 0) { upd_error = 1; break; }   //ê³µë°±ì¼ ê²½ìš°
+                        ptr_comma_q = ptr_comma_p;
+                        ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                    }
+                    if (upd_error == 1) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+                        printf("\nì‘ì‚¬ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                        continue;
+                    }
+                    char check_last_lyricist_buffer[STRING_SIZE] = "";
+                    ptr_comma_p = strrchr(upd_lyricists, ',');
+                    strncpy(check_last_lyricist_buffer, ptr_comma_p + 1, (upd_lyricists + strlen(upd_lyricists) - 1) - ptr_comma_p);   //ë§ˆì§€ë§‰ ì‘ì‚¬ê°€ ì¶”ì¶œ
+                    char* check_last_lyricist = trim(check_last_lyricist_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                    if (strcmp(check_last_lyricist, "") == 0) {   //ê³µë°±ì¼ê²½ìš°
+                        printf("\nì‘ì‚¬ê°€ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ìœ¤ì¢…ì‹ )\n");
+                        continue;
+                    }
+
+                    //ê³µë°± ì—†ìœ¼ë©´ ì‘ì‚¬ê°€ ë™ëª…ì´ì¸ ë¹„êµ ë° ì €ì¥
+                    ptr_comma_q = upd_lyricists;
+                    ptr_comma_p = strchr(upd_lyricists, ',');
+                    char first_lyricist_buffer[STRING_SIZE] = "";
+                    strncpy(first_lyricist_buffer, ptr_comma_q, ptr_comma_p - ptr_comma_q);   //ì²« ì‘ì‚¬ê°€ ì¶”ì¶œ
+                    char* first_lyricist = trim(first_lyricist_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                    duplicate_people("song_list.txt", upd_lyricists, upd_str, "");   //ì¤‘ë³µí™•ì¸
+                    strcpy(upd_str, first_lyricist);   //ì²« ì‘ì‚¬ê°€ ì €ì¥
+                    ptr_comma_q = ptr_comma_p;
+                    ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                    while (ptr_comma_p != NULL) {   //ì‘ì‚¬ê°€ê°€ ë” ìˆëŠ”ì§€ í™•ì¸
+                        char lyricist_buffer[STRING_SIZE] = "";
+                        strncpy(lyricist_buffer, ptr_comma_q + 1, ptr_comma_p - ptr_comma_q - 1);   //ì‘ì‚¬ê°€ ì¶”ì¶œ
+                        char* lyricist = trim(lyricist_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                        duplicate_people("song_list.txt", upd_lyricists, upd_str, "");   //ì¤‘ë³µí™•ì¸
+                        strcat(upd_str, " , ");
+                        strcat(upd_str, lyricist);   //ì‘ì‚¬ê°€ ì €ì¥
+                        ptr_comma_q = ptr_comma_p;
+                        ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                    }
+                    char last_lyricist_buffer[STRING_SIZE] = "";
+                    ptr_comma_p = strrchr(upd_lyricists, ',');
+                    strncpy(last_lyricist_buffer, ptr_comma_p + 1, (upd_lyricists + strlen(upd_lyricists) - 1) - ptr_comma_p);   //ë§ˆì§€ë§‰ ê°€ìˆ˜ ì¶”ì¶œ
+                    char* last_singer = trim(last_lyricist_buffer);   //ì•ë’¤ ê³µë°± ì œê±°
+                    duplicate_people("song_list.txt", upd_lyricists, upd_str, "");   //ì¤‘ë³µí™•ì¸
+                    strcat(upd_str, " , ");
+                    strcat(upd_str, last_singer);   //ë§ˆì§€ë§‰ ì‘ì‚¬ê°€ ì €ì¥
+                }
+            }
             upd_num = 3;
             break;
         }
-        else if (strcmp(upd_tag, "Àç»ı½Ã°£") == 0) {
-            printf("¼öÁ¤ÇÒ Àç»ı½Ã°£À» ÀÔ·ÂÇÏ¼¼¿ä: ");
-            fgets(upd_str, STRING_SIZE, stdin);
-            upd_str[strcspn(upd_str, "\n")] = '\0';
+        else if (strcmp(upd_tag, "ì¥ë¥´") == 0) {
+            printf("ìˆ˜ì •í•  ì¥ë¥´ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+            fgets(upd_str, STRING_SIZE, stdin); // ì¥ë¥´ ì…ë ¥ë°›ê¸°
+            char* upd_genre = trim(upd_str);   //ì•ë’¤ ê³µë°± ì œê±°
+
+            if (strcmp(upd_genre, "í´ë˜ì‹") * strcmp(upd_genre, "ì¬ì¦ˆ") * strcmp(upd_genre, "íŒ") * strcmp(upd_genre, "ë°œë¼ë“œ") * strcmp(upd_genre, "í™í•©") * strcmp(upd_genre, "íŠ¸ë¡œíŠ¸") * strcmp(upd_genre, "ë””ìŠ¤ì½”") * strcmp(upd_genre, "ëŒ„ìŠ¤") == 0 || strlen(upd_genre) == 0) {   //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+                strcpy(upd_str, upd_genre);   //ì¥ë¥´ ì €ì¥
+            }
+            else {      //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°
+                printf("\nì¥ë¥´ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ì¬ì¦ˆ)\n");
+                continue;
+            }
             upd_num = 4;
             break;
         }
-        else if (strcmp(upd_tag, "¾Ù¹ü¸í") == 0) {
-            printf("¼öÁ¤ÇÒ ¾Ù¹ü¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä: ");
+        else if (strcmp(upd_tag, "ì¬ìƒì‹œê°„") == 0) {
+            printf("ìˆ˜ì •í•  ì¬ìƒì‹œê°„ì„ ì…ë ¥í•˜ì„¸ìš”: ");
+            char minute_str[STRING_SIZE] = "";
+            char second_str[STRING_SIZE] = "";
+            int count_m = 0;
+            int count_s = 0;
+            int upd_error = 0;
             fgets(upd_str, STRING_SIZE, stdin);
-            upd_str[strcspn(upd_str, "\n")] = '\0';
+
+            char* upd_playtime = trim(upd_str);   //ì•ë’¤ ê³µë°± ì œê±°
+
+            //"ë¶„","ì´ˆ" ê°ê° ê°œìˆ˜ ì„¸ê¸°
+            char* ptr_m_temp = strstr(upd_playtime, "ë¶„");
+            while (ptr_m_temp != NULL) // ë”ì´ìƒ "ë¶„"ì´ ë“±ì¥í•˜ì§€ ì•Šì„ ë•Œê¹Œì§€ ë°˜ë³µ
+            {
+                ptr_m_temp = strstr(ptr_m_temp + 1, "ë¶„"); // ë‹¤ìŒ ë“±ì¥ ìœ„ì¹˜ íƒìƒ‰
+                count_m++;
+            }
+            char* ptr_s_temp = strstr(upd_playtime, "ì´ˆ");
+            while (ptr_s_temp != NULL) // ë”ì´ìƒ "ì´ˆ"ê°€ ë“±ì¥í•˜ì§€ ì•Šì„ ë•Œê¹Œì§€ ë°˜ë³µ
+            {
+                ptr_s_temp = strstr(ptr_s_temp + 1, "ì´ˆ"); // ë‹¤ìŒ ë“±ì¥ ìœ„ì¹˜ íƒìƒ‰
+                count_s++;
+            }
+
+            //ì¬ìƒì‹œê°„ ë¬¸ë²• í˜•ì‹ í™•ì¸
+            if (strlen(upd_playtime) == 0) { upd_error = 1; }   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°   
+            else if (count_m == 1 && count_s == 1) {   //ëª¨ë‘ 1ê°œì”© ìˆëŠ” ê²½ìš°
+                char* ptr_m = strstr(upd_playtime, "ë¶„");
+                char* ptr_s = strstr(upd_playtime, "ì´ˆ");
+                if ((ptr_s - upd_playtime) == strlen(upd_playtime) - 2 && ptr_m < ptr_s) {   //"ì´ˆ"ê°€ ë§ˆì§€ë§‰ì´ê³  "ë¶„"ì´ "ì´ˆ"ë³´ë‹¤ ì•ì— ìˆì–´ì•¼ ë¨
+                    strncpy(minute_str, upd_playtime, ptr_m - upd_playtime);
+                    strncpy(second_str, ptr_m + 2, ptr_s - ptr_m - 2);
+                    if (strchr(minute_str, ' ') || strchr(minute_str, '\t') || strcmp(minute_str, "") == 0 || strchr(second_str, ' ') || strchr(second_str, '\t') || strcmp(second_str, "") == 0) { upd_error = 1; }   //ê³µë°±ì´ ì—†ì–´ì•¼ ë¨
+                    else {
+                        for (int i = 0; i < strlen(minute_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
+                        {
+                            if ((int)minute_str[i] < 48 || (int)minute_str[i] > 57) { upd_error = 1; }
+                        }
+                        for (int i = 0; i < strlen(second_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
+                        {
+                            if ((int)second_str[i] < 48 || (int)second_str[i] > 57) { upd_error = 1; }
+                        }
+                    }
+                }
+                else { upd_error = 1; }
+            }
+            else if (count_m == 1 && count_s == 0) {   //ì…ë ¥ì— "ë¶„"ì´ 1ê°œ ìˆëŠ” ê²½ìš°
+                char* ptr_m = strstr(upd_playtime, "ë¶„");
+                if ((ptr_m - upd_playtime) == strlen(upd_playtime) - 2) {   //"ë¶„"ì´ ë§ˆì§€ë§‰ì´ì–´ì•¼ ë¨
+                    strncpy(minute_str, upd_playtime, ptr_m - upd_playtime);
+                    if (strchr(minute_str, ' ') || strchr(minute_str, '\t') || strcmp(minute_str, "") == 0) { upd_error = 1; }   //ê³µë°±ì´ ì—†ì–´ì•¼ ë¨
+                    else {
+                        for (int i = 0; i < strlen(minute_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
+                        {
+                            if ((int)minute_str[i] < 48 || (int)minute_str[i] > 57) { upd_error = 1; }
+                        }
+                    }
+                }
+                else { upd_error = 1; }
+            }
+            else if (count_m == 0 && count_s == 1) {   //ì…ë ¥ì— "ì´ˆ"ê°€ 1ê°œ ìˆëŠ” ê²½ìš°
+                char* ptr_s = strstr(upd_playtime, "ì´ˆ");
+                if ((ptr_s - upd_playtime) == strlen(upd_playtime) - 2) {   //"ì´ˆ"ê°€ ë§ˆì§€ë§‰ì´ì–´ì•¼ ë¨
+                    strncpy(second_str, upd_playtime, ptr_s - upd_playtime);
+                    if (strchr(second_str, ' ') || strchr(second_str, '\t') || strcmp(second_str, "") == 0) { upd_error = 1; }   //ê³µë°±ì´ ì—†ì–´ì•¼ ë¨
+                    else {
+                        for (int i = 0; i < strlen(second_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
+                        {
+                            if ((int)second_str[i] < 48 || (int)second_str[i] > 57) { upd_error = 1; }
+                        }
+                    }
+                }
+                else { upd_error = 1; }
+            }
+            else { upd_error = 1; }      //ë‚˜ë¨¸ì§€ëŠ” ëª¨ë‘ í‹€ë¦° ê²½ìš°
+
+            if (upd_error == 1) {      //ì˜¤ë¥˜ ì²˜ë¦¬
+                printf("\nì‹œê°„ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:02ë¶„44ì´ˆ)\n");
+                continue;
+            }
+
+            //ì¬ìƒì‹œê°„ ì˜ë¯¸ ê·œì¹™ í™•ì¸
+            int minute = 0;
+            int second = 0;
+            if (strcmp(minute_str, "")) {   //"ë¶„"ì´ ê³µë°±ì´ ì•„ë‹ˆë©´
+                minute = atoi(minute_str);
+                if (minute <= 0) { upd_error = 1; }   //"ë¶„"ì€ 0ë³´ë‹¤ í¬ë‹¤
+            }
+            if (strcmp(second_str, "")) {   //"ì´ˆ"ê°€ ê³µë°±ì´ ì•„ë‹ˆë©´
+                second = atoi(second_str);
+                if (second <= 0 || second >= 60) { upd_error = 1; }   //"ì´ˆ"ëŠ” 1~59ì‚¬ì´
+            }
+            if (upd_error == 1) {      //ì˜¤ë¥˜ ì²˜ë¦¬
+                printf("\nì‹œê°„ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:02ë¶„44ì´ˆ)\n");
+                continue;
+            }
+
+            if (strcmp(minute_str, "")) {   //"ë¶„"ì´ ê³µë°±ì´ ì•„ë‹ˆë©´ "ë¶„" ì €ì¥
+                sprintf(minute_str, "%02d", minute);
+                strcpy(upd_str, minute_str);
+                strcat(upd_str, "ë¶„");
+            }
+            if (strcmp(second_str, "")) {   //"ì´ˆ"ê°€ ê³µë°±ì´ ì•„ë‹ˆë©´ "ì´ˆ" ì €ì¥
+                sprintf(second_str, "%02d", second);
+                strcat(upd_str, second_str);
+                strcat(upd_str, "ì´ˆ");
+            }
             upd_num = 5;
             break;
         }
-        else if (strcmp(upd_tag, "¾Ù¹üÃâ½Ã³¯Â¥") == 0) {
-            printf("¼öÁ¤ÇÒ ¾Ù¹üÃâ½Ã³¯Â¥¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
-            fgets(upd_str, STRING_SIZE, stdin);
-            upd_str[strcspn(upd_str, "\n")] = '\0';
+        else if (strcmp(upd_tag, "ì•¨ë²”ëª…") == 0) {
+            printf("ìˆ˜ì •í•  ì•¨ë²”ëª…ì„ ì…ë ¥í•˜ì„¸ìš”: ");
+            fgets(upd_str, STRING_SIZE, stdin); //ì•¨ë²”ëª… ì…ë ¥ë°›ê¸°
+
+            char* upd_album = trim(upd_str);   //ì•ë’¤ ê³µë°± ì œê±°
+
+            if (0) {   //í‹€ë¦° ì…ë ¥ì¼ ê²½ìš°(ì—†ìŒ)
+                printf("\nì•¨ë²”ëª… ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.(ì˜ˆì‹œ:ë°¤ì–‘ê°±)\n");
+                continue;
+            }
+            else {      //ë§ëŠ” ì…ë ¥ì¼ ê²½ìš°
+                strcpy(upd_str, upd_album);   //ì•¨ë²”ëª… ì €ì¥
+            }
             upd_num = 6;
+            break;
+        }
+        else if (strcmp(upd_tag, "ì•¨ë²”ì¶œì‹œë‚ ì§œ") == 0) {//
+            printf("ìˆ˜ì •í•  ì•¨ë²”ì¶œì‹œë‚ ì§œë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
+            fgets(upd_str, STRING_SIZE, stdin);
+            char year_str[5] = "";
+            char month_str[3] = "";
+            char day_str[3] = "";
+            int count_hyphen = 0;
+            int count_slash = 0;
+            int count_dot = 0;
+            int upd_error = 0;
+
+            char* upd_release = trim(upd_str);   //ì•ë’¤ ê³µë°± ì œê±°
+
+            if (strlen(upd_release) == 0) {      //ê³µë°±ì¼ ê²½ìš°
+                strcpy(upd_str, upd_release);
+                break;
+            }
+
+            //'-','/','.' ê°ê° ê°œìˆ˜ ì„¸ê¸°
+            char* ptr_hyphen_temp = strchr(upd_release, '-');
+            while (ptr_hyphen_temp != NULL) // ë”ì´ìƒ '-'ì´ ë“±ì¥í•˜ì§€ ì•Šì„ ë•Œê¹Œì§€ ë°˜ë³µ
+            {
+                ptr_hyphen_temp = strchr(ptr_hyphen_temp + 1, '-'); // ë‹¤ìŒ ë“±ì¥ ìœ„ì¹˜ íƒìƒ‰
+                count_hyphen++;
+            }
+            char* ptr_slash_temp = strchr(upd_release, '/');
+            while (ptr_slash_temp != NULL) // ë”ì´ìƒ '/'ê°€ ë“±ì¥í•˜ì§€ ì•Šì„ ë•Œê¹Œì§€ ë°˜ë³µ
+            {
+                ptr_slash_temp = strchr(ptr_slash_temp + 1, '/'); // ë‹¤ìŒ ë“±ì¥ ìœ„ì¹˜ íƒìƒ‰
+                count_slash++;
+            }
+            char* ptr_dot_temp = strchr(upd_release, '.');
+            while (ptr_dot_temp != NULL) // ë”ì´ìƒ '.'ê°€ ë“±ì¥í•˜ì§€ ì•Šì„ ë•Œê¹Œì§€ ë°˜ë³µ
+            {
+                ptr_dot_temp = strchr(ptr_dot_temp + 1, '.'); // ë‹¤ìŒ ë“±ì¥ ìœ„ì¹˜ íƒìƒ‰
+                count_dot++;
+            }
+
+            //ì•¨ë²” ì¶œì‹œ ë‚ ì§œ ë¬¸ë²• í˜•ì‹ í™•ì¸
+            if (strlen(upd_release) == 10) {
+                if (count_hyphen == 2 && count_slash == 0 && count_dot == 0) {   //'-'ì´ 2ê°œì¸ ê²½ìš°
+                    char* ptr_hyphen_1 = strchr(upd_release, '-');
+                    char* ptr_hyphen_2 = strchr(ptr_hyphen_1 + 1, '-');
+                    if ((ptr_hyphen_1 - upd_release) == 4 && (ptr_hyphen_2 - ptr_hyphen_1) == 3) {   //ë…„,ì›”,ì¼ì´ ê°ê° 4,2,2ìë¦¬ì¸ì§€ í™•ì¸
+                        strncpy(year_str, upd_release, 4);
+                        strncpy(month_str, ptr_hyphen_1 + 1, 2);
+                        strncpy(day_str, ptr_hyphen_2 + 1, 2);
+                    }
+                    else { upd_error = 1; }
+                }
+                else if (count_hyphen == 0 && count_slash == 2 && count_dot == 0) {   //'/'ì´ 2ê°œì¸ ê²½ìš°
+                    char* ptr_slash_1 = strchr(upd_release, '/');
+                    char* ptr_slash_2 = strchr(ptr_slash_1 + 1, '/');
+                    if ((ptr_slash_1 - upd_release) == 4 && (ptr_slash_2 - ptr_slash_1) == 3) {   //ë…„,ì›”,ì¼ì´ ê°ê° 4,2,2ìë¦¬ì¸ì§€ í™•ì¸
+                        strncpy(year_str, upd_release, 4);
+                        strncpy(month_str, ptr_slash_1 + 1, 2);
+                        strncpy(day_str, ptr_slash_2 + 1, 2);
+                    }
+                    else { upd_error = 1; }
+                }
+                else if (count_hyphen == 0 && count_slash == 0 && count_dot == 2) {   //'.'ì´ 2ê°œì¸ ê²½ìš°
+                    char* ptr_dot_1 = strchr(upd_release, '.');
+                    char* ptr_dot_2 = strchr(ptr_dot_1 + 1, '.');
+                    if ((ptr_dot_1 - upd_release) == 4 && (ptr_dot_2 - ptr_dot_1) == 3) {   //ë…„,ì›”,ì¼ì´ ê°ê° 4,2,2ìë¦¬ì¸ì§€ í™•ì¸
+                        strncpy(year_str, upd_release, 4);
+                        strncpy(month_str, ptr_dot_1 + 1, 2);
+                        strncpy(day_str, ptr_dot_2 + 1, 2);
+                    }
+                    else { upd_error = 1; }
+                }
+                else { upd_error = 1; }
+            }
+            else if (strlen(upd_release) == 8) {
+                strncpy(year_str, upd_release, 4);
+                strncpy(month_str, upd_release + 4, 2);
+                strncpy(day_str, upd_release + 6, 2);
+            }
+            else { upd_error = 1; }   //ë‚˜ë¨¸ì§€ëŠ” ëª¨ë‘ í‹€ë¦° ê²½ìš°
+
+            if (upd_error == 1) {
+                printf("\nì•¨ë²” ì¶œì‹œ ë‚ ì§œ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.\n(ì˜ˆì‹œ:2024-04-01 ë˜ëŠ” 2024/04/01 ë˜ëŠ” 2024.04.01 ë˜ëŠ” 20240401)\n");
+                continue;
+            }
+
+            for (int i = 0; i < strlen(year_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
+            {
+                if ((int)year_str[i] < 48 || (int)year_str[i] > 57) { upd_error = 1; }
+            }
+            for (int i = 0; i < strlen(month_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
+            {
+                if ((int)month_str[i] < 48 || (int)month_str[i] > 57) { upd_error = 1; }
+            }
+            for (int i = 0; i < strlen(day_str); i++)   //ë¬¸ìì—´ì´ ìˆ«ìì¸ì§€ í™•ì¸
+            {
+                if ((int)day_str[i] < 48 || (int)day_str[i] > 57) { upd_error = 1; }
+            }
+
+            if (upd_error == 1) {
+                printf("\nì•¨ë²” ì¶œì‹œ ë‚ ì§œ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.\n(ì˜ˆì‹œ:2024-04-01 ë˜ëŠ” 2024/04/01 ë˜ëŠ” 2024.04.01 ë˜ëŠ” 20240401)\n");
+                continue;
+            }
+
+            //ì•¨ë²” ì¶œì‹œ ë‚ ì§œ ì˜ë¯¸ ê·œì¹™ í™•ì¸
+            int year = atoi(year_str);
+            int month = atoi(month_str);
+            int day = atoi(day_str);
+            if (check_date(year, month, day)) {   //ë‚ ì§œ ì¡´ì¬ ì—¬ë¶€ í™•ì¸
+                sprintf(upd_str, "%04d-%02d-%02d", year, month, day);
+            }
+            else {
+                printf("\nì•¨ë²” ì¶œì‹œ ë‚ ì§œ ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”.\n(ì˜ˆì‹œ:2024-04-01 ë˜ëŠ” 2024/04/01 ë˜ëŠ” 2024.04.01 ë˜ëŠ” 20240401)\n");
+                continue;
+            }
+            upd_num = 7;
             break;
         }
         else if (strcmp(upd_tag, "0") == 0) {
             return;
         }
         else {
-            printf("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.\n");
+            printf("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.\n");
             continue;
         }
     }
@@ -1613,7 +2089,7 @@ int update_song(char* selected_song, int selected_line, char* songToChange, char
 
     strcpy(updatedSong, upSong);
 
-    printf("³ë·¡ Á¤º¸°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.\n");
+    printf("ë…¸ë˜ ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 }
 
 void deleteSongInPli(const char* dlt_song)
@@ -1630,48 +2106,48 @@ void deleteSongInPli(const char* dlt_song)
         len = strlen(pliName);
         if (len > 0 && pliName[len - 1] == '\n')
         {
-            pliName[len - 1] = '\0'; // °³Çà ¹®ÀÚ¸¦ Á¦°Å
+            pliName[len - 1] = '\0'; // ê°œí–‰ ë¬¸ìë¥¼ ì œê±°
         }
         const char* pliFile = strcat(pliName, ".txt");
         song_dltInPli(pliFile, dlt_song);
     }
     fclose(pliList);
 }
-void song_dltInPli(const char* filename, const char* dlt_song) {   // dlt_song ¹®ÀÚ¿­À» song_list¿¡¼­ »èÁ¦ÇÏ´Â ÇÔ¼ö
-    FILE* input_file = fopen(filename, "r");    // ±âÁ¸ txt ÆÄÀÏ
+void song_dltInPli(const char* filename, const char* dlt_song) {   // dlt_song ë¬¸ìì—´ì„ song_listì—ì„œ ì‚­ì œí•˜ëŠ” í•¨ìˆ˜
+    FILE* input_file = fopen(filename, "r");    // ê¸°ì¡´ txt íŒŒì¼
     if (input_file == NULL) {
-        printf("%sÆÄÀÏÀ» Ã£Áö ¸øÇß½À´Ï´Ù.\n", filename);
+        printf("%síŒŒì¼ì„ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.\n", filename);
         return;
     }
 
-    FILE* output_file = fopen("temp.txt", "w"); // »õ·Î µ¤¾î¾º¿ï txt ÆÄÀÏ
+    FILE* output_file = fopen("temp.txt", "w"); // ìƒˆë¡œ ë®ì–´ì”Œìš¸ txt íŒŒì¼
     if (output_file == NULL) {
-        printf("ÆÄÀÏ »ı¼º ¿¡·¯\n");
+        printf("íŒŒì¼ ìƒì„± ì—ëŸ¬\n");
         fclose(input_file);
         return;
     }
 
-    char line[STRING_SIZE];   // ±âÁ¸ ¹®ÀÚ¿­À» ´ã¾ÆµÑ ¹è¿­
-    int found = 0;  // ¹®ÀÚ¿­ ¹ß°ß ¿©ºÎ È®ÀÎ º¯¼ö
+    char line[STRING_SIZE];   // ê¸°ì¡´ ë¬¸ìì—´ì„ ë‹´ì•„ë‘˜ ë°°ì—´
+    int found = 0;  // ë¬¸ìì—´ ë°œê²¬ ì—¬ë¶€ í™•ì¸ ë³€ìˆ˜
 
     while (fgets(line, sizeof(line), input_file)) {
-        // Ã£À¸·Á´Â ¹®ÀÚ¿­ÀÌ Æ÷ÇÔµÈ ÇàÀÌ ¾Æ´Ñ °æ¿ì »õ ÆÄÀÏ¿¡ ¾²±â
+        // ì°¾ìœ¼ë ¤ëŠ” ë¬¸ìì—´ì´ í¬í•¨ëœ í–‰ì´ ì•„ë‹Œ ê²½ìš° ìƒˆ íŒŒì¼ì— ì“°ê¸°
         if (strstr(line, dlt_song) == NULL) {
             fputs(line, output_file);
         }
         else {
-            found = 1; // ¹®ÀÚ¿­ ¹ß°ß
+            found = 1; // ë¬¸ìì—´ ë°œê²¬
         }
     }
 
     fclose(input_file);
     fclose(output_file);
 
-    remove(filename);   // ±âÁ¸ ÆÄÀÏ »èÁ¦
-    rename("temp.txt", filename);   // »õ·Î ¾´ ÆÄÀÏÀÇ ÀÌ¸§ º¯°æ
+    remove(filename);   // ê¸°ì¡´ íŒŒì¼ ì‚­ì œ
+    rename("temp.txt", filename);   // ìƒˆë¡œ ì“´ íŒŒì¼ì˜ ì´ë¦„ ë³€ê²½
 }
 
-void updatePlaylist(const char* sourceSong, const char* destSong) //sourceSongÀÎ ³ë·¡¸¦ destSongÀ¸·Î ¹Ù²Û´Ù.
+void updatePlaylist(const char* sourceSong, const char* destSong) //sourceSongì¸ ë…¸ë˜ë¥¼ destSongìœ¼ë¡œ ë°”ê¾¼ë‹¤.
 {
     FILE* pliList = fopen("Playlist_list.txt", "r");
     char buffer[STRING_SIZE];
@@ -1686,7 +2162,7 @@ void updatePlaylist(const char* sourceSong, const char* destSong) //sourceSongÀÎ
         len = strlen(pliName);
         if (len > 0 && pliName[len - 1] == '\n')
         {
-            pliName[len - 1] = '\0'; // °³Çà ¹®ÀÚ¸¦ Á¦°Å
+            pliName[len - 1] = '\0'; // ê°œí–‰ ë¬¸ìë¥¼ ì œê±°
         }
         const char* pliFile = strcat(pliName, ".txt");
         songUpdInPli(pliFile, sourceSong, updatedSong);
@@ -1695,26 +2171,26 @@ void updatePlaylist(const char* sourceSong, const char* destSong) //sourceSongÀÎ
 }
 
 void songUpdInPli(const char* filename, const char* sourceSong, const char* destSong) {
-    FILE* input_file = fopen(filename, "r");    // ±âÁ¸ txt ÆÄÀÏ
+    FILE* input_file = fopen(filename, "r");    // ê¸°ì¡´ txt íŒŒì¼
     if (input_file == NULL) {
-        printf("%sÆÄÀÏÀ» Ã£Áö ¸øÇß½À´Ï´Ù.\n", filename);
+        printf("%síŒŒì¼ì„ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.\n", filename);
         return;
     }
 
-    FILE* output_file = fopen("temp.txt", "w"); // »õ·Î µ¤¾î¾º¿ï txt ÆÄÀÏ
+    FILE* output_file = fopen("temp.txt", "w"); // ìƒˆë¡œ ë®ì–´ì”Œìš¸ txt íŒŒì¼
     if (output_file == NULL) {
-        printf("ÆÄÀÏ »ı¼º ¿¡·¯\n");
+        printf("íŒŒì¼ ìƒì„± ì—ëŸ¬\n");
         fclose(input_file);
         return;
     }
 
-    char line[STRING_SIZE];   // ±âÁ¸ ¹®ÀÚ¿­À» ´ã¾ÆµÑ ¹è¿­
-    int found = 0;  // ¹®ÀÚ¿­ ¹ß°ß ¿©ºÎ È®ÀÎ º¯¼ö
+    char line[STRING_SIZE];   // ê¸°ì¡´ ë¬¸ìì—´ì„ ë‹´ì•„ë‘˜ ë°°ì—´
+    int found = 0;  // ë¬¸ìì—´ ë°œê²¬ ì—¬ë¶€ í™•ì¸ ë³€ìˆ˜
 
     while (fgets(line, sizeof(line), input_file)) {
-        // Ã£À¸·Á´Â ¹®ÀÚ¿­ÀÌ Æ÷ÇÔµÈ ÇàÀÌ ¾Æ´Ñ °æ¿ì »õ ÆÄÀÏ¿¡ ¾²±â
-        if (strstr(line, sourceSong) == NULL) { //¹®ÀÚ¿­À» ºñ±³ÇØ¼­ °°À¸¸é..
-            fputs(line, output_file); //´Ù¸£¸é ±×³É ÁÙÀ» º¹»çÇØÁØ´Ù.
+        // ì°¾ìœ¼ë ¤ëŠ” ë¬¸ìì—´ì´ í¬í•¨ëœ í–‰ì´ ì•„ë‹Œ ê²½ìš° ìƒˆ íŒŒì¼ì— ì“°ê¸°
+        if (strstr(line, sourceSong) == NULL) { //ë¬¸ìì—´ì„ ë¹„êµí•´ì„œ ê°™ìœ¼ë©´..
+            fputs(line, output_file); //ë‹¤ë¥´ë©´ ê·¸ëƒ¥ ì¤„ì„ ë³µì‚¬í•´ì¤€ë‹¤.
         }
         else
         {
@@ -1725,6 +2201,6 @@ void songUpdInPli(const char* filename, const char* sourceSong, const char* dest
     fclose(input_file);
     fclose(output_file);
 
-    remove(filename);   // ±âÁ¸ ÆÄÀÏ »èÁ¦
-    rename("temp.txt", filename);   // »õ·Î ¾´ ÆÄÀÏÀÇ ÀÌ¸§ º¯°æ
+    remove(filename);   // ê¸°ì¡´ íŒŒì¼ ì‚­ì œ
+    rename("temp.txt", filename);   // ìƒˆë¡œ ì“´ íŒŒì¼ì˜ ì´ë¦„ ë³€ê²½
 }
