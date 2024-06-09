@@ -308,7 +308,7 @@ void song_list_menu() //노래 리스트 주 메뉴
         char songToChange[STRING_SIZE] = { 0, };
         char updatedSong[STRING_SIZE];
         //char* updatedSong = (char*)malloc(strlen(songToChange) + 1);
-        int selected_line;  // txt파일에서 수정할 문자열의 줄
+        int selected_line;  // txt파일에서 수정할 문자열(노래)의 줄
 
         if (err == 0) //입력 조건에 맞았을 때
         {
