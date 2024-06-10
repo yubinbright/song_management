@@ -1262,7 +1262,7 @@ void get_dlt_song(char* dlt_song) { // 삭제 문자열 입력 및 생성 함수
 
         printf("삭제할 노래의 번호를 선택하세요: ");
         scanf("%d", &selected_line);
-        getchar();
+        while (getchar() != '\n'); //입력 버터 비우기
 
         // 선택한 번호가 잘못된 경우 오류 메시지 출력 후 종료
         int valid_selection = 0;
@@ -1436,7 +1436,7 @@ int get_upd_song(char* selected_song, int* selected_line, char* songToChange) {
         printf("수정할 노래의 번호를 선택하세요: ");
         int upd_selected_line;
         scanf("%d", &upd_selected_line);
-        getchar();
+        while (getchar() != '\n'); //입력 버터 비우기
 
         int upd_valid_selection = 0;
         for (int i = 0; i < upd_line_num; i++) {
@@ -1693,7 +1693,7 @@ int update_song(char* selected_song, int selected_line, char* songToChange, char
             break;
         }
         else if (strcmp(upd_tag, "작사가") == 0) {
-            printf("수정할 장르를 입력하세요: ");
+            printf("수정할 작사가를 입력하세요: ");
             int upd_error = 0;
             fgets(upd_str, STRING_SIZE, stdin); //작사가 입력받기
 
