@@ -341,10 +341,9 @@ void song_list_menu() //노래 리스트 주 메뉴
             break;
         case 4:
             if (get_upd_song(selected_song, &selected_line, songToChange)) {  // get_upd_song 성공적으로 실행되면 1을 반환함
-                fflush(stdin);
-                update_song(selected_song, selected_line, songToChange, updatedSong);
-                updatePlaylist(songToChange, updatedSong);
-
+                fflush(stdin);  //
+                update_song(selected_song, selected_line, songToChange, updatedSong);   // 노래리스트 txt파일 수정
+                updatePlaylist(songToChange, updatedSong);  // 플레이리스트 txt파일 수정
             }
             break;
         case 0: //뒤로 가기
@@ -1376,8 +1375,8 @@ void song_dlt(const char* filename, const char* dlt_song) {   // dlt_song 문자
 }
 
 int get_upd_song(char* selected_song, int* selected_line, char* songToChange) {
-    char upd_songname[STRING_SIZE];
-    char upd_singer[STRING_SIZE];
+    char upd_songname[STRING_SIZE]; // 수정할 노래의 제목
+    char upd_singer[STRING_SIZE];   // 수정할 노래의 가수
 
     int upd_line_number_check[MAX_SIZE] = { 0 };
     int upd_line_num = 0;
@@ -1496,7 +1495,7 @@ int get_upd_song(char* selected_song, int* selected_line, char* songToChange) {
     return 1;
 }
 
-int update_song(char* selected_song, int selected_line, char* songToChange, char* updatedSong) {
+void update_song(char* selected_song, int selected_line, char* songToChange, char* updatedSong) {
     printf("\n(태그 = 제목/가수/작곡가/작사가/장르/재생시간/앨범명/앨범출시날짜)\n");
     printf("수정할 노래의 태그를 선택하세요 (0 입력 시 뒤로가기): ");
 
@@ -1526,6 +1525,7 @@ int update_song(char* selected_song, int selected_line, char* songToChange, char
         }
         else if (strcmp(upd_tag, "가수") == 0) {
             printf("수정할 가수를 입력하세요: ");
+            char singers_save[STRING_SIZE] = "";   //가수가 여러명일 경우, 여려 가수를 저장할 임시 배열
             int upd_error = 0;
             fgets(upd_str, STRING_SIZE, stdin);   //가수 입력받기
 
@@ -1555,6 +1555,7 @@ int update_song(char* selected_song, int selected_line, char* songToChange, char
                         printf("\n가수 입력이 잘못되었습니다.정확히 입력해주세요.(예시:윤종신)\n");
                         continue;
                     }
+
                     ptr_tab_q = ptr_tab_p;
                     ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                     while (ptr_tab_p != NULL) {
@@ -1584,17 +1585,17 @@ int update_song(char* selected_song, int selected_line, char* songToChange, char
                     char first_singer_buffer[STRING_SIZE] = "";
                     strncpy(first_singer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //첫 가수 추출
                     char* first_singer = trim_space(first_singer_buffer);   //앞뒤 표준공백 제거
-                    duplicate_people("song_list.txt", first_singer, upd_str, "");   //중복확인
-                    strcpy(upd_str, first_singer);   //첫 가수 저장
+                    duplicate_people("song_list.txt", first_singer, singers_save, "");   //중복확인
+                    strcat(singers_save, first_singer);   //첫 가수 저장
                     ptr_tab_q = ptr_tab_p;
                     ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                     while (ptr_tab_p != NULL) {   //가수가 더 있는지 확인
                         char singer_buffer[STRING_SIZE] = "";
                         strncpy(singer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //가수 추출
                         char* singer = trim_space(singer_buffer);   //앞뒤 표준공백 제거
-                        duplicate_people("song_list.txt", singer, upd_str, "");   //중복확인
-                        strcat(upd_str, " , ");
-                        strcat(upd_str, singer);   //가수 저장
+                        duplicate_people("song_list.txt", singer, singers_save, "");   //중복확인
+                        strcat(singers_save, " , ");
+                        strcat(singers_save, singer);   //가수 저장
                         ptr_tab_q = ptr_tab_p;
                         ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                     }
@@ -1602,9 +1603,10 @@ int update_song(char* selected_song, int selected_line, char* songToChange, char
                     ptr_tab_p = strrchr(upd_singers, '\t');
                     strncpy(last_singer_buffer, ptr_tab_p + 1, (upd_singers + strlen(upd_singers) - 1) - ptr_tab_p);   //마지막 가수 추출
                     char* last_singer = trim_space(last_singer_buffer);   //앞뒤 표준공백 제거
-                    duplicate_people("song_list.txt", last_singer, upd_str, "");   //중복확인
-                    strcat(upd_str, " , ");
-                    strcat(upd_str, last_singer);   //마지막 가수 저장
+                    duplicate_people("song_list.txt", last_singer, singers_save, "");   //중복확인
+                    strcat(singers_save, " , ");
+                    strcat(singers_save, last_singer);   //마지막 가수 저장
+                    strcpy(upd_str, singers_save);   //upd_str에 가수들 저장
                 }
             }
             upd_num = 1;
@@ -1612,6 +1614,7 @@ int update_song(char* selected_song, int selected_line, char* songToChange, char
         }
         else if (strcmp(upd_tag, "작곡가") == 0) {
             printf("수정할 작곡가를 입력하세요: ");
+            char composers_save[STRING_SIZE] = "";   //작곡가가 여러명일 경우, 여려 작곡가를 저장할 임시 배열
             int upd_error = 0;
             fgets(upd_str, STRING_SIZE, stdin); //작곡가 입력받기
 
@@ -1621,72 +1624,78 @@ int update_song(char* selected_song, int selected_line, char* songToChange, char
                 printf("\n작곡가 입력이 잘못되었습니다.정확히 입력해주세요.(예시:윤종신)\n");
                 continue;
             }
+            else if (strchr(upd_composers, '|') || strchr(upd_composers, ',')) {  //"|",","이 있는 경우
+                printf("\n작곡가 입력이 잘못되었습니다.정확히 입력해주세요.(예시:윤종신)\n");
+                continue;
+            }
             else {      //맞는 입력일 경우
-                char* ptr_comma_q = upd_composers;   //앞 콤마
-                char* ptr_comma_p = strchr(upd_composers, ',');   //뒤 콤마
-                if (ptr_comma_p == NULL) {   //작곡가 한명일 때
+                char* ptr_tab_q = upd_composers;   //앞 탭
+                char* ptr_tab_p = strchr(upd_composers, '\t');   //뒤 탭
+                if (ptr_tab_p == NULL) {   //작곡가가 한명일 때
                     duplicate_people("song_list.txt", upd_composers, upd_str, "");
                     strcpy(upd_str, upd_composers);
                 }
                 else {
                     //작곡가 한명한명이 공백인지 체크
                     char check_first_composer_buffer[STRING_SIZE] = "";
-                    strncpy(check_first_composer_buffer, ptr_comma_q, ptr_comma_p - ptr_comma_q);   //첫 작곡가 추출
-                    char* check_first_composer = trim(check_first_composer_buffer);   //앞뒤 공백 제거
+                    strncpy(check_first_composer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //첫 작곡가 추출
+                    char* check_first_composer = trim_space(check_first_composer_buffer);   //앞뒤 표준공백 제거
                     if (strcmp(check_first_composer, "") == 0) {   //공백일경우
                         printf("\n작곡가 입력이 잘못되었습니다.정확히 입력해주세요.(예시:윤종신)\n");
                         continue;
                     }
-                    ptr_comma_q = ptr_comma_p;
-                    ptr_comma_p = strchr(ptr_comma_p + 1, ',');
-                    while (ptr_comma_p != NULL) {
+
+                    ptr_tab_q = ptr_tab_p;
+                    ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
+                    while (ptr_tab_p != NULL) {
                         char check_composer_buffer[STRING_SIZE] = "";
-                        strncpy(check_composer_buffer, ptr_comma_q + 1, ptr_comma_p - ptr_comma_q - 1);   //작곡가 추출
-                        char* check_composer = trim(check_composer_buffer);   //앞뒤 공백 제거
+                        strncpy(check_composer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //작곡가 추출
+                        char* check_composer = trim_space(check_composer_buffer);   //앞뒤 표준공백 제거
                         if (strcmp(check_composer, "") == 0) { upd_error = 1; break; }   //공백일 경우
-                        ptr_comma_q = ptr_comma_p;
-                        ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                        ptr_tab_q = ptr_tab_p;
+                        ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                     }
                     if (upd_error == 1) {   //틀린 입력일 경우
                         printf("\n작곡가 입력이 잘못되었습니다.정확히 입력해주세요.(예시:윤종신)\n");
                         continue;
                     }
                     char check_last_composer_buffer[STRING_SIZE] = "";
-                    ptr_comma_p = strrchr(upd_composers, ',');
-                    strncpy(check_last_composer_buffer, ptr_comma_p + 1, (upd_composers + strlen(upd_composers) - 1) - ptr_comma_p);   //마지막 작곡가 추출
-                    char* check_last_composer = trim(check_last_composer_buffer);   //앞뒤 공백 제거
+                    ptr_tab_p = strrchr(upd_composers, '\t');
+                    strncpy(check_last_composer_buffer, ptr_tab_p + 1, (upd_composers + strlen(upd_composers) - 1) - ptr_tab_p);   //마지막 작곡가 추출
+                    char* check_last_composer = trim_space(check_last_composer_buffer);   //앞뒤 표준공백 제거
                     if (strcmp(check_last_composer, "") == 0) {   //공백일경우
                         printf("\n작곡가 입력이 잘못되었습니다.정확히 입력해주세요.(예시:윤종신)\n");
                         continue;
                     }
 
                     //공백 없으면 작곡가 동명이인 비교 및 저장
-                    ptr_comma_q = upd_composers;
-                    ptr_comma_p = strchr(upd_composers, ',');
+                    ptr_tab_q = upd_composers;
+                    ptr_tab_p = strchr(upd_composers, '\t');
                     char first_composer_buffer[STRING_SIZE] = "";
-                    strncpy(first_composer_buffer, ptr_comma_q, ptr_comma_p - ptr_comma_q);   //첫 작곡가 추출
-                    char* first_composer = trim(first_composer_buffer);   //앞뒤 공백 제거
-                    duplicate_people("song_list.txt", upd_composers, upd_str, "");   //중복확인
-                    strcat(upd_str, first_composer);   //첫 작곡가 저장
-                    ptr_comma_q = ptr_comma_p;
-                    ptr_comma_p = strchr(ptr_comma_p + 1, ',');
-                    while (ptr_comma_p != NULL) {   //작곡가가 더 있는지 확인
+                    strncpy(first_composer_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //첫 작곡가 추출
+                    char* first_composer = trim_space(first_composer_buffer);   //앞뒤 표준공백 제거
+                    duplicate_people("song_list.txt", first_composer, composers_save, "");   //중복확인
+                    strcat(composers_save, first_composer);   //첫 작곡가 저장
+                    ptr_tab_q = ptr_tab_p;
+                    ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
+                    while (ptr_tab_p != NULL) {   //작곡가가 더 있는지 확인
                         char composer_buffer[STRING_SIZE] = "";
-                        strncpy(composer_buffer, ptr_comma_q + 1, ptr_comma_p - ptr_comma_q - 1);   //작곡가 추출
-                        char* composer = trim(composer_buffer);   //앞뒤 공백 제거
-                        duplicate_people("song_list.txt", upd_composers, upd_str, "");   //중복확인
-                        strcat(upd_str, " , ");
-                        strcat(upd_str, composer);   //작곡가 저장
-                        ptr_comma_q = ptr_comma_p;
-                        ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                        strncpy(composer_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //작곡가 추출
+                        char* composer = trim_space(composer_buffer);   //앞뒤 표준공백 제거
+                        duplicate_people("song_list.txt", composer, composers_save, "");   //중복확인
+                        strcat(composers_save, " , ");
+                        strcat(composers_save, composer);   //작곡가 저장
+                        ptr_tab_q = ptr_tab_p;
+                        ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                     }
                     char last_composer_buffer[STRING_SIZE] = "";
-                    ptr_comma_p = strrchr(upd_composers, ',');
-                    strncpy(last_composer_buffer, ptr_comma_p + 1, (upd_composers + strlen(upd_composers) - 1) - ptr_comma_p);   //마지막 가수 추출
-                    char* last_composer = trim(last_composer_buffer);   //앞뒤 공백 제거
-                    duplicate_people("song_list.txt", upd_composers, upd_str, "");   //중복확인
-                    strcat(upd_str, " , ");
-                    strcat(upd_str, last_composer);   //마지막 작곡가 저장
+                    ptr_tab_p = strrchr(upd_composers, '\t');
+                    strncpy(last_composer_buffer, ptr_tab_p + 1, (upd_composers + strlen(upd_composers) - 1) - ptr_tab_p);   //마지막 작곡가 추출
+                    char* last_composer = trim_space(last_composer_buffer);   //앞뒤 표준공백 제거
+                    duplicate_people("song_list.txt", last_composer, composers_save, "");   //중복확인
+                    strcat(composers_save, " , ");
+                    strcat(composers_save, last_composer);   //마지막 작곡가 저장
+                    strcpy(upd_str, composers_save);   //upd_str에 작곡가들 저장
                 }
             }
             upd_num = 2;
@@ -1694,6 +1703,7 @@ int update_song(char* selected_song, int selected_line, char* songToChange, char
         }
         else if (strcmp(upd_tag, "작사가") == 0) {
             printf("수정할 작사가를 입력하세요: ");
+            char lyricists_save[STRING_SIZE] = "";   //작사가가 여러명일 경우, 여려 작사가를 저장할 임시 배열
             int upd_error = 0;
             fgets(upd_str, STRING_SIZE, stdin); //작사가 입력받기
 
@@ -1703,72 +1713,78 @@ int update_song(char* selected_song, int selected_line, char* songToChange, char
                 printf("\n작사가 입력이 잘못되었습니다.정확히 입력해주세요.(예시:윤종신)\n");
                 continue;
             }
+            else if (strchr(upd_lyricists, '|') || strchr(upd_lyricists, ',')) {  //"|",","이 있는 경우
+                printf("\n작사가 입력이 잘못되었습니다.정확히 입력해주세요.(예시:윤종신)\n");
+                continue;
+            }
             else {      //맞는 입력일 경우
-                char* ptr_comma_q = upd_lyricists;   //앞 콤마
-                char* ptr_comma_p = strchr(upd_lyricists, ',');   //뒤 콤마
-                if (ptr_comma_p == NULL) {   //작사가가 한명일 때
+                char* ptr_tab_q = upd_lyricists;   //앞 탭
+                char* ptr_tab_p = strchr(upd_lyricists, '\t');   //뒤 탭
+                if (ptr_tab_p == NULL) {   //작사가가 한명일 때
                     duplicate_people("song_list.txt", upd_lyricists, upd_str, "");
                     strcpy(upd_str, upd_lyricists);
                 }
                 else {
                     //작사가 한명한명이 공백인지 체크
                     char check_first_lyricist_buffer[STRING_SIZE] = "";
-                    strncpy(check_first_lyricist_buffer, ptr_comma_q, ptr_comma_p - ptr_comma_q);   //첫 작사가 추출
-                    char* check_first_lyricist = trim(check_first_lyricist_buffer);   //앞뒤 공백 제거
+                    strncpy(check_first_lyricist_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //첫 작사가 추출
+                    char* check_first_lyricist = trim_space(check_first_lyricist_buffer);   //앞뒤 표준공백 제거
                     if (strcmp(check_first_lyricist, "") == 0) {   //공백일경우
                         printf("\n작사가 입력이 잘못되었습니다.정확히 입력해주세요.(예시:윤종신)\n");
                         continue;
                     }
-                    ptr_comma_q = ptr_comma_p;
-                    ptr_comma_p = strchr(ptr_comma_p + 1, ',');
-                    while (ptr_comma_p != NULL) {
+
+                    ptr_tab_q = ptr_tab_p;
+                    ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
+                    while (ptr_tab_p != NULL) {
                         char check_lyricist_buffer[STRING_SIZE] = "";
-                        strncpy(check_lyricist_buffer, ptr_comma_q + 1, ptr_comma_p - ptr_comma_q - 1);   //작사가 추출
-                        char* check_lyricist = trim(check_lyricist_buffer);   //앞뒤 공백 제거
+                        strncpy(check_lyricist_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //작사가 추출
+                        char* check_lyricist = trim_space(check_lyricist_buffer);   //앞뒤 표준공백 제거
                         if (strcmp(check_lyricist, "") == 0) { upd_error = 1; break; }   //공백일 경우
-                        ptr_comma_q = ptr_comma_p;
-                        ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                        ptr_tab_q = ptr_tab_p;
+                        ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                     }
                     if (upd_error == 1) {   //틀린 입력일 경우
                         printf("\n작사가 입력이 잘못되었습니다.정확히 입력해주세요.(예시:윤종신)\n");
                         continue;
                     }
                     char check_last_lyricist_buffer[STRING_SIZE] = "";
-                    ptr_comma_p = strrchr(upd_lyricists, ',');
-                    strncpy(check_last_lyricist_buffer, ptr_comma_p + 1, (upd_lyricists + strlen(upd_lyricists) - 1) - ptr_comma_p);   //마지막 작사가 추출
-                    char* check_last_lyricist = trim(check_last_lyricist_buffer);   //앞뒤 공백 제거
+                    ptr_tab_p = strrchr(upd_lyricists, '\t');
+                    strncpy(check_last_lyricist_buffer, ptr_tab_p + 1, (upd_lyricists + strlen(upd_lyricists) - 1) - ptr_tab_p);   //마지막 작사가 추출
+                    char* check_last_lyricist = trim_space(check_last_lyricist_buffer);   //앞뒤 표준공백 제거
                     if (strcmp(check_last_lyricist, "") == 0) {   //공백일경우
                         printf("\n작사가 입력이 잘못되었습니다.정확히 입력해주세요.(예시:윤종신)\n");
                         continue;
                     }
 
                     //공백 없으면 작사가 동명이인 비교 및 저장
-                    ptr_comma_q = upd_lyricists;
-                    ptr_comma_p = strchr(upd_lyricists, ',');
+                    ptr_tab_q = upd_lyricists;
+                    ptr_tab_p = strchr(upd_lyricists, '\t');
                     char first_lyricist_buffer[STRING_SIZE] = "";
-                    strncpy(first_lyricist_buffer, ptr_comma_q, ptr_comma_p - ptr_comma_q);   //첫 작사가 추출
-                    char* first_lyricist = trim(first_lyricist_buffer);   //앞뒤 공백 제거
-                    duplicate_people("song_list.txt", upd_lyricists, upd_str, "");   //중복확인
-                    strcpy(upd_str, first_lyricist);   //첫 작사가 저장
-                    ptr_comma_q = ptr_comma_p;
-                    ptr_comma_p = strchr(ptr_comma_p + 1, ',');
-                    while (ptr_comma_p != NULL) {   //작사가가 더 있는지 확인
-                        char lyricist_buffer[STRING_SIZE] = "";
-                        strncpy(lyricist_buffer, ptr_comma_q + 1, ptr_comma_p - ptr_comma_q - 1);   //작사가 추출
-                        char* lyricist = trim(lyricist_buffer);   //앞뒤 공백 제거
-                        duplicate_people("song_list.txt", upd_lyricists, upd_str, "");   //중복확인
-                        strcat(upd_str, " , ");
-                        strcat(upd_str, lyricist);   //작사가 저장
-                        ptr_comma_q = ptr_comma_p;
-                        ptr_comma_p = strchr(ptr_comma_p + 1, ',');
+                    strncpy(first_lyricist_buffer, ptr_tab_q, ptr_tab_p - ptr_tab_q);   //첫 작사가 추출
+                    char* first_lyricist = trim_space(first_lyricist_buffer);   //앞뒤 표준공백 제거
+                    duplicate_people("song_list.txt", first_lyricist, lyricists_save, "");   //중복확인
+                    strcat(lyricists_save, first_lyricist);   //첫 작사가 저장
+                    ptr_tab_q = ptr_tab_p;
+                    ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
+                    while (ptr_tab_p != NULL) {   //작사가가 더 있는지 확인
+                        char lyricists_buffer[STRING_SIZE] = "";
+                        strncpy(lyricists_buffer, ptr_tab_q + 1, ptr_tab_p - ptr_tab_q - 1);   //작사가 추출
+                        char* lyricists = trim_space(lyricists_buffer);   //앞뒤 표준공백 제거
+                        duplicate_people("song_list.txt", lyricists, lyricists_save, "");   //중복확인
+                        strcat(lyricists_save, " , ");
+                        strcat(lyricists_save, lyricists);   //작사가 저장
+                        ptr_tab_q = ptr_tab_p;
+                        ptr_tab_p = strchr(ptr_tab_p + 1, '\t');
                     }
-                    char last_lyricist_buffer[STRING_SIZE] = "";
-                    ptr_comma_p = strrchr(upd_lyricists, ',');
-                    strncpy(last_lyricist_buffer, ptr_comma_p + 1, (upd_lyricists + strlen(upd_lyricists) - 1) - ptr_comma_p);   //마지막 가수 추출
-                    char* last_singer = trim(last_lyricist_buffer);   //앞뒤 공백 제거
-                    duplicate_people("song_list.txt", upd_lyricists, upd_str, "");   //중복확인
-                    strcat(upd_str, " , ");
-                    strcat(upd_str, last_singer);   //마지막 작사가 저장
+                    char last_lyricists_buffer[STRING_SIZE] = "";
+                    ptr_tab_p = strrchr(upd_lyricists, '\t');
+                    strncpy(last_lyricists_buffer, ptr_tab_p + 1, (upd_lyricists + strlen(upd_lyricists) - 1) - ptr_tab_p);   //마지막 작사가 추출
+                    char* last_lyricists = trim_space(last_lyricists_buffer);   //앞뒤 표준공백 제거
+                    duplicate_people("song_list.txt", last_lyricists, lyricists_save, "");   //중복확인
+                    strcat(lyricists_save, " , ");
+                    strcat(lyricists_save, last_lyricists);   //마지막 작사가 저장
+                    strcpy(upd_str, lyricists_save);   //upd_str에 작사가들 저장
                 }
             }
             upd_num = 3;
