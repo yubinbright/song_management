@@ -56,8 +56,9 @@ void searchMenu(){
             break;
 
         case 0: //뒤로 가기
-            // return;
-            main();
+            return 0;
+            break;
+            // main();
 
         default: //error
             while (getchar() != '\n'); //입력 버터 비우기
